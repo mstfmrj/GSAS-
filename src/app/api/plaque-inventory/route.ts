@@ -1,0 +1,43 @@
+/**
+ * src/app/api/plaque-inventory/route.ts
+ *
+ * PURPOSE:
+ * API route handler for IKEA Frame inventory list retrieval (GET) and record creation (POST).
+ */
+
+import { NextRequest } from "next/server";
+import { getAuthUser } from "@/helpers/server/getAuthUser";
+import { errorResponse, successResponse } from "@/lib/server/api-response";
+import { listInventory, createInventoryItem } from "@/lib/db";
+import { roleHasPermission } from "@/lib/permissions";
+
+export async function GET(req: NextRequest) {
+  const user = await getAuthUser(req);
+  if (!user) return errorResponse("Authentication required", 401);
+  if (!await roleHasPermission(user.role, "plaque.view", user.permissions))
+    return errorResponse("Access denied: insufficient permissions", 403);
+
+  const { searchParams } = req.nextUrl;
+  const search = searchParams.get("search") ?? undefined;
+  const page = parseInt(searchParams.get("page") ?? "1", 10);
+  const pageSize = parseInt(searchParams.get("pageSize") ?? "50", 10);
+  const filterType = searchParams.get("filterType") ?? searchParams.get("type") ?? undefined;
+  const sortBy = searchParams.get("sortBy") ?? undefined;
+  const year = searchParams.get("year") ?? undefined;
+  const month = searchParams.get("month") ?? undefined;
+  const day = searchParams.get("day") ?? undefined;
+
+  const result = await listInventory(search, page, pageSize, filterType, sortBy, year, month, day);
+  return successResponse(result);
+}
+
+export async function POST(req: NextRequest) {
+  const user = await getAuthUser(req);
+  if (!user) return errorResponse("Authentication required", 401);
+  if (!await roleHasPermission(user.role, "plaque.create", user.permissions))
+    return errorResponse("Access denied: insufficient permissions", 403);
+
+  const body = await req.json();
+  const item = await createInventoryItem(body);
+  return successResponse(item, 201);
+}

@@ -1,0 +1,1872 @@
+[
+  {
+    "id": "inv_1",
+    "sn": 1,
+    "log_date": "29-Jul-25",
+    "project_name": "Purchase - July 29 2025 (250 pcs) , October 1, 2026 (169 pcs)",
+    "qty_in": 419,
+    "qty_out": 186,
+    "remaining": 233,
+    "total_used": 186
+  },
+  {
+    "id": "inv_2",
+    "sn": 2,
+    "log_date": "29-Jul-25",
+    "project_name": "Zaki Certificate",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 418,
+    "total_used": 0
+  },
+  {
+    "id": "inv_3",
+    "sn": 3,
+    "log_date": "29-Jul-25",
+    "project_name": "Al Wadi 02 Building, Yasmeen City, Lusail",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 417,
+    "total_used": 0
+  },
+  {
+    "id": "inv_4",
+    "sn": 4,
+    "log_date": "29-Jul-25",
+    "project_name": "Blossom tower - Al Kharaej , Lusail",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 416,
+    "total_used": 0
+  },
+  {
+    "id": "inv_5",
+    "sn": 5,
+    "log_date": "29-Jul-25",
+    "project_name": "DESIGN AND CONSTRUCTION OF ROADS INFRASTRUCTURE AND SECURITY SYSTEM FOR ABUSAMRA BORDERS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 415,
+    "total_used": 0
+  },
+  {
+    "id": "inv_6",
+    "sn": 6,
+    "log_date": "29-Jul-25",
+    "project_name": "Fox Hills-Res-D-12 Apartments",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 414,
+    "total_used": 0
+  },
+  {
+    "id": "inv_7",
+    "sn": 7,
+    "log_date": "29-Jul-25",
+    "project_name": "MUSEUM OF ISLAMIC ART (MIA) - QATAR MUSEUMS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 413,
+    "total_used": 0
+  },
+  {
+    "id": "inv_8",
+    "sn": 8,
+    "log_date": "29-Jul-25",
+    "project_name": "PHCC - WEST BAY HEALTH CENTER (Renewal)",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 412,
+    "total_used": 0
+  },
+  {
+    "id": "inv_9",
+    "sn": 9,
+    "log_date": "29-Jul-25",
+    "project_name": "PHCC- Airport Health Center (Renewal)",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 411,
+    "total_used": 0
+  },
+  {
+    "id": "inv_10",
+    "sn": 10,
+    "log_date": "29-Jul-25",
+    "project_name": "QETAIFAN ISLAND NORTH PHASE 1 - PK01 BEACH CLUB",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 410,
+    "total_used": 0
+  },
+  {
+    "id": "inv_11",
+    "sn": 11,
+    "log_date": "29-Jul-25",
+    "project_name": "QFZ Umm Al Houl Free Zone - Central and Marsa Districts",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 409,
+    "total_used": 0
+  },
+  {
+    "id": "inv_12",
+    "sn": 12,
+    "log_date": "29-Jul-25",
+    "project_name": "QIN- Retail Plaza- Phase 2",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 408,
+    "total_used": 0
+  },
+  {
+    "id": "inv_13",
+    "sn": 13,
+    "log_date": "29-Jul-25",
+    "project_name": "Residential Building No. A15",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 407,
+    "total_used": 0
+  },
+  {
+    "id": "inv_14",
+    "sn": 14,
+    "log_date": "29-Jul-25",
+    "project_name": "Venice Tower 02",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 406,
+    "total_used": 0
+  },
+  {
+    "id": "inv_15",
+    "sn": 15,
+    "log_date": "29-Jul-25",
+    "project_name": "WOW - WORLD OF WONDERS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 405,
+    "total_used": 0
+  },
+  {
+    "id": "inv_16",
+    "sn": 16,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 43",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 404,
+    "total_used": 0
+  },
+  {
+    "id": "inv_17",
+    "sn": 17,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 44",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 403,
+    "total_used": 0
+  },
+  {
+    "id": "inv_18",
+    "sn": 18,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 45",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 402,
+    "total_used": 0
+  },
+  {
+    "id": "inv_19",
+    "sn": 19,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 47",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 401,
+    "total_used": 0
+  },
+  {
+    "id": "inv_20",
+    "sn": 20,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 47",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 400,
+    "total_used": 0
+  },
+  {
+    "id": "inv_21",
+    "sn": 21,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 48",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 399,
+    "total_used": 0
+  },
+  {
+    "id": "inv_22",
+    "sn": 22,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 49",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 398,
+    "total_used": 0
+  },
+  {
+    "id": "inv_23",
+    "sn": 23,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 50",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 397,
+    "total_used": 0
+  },
+  {
+    "id": "inv_24",
+    "sn": 24,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 51",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 396,
+    "total_used": 0
+  },
+  {
+    "id": "inv_25",
+    "sn": 25,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 52",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 395,
+    "total_used": 0
+  },
+  {
+    "id": "inv_26",
+    "sn": 26,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 53",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 394,
+    "total_used": 0
+  },
+  {
+    "id": "inv_27",
+    "sn": 27,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 54",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 393,
+    "total_used": 0
+  },
+  {
+    "id": "inv_28",
+    "sn": 28,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 69",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 392,
+    "total_used": 0
+  },
+  {
+    "id": "inv_29",
+    "sn": 29,
+    "log_date": "29-Jul-25",
+    "project_name": "Yasmeen City - Residential Building – 70",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 391,
+    "total_used": 0
+  },
+  {
+    "id": "inv_30",
+    "sn": 30,
+    "log_date": "04-Aug-25",
+    "project_name": "RESIDENTIAL BUILDING (R47) – AL ERKYAH, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 390,
+    "total_used": 0
+  },
+  {
+    "id": "inv_31",
+    "sn": 31,
+    "log_date": "04-Aug-25",
+    "project_name": "QFZ Umm Al Houl Free Zone - Central and Marsa Districts",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 389,
+    "total_used": 0
+  },
+  {
+    "id": "inv_32",
+    "sn": 32,
+    "log_date": "04-Aug-25",
+    "project_name": "RIXOS PREMIUM - QETAIFAN ISLAND NORTH, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 388,
+    "total_used": 0
+  },
+  {
+    "id": "inv_33",
+    "sn": 33,
+    "log_date": "04-Aug-25",
+    "project_name": "AL-YASMEEN CITY - MIXED-USE BUILDING - 12",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 387,
+    "total_used": 0
+  },
+  {
+    "id": "inv_34",
+    "sn": 34,
+    "log_date": "04-Aug-25",
+    "project_name": "AL WAJBAH  HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 386,
+    "total_used": 0
+  },
+  {
+    "id": "inv_35",
+    "sn": 35,
+    "log_date": "04-Aug-25",
+    "project_name": "AL-YASMEEN CITY - MIXED-USE BUILDING - 08",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 385,
+    "total_used": 0
+  },
+  {
+    "id": "inv_36",
+    "sn": 36,
+    "log_date": "04-Aug-25",
+    "project_name": "AL-YASMEEN CITY - MIXED-USE BUILDING - 09",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 384,
+    "total_used": 0
+  },
+  {
+    "id": "inv_37",
+    "sn": 37,
+    "log_date": "04-Aug-25",
+    "project_name": "AL-YASMEEN CITY - MIXED-USE BUILDING - 10",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 383,
+    "total_used": 0
+  },
+  {
+    "id": "inv_38",
+    "sn": 38,
+    "log_date": "04-Aug-25",
+    "project_name": "AL-YASMEEN CITY - MIXED-USE BUILDING - 11",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 382,
+    "total_used": 0
+  },
+  {
+    "id": "inv_39",
+    "sn": 39,
+    "log_date": "31-Aug-25",
+    "project_name": "Dukhan Bank Headquarters - Marina, Lusail",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 381,
+    "total_used": 0
+  },
+  {
+    "id": "inv_40",
+    "sn": 40,
+    "log_date": "31-Aug-25",
+    "project_name": "FOX HILLS-RES-N-22 APARTMENTS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 380,
+    "total_used": 0
+  },
+  {
+    "id": "inv_41",
+    "sn": 41,
+    "log_date": "31-Aug-25",
+    "project_name": "West Bay Central Bus Station",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 379,
+    "total_used": 0
+  },
+  {
+    "id": "inv_42",
+    "sn": 42,
+    "log_date": "31-Aug-25",
+    "project_name": "GHARRAFAT AL RAYYAN HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 378,
+    "total_used": 0
+  },
+  {
+    "id": "inv_43",
+    "sn": 43,
+    "log_date": "31-Aug-25",
+    "project_name": "OMAR BIN AL KHATAB HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 377,
+    "total_used": 0
+  },
+  {
+    "id": "inv_44",
+    "sn": 44,
+    "log_date": "31-Aug-25",
+    "project_name": "MK Residence",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 376,
+    "total_used": 0
+  },
+  {
+    "id": "inv_45",
+    "sn": 45,
+    "log_date": "31-Aug-25",
+    "project_name": "MUMTALAKAT RESIDENTIAL D54",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 375,
+    "total_used": 0
+  },
+  {
+    "id": "inv_46",
+    "sn": 46,
+    "log_date": "31-Aug-25",
+    "project_name": "CRESENT PARK",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 374,
+    "total_used": 0
+  },
+  {
+    "id": "inv_47",
+    "sn": 47,
+    "log_date": "31-Aug-25",
+    "project_name": "The Dune",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 373,
+    "total_used": 0
+  },
+  {
+    "id": "inv_48",
+    "sn": 48,
+    "log_date": "31-Aug-25",
+    "project_name": "The Crystal",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 372,
+    "total_used": 0
+  },
+  {
+    "id": "inv_49",
+    "sn": 49,
+    "log_date": "31-Aug-25",
+    "project_name": "The Palm",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 371,
+    "total_used": 0
+  },
+  {
+    "id": "inv_50",
+    "sn": 50,
+    "log_date": "31-Aug-25",
+    "project_name": "The Sea",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 370,
+    "total_used": 0
+  },
+  {
+    "id": "inv_51",
+    "sn": 51,
+    "log_date": "31-Aug-25",
+    "project_name": "The Moon",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 369,
+    "total_used": 0
+  },
+  {
+    "id": "inv_52",
+    "sn": 52,
+    "log_date": "31-Aug-25",
+    "project_name": "The Quart",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 368,
+    "total_used": 0
+  },
+  {
+    "id": "inv_53",
+    "sn": 53,
+    "log_date": "31-Aug-25",
+    "project_name": "SOUTH WAKRA HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 367,
+    "total_used": 0
+  },
+  {
+    "id": "inv_54",
+    "sn": 54,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 20",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 366,
+    "total_used": 0
+  },
+  {
+    "id": "inv_55",
+    "sn": 55,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 21",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 365,
+    "total_used": 0
+  },
+  {
+    "id": "inv_56",
+    "sn": 56,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 22",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 364,
+    "total_used": 0
+  },
+  {
+    "id": "inv_57",
+    "sn": 57,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 23",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 363,
+    "total_used": 0
+  },
+  {
+    "id": "inv_58",
+    "sn": 58,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 24",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 362,
+    "total_used": 0
+  },
+  {
+    "id": "inv_59",
+    "sn": 59,
+    "log_date": "31-Aug-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 25",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 361,
+    "total_used": 0
+  },
+  {
+    "id": "inv_60",
+    "sn": 60,
+    "log_date": "31-Aug-25",
+    "project_name": "Qetaifan Island North Development Package 4 - Linear Park",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 360,
+    "total_used": 0
+  },
+  {
+    "id": "inv_61",
+    "sn": 61,
+    "log_date": "31-Aug-25",
+    "project_name": "Residential Building No. A14",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 359,
+    "total_used": 0
+  },
+  {
+    "id": "inv_62",
+    "sn": 62,
+    "log_date": "02-Oct-25",
+    "project_name": "GHUSSON AL KHALEEJ",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 358,
+    "total_used": 0
+  },
+  {
+    "id": "inv_63",
+    "sn": 63,
+    "log_date": "02-Oct-25",
+    "project_name": "Said Ibn Zayd Preparatory School for Boys",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 357,
+    "total_used": 0
+  },
+  {
+    "id": "inv_64",
+    "sn": 64,
+    "log_date": "02-Oct-25",
+    "project_name": "Al Wukair Model School for Boys",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 356,
+    "total_used": 0
+  },
+  {
+    "id": "inv_65",
+    "sn": 65,
+    "log_date": "02-Oct-25",
+    "project_name": "LUSAIL COMMAND AND CONTROL CENTER - MARINA, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 355,
+    "total_used": 0
+  },
+  {
+    "id": "inv_66",
+    "sn": 66,
+    "log_date": "02-Oct-25",
+    "project_name": "ABU NAKHLA HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 354,
+    "total_used": 0
+  },
+  {
+    "id": "inv_67",
+    "sn": 67,
+    "log_date": "02-Oct-25",
+    "project_name": "AL JUMAILIYA HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 353,
+    "total_used": 0
+  },
+  {
+    "id": "inv_68",
+    "sn": 68,
+    "log_date": "02-Oct-25",
+    "project_name": "AL WAKRA HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 352,
+    "total_used": 0
+  },
+  {
+    "id": "inv_69",
+    "sn": 69,
+    "log_date": "02-Oct-25",
+    "project_name": "QATAR ACADEMY AL WAKRA",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 351,
+    "total_used": 0
+  },
+  {
+    "id": "inv_70",
+    "sn": 70,
+    "log_date": "02-Oct-25",
+    "project_name": "Lusail Ferry Terminal",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 350,
+    "total_used": 0
+  },
+  {
+    "id": "inv_71",
+    "sn": 71,
+    "log_date": "02-Oct-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 26",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 349,
+    "total_used": 0
+  },
+  {
+    "id": "inv_72",
+    "sn": 72,
+    "log_date": "02-Oct-25",
+    "project_name": "AlRayan Bank Seef Lusail Building",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 348,
+    "total_used": 0
+  },
+  {
+    "id": "inv_73",
+    "sn": 73,
+    "log_date": "02-Oct-25",
+    "project_name": "THE VIEW HOSPITAL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 347,
+    "total_used": 0
+  },
+  {
+    "id": "inv_74",
+    "sn": 74,
+    "log_date": "02-Oct-25",
+    "project_name": "AL KAABAN HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 346,
+    "total_used": 0
+  },
+  {
+    "id": "inv_75",
+    "sn": 75,
+    "log_date": "02-Oct-25",
+    "project_name": "MESAIMEER HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 345,
+    "total_used": 0
+  },
+  {
+    "id": "inv_76",
+    "sn": 76,
+    "log_date": "02-Oct-25",
+    "project_name": "AL SHEEHANIYA HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 344,
+    "total_used": 0
+  },
+  {
+    "id": "inv_77",
+    "sn": 77,
+    "log_date": "02-Oct-25",
+    "project_name": "QATAR R/C SPORT CENTER PARK",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 343,
+    "total_used": 0
+  },
+  {
+    "id": "inv_78",
+    "sn": 78,
+    "log_date": "02-Oct-25",
+    "project_name": "Kahramaa Awareness Park",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 342,
+    "total_used": 0
+  },
+  {
+    "id": "inv_79",
+    "sn": 79,
+    "log_date": "02-Oct-25",
+    "project_name": "GSB Plaque - Qatar Foundation Central Plant 6",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 341,
+    "total_used": 0
+  },
+  {
+    "id": "inv_80",
+    "sn": 80,
+    "log_date": "16-Nov-25",
+    "project_name": "Advisory - Zaki",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 340,
+    "total_used": 0
+  },
+  {
+    "id": "inv_81",
+    "sn": 81,
+    "log_date": "16-Nov-25",
+    "project_name": "Advisory - Zaki",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 339,
+    "total_used": 0
+  },
+  {
+    "id": "inv_82",
+    "sn": 82,
+    "log_date": "16-Nov-25",
+    "project_name": "GSB Plaque - QF CP 6",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 338,
+    "total_used": 0
+  },
+  {
+    "id": "inv_83",
+    "sn": 83,
+    "log_date": "16-Nov-25",
+    "project_name": "GSB Plaque - ISF",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 337,
+    "total_used": 0
+  },
+  {
+    "id": "inv_84",
+    "sn": 84,
+    "log_date": "16-Nov-25",
+    "project_name": "KAHRAMAA AWARENESS PARK",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 336,
+    "total_used": 0
+  },
+  {
+    "id": "inv_85",
+    "sn": 85,
+    "log_date": "16-Nov-25",
+    "project_name": "GRAND VILLAS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 335,
+    "total_used": 0
+  },
+  {
+    "id": "inv_86",
+    "sn": 86,
+    "log_date": "16-Nov-25",
+    "project_name": "CLUB ELEVEN",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 334,
+    "total_used": 0
+  },
+  {
+    "id": "inv_87",
+    "sn": 87,
+    "log_date": "16-Nov-25",
+    "project_name": "A18 VIDA RESIDENTIAL BUILDING",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 333,
+    "total_used": 0
+  },
+  {
+    "id": "inv_88",
+    "sn": 88,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 14",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 332,
+    "total_used": 0
+  },
+  {
+    "id": "inv_89",
+    "sn": 89,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 15",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 331,
+    "total_used": 0
+  },
+  {
+    "id": "inv_90",
+    "sn": 90,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 16",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 330,
+    "total_used": 0
+  },
+  {
+    "id": "inv_91",
+    "sn": 91,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 17",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 329,
+    "total_used": 0
+  },
+  {
+    "id": "inv_92",
+    "sn": 92,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 18",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 328,
+    "total_used": 0
+  },
+  {
+    "id": "inv_93",
+    "sn": 93,
+    "log_date": "16-Nov-25",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 19",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 327,
+    "total_used": 0
+  },
+  {
+    "id": "inv_94",
+    "sn": 94,
+    "log_date": "16-Nov-25",
+    "project_name": "QETAIFAN ISLAND NORTH DEVELOPMENT PHASE 1 - PACKAGE 4 INFRASTRUCTURE AND SITE WIDE MASTER PLAN",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 326,
+    "total_used": 0
+  },
+  {
+    "id": "inv_95",
+    "sn": 95,
+    "log_date": "16-Nov-25",
+    "project_name": "SASO LABS OASIS DESIGN PROJECT - RIYADH",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 325,
+    "total_used": 0
+  },
+  {
+    "id": "inv_96",
+    "sn": 96,
+    "log_date": "16-Nov-25",
+    "project_name": "LEABAIB HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 324,
+    "total_used": 0
+  },
+  {
+    "id": "inv_97",
+    "sn": 97,
+    "log_date": "16-Nov-25",
+    "project_name": "MALLORCA RESIDENTIAL TOWER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 323,
+    "total_used": 0
+  },
+  {
+    "id": "inv_98",
+    "sn": 98,
+    "log_date": "16-Nov-25",
+    "project_name": "QF- AL MUJADILAH CENTER & MOSQUE FOR WOMEN",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 322,
+    "total_used": 0
+  },
+  {
+    "id": "inv_99",
+    "sn": 99,
+    "log_date": "16-Nov-25",
+    "project_name": "TALHA IBN UBAYD ALLAH PREPARATORY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 321,
+    "total_used": 0
+  },
+  {
+    "id": "inv_100",
+    "sn": 100,
+    "log_date": "16-Nov-25",
+    "project_name": "HIND BINT AMR AL-ANSARIYYAH PREPARATORY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 320,
+    "total_used": 0
+  },
+  {
+    "id": "inv_101",
+    "sn": 101,
+    "log_date": "23-Dec-25",
+    "project_name": "IBN SEENA SECONDARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 319,
+    "total_used": 0
+  },
+  {
+    "id": "inv_102",
+    "sn": 102,
+    "log_date": "23-Dec-25",
+    "project_name": "IBN TAYMEYA SECONDARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 318,
+    "total_used": 0
+  },
+  {
+    "id": "inv_103",
+    "sn": 103,
+    "log_date": "23-Dec-25",
+    "project_name": "AL MASHAF HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 317,
+    "total_used": 0
+  },
+  {
+    "id": "inv_104",
+    "sn": 104,
+    "log_date": "23-Dec-25",
+    "project_name": "QATAR UNIVERSITY HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 316,
+    "total_used": 0
+  },
+  {
+    "id": "inv_105",
+    "sn": 105,
+    "log_date": "23-Dec-25",
+    "project_name": "UMM SLAL HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 315,
+    "total_used": 0
+  },
+  {
+    "id": "inv_106",
+    "sn": 106,
+    "log_date": "23-Dec-25",
+    "project_name": "QF- AL-MUJADILAH CENTER & MOSQUE FOR WOMEN",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 314,
+    "total_used": 0
+  },
+  {
+    "id": "inv_107",
+    "sn": 107,
+    "log_date": "23-Dec-25",
+    "project_name": "A07 HILLS RESIDENTIAL BUILDING",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 313,
+    "total_used": 0
+  },
+  {
+    "id": "inv_108",
+    "sn": 108,
+    "log_date": "23-Dec-25",
+    "project_name": "NATIONAL MUSEUM OF QATAR - QATAR MUSEUMS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 312,
+    "total_used": 0
+  },
+  {
+    "id": "inv_109",
+    "sn": 109,
+    "log_date": "23-Dec-25",
+    "project_name": "LUSAIL FERRY TERMINAL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 311,
+    "total_used": 0
+  },
+  {
+    "id": "inv_110",
+    "sn": 110,
+    "log_date": "23-Dec-25",
+    "project_name": "AL RUWAIS HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 310,
+    "total_used": 0
+  },
+  {
+    "id": "inv_111",
+    "sn": 111,
+    "log_date": "18-Jan-26",
+    "project_name": "KHALIFA ALI AJAJ AL-KUBAISI BUILDING FOR FOX HILL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 309,
+    "total_used": 0
+  },
+  {
+    "id": "inv_112",
+    "sn": 112,
+    "log_date": "18-Jan-26",
+    "project_name": "KHALIFA ALI AJAJ AL-KUBAISI BUILDING, WATERFRONT",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 308,
+    "total_used": 0
+  },
+  {
+    "id": "inv_113",
+    "sn": 113,
+    "log_date": "18-Jan-26",
+    "project_name": "QETAIFAN ISLAND NORTH: INFRASTRUCTURE AND SITE WIDE MASTER PLAN",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 307,
+    "total_used": 0
+  },
+  {
+    "id": "inv_114",
+    "sn": 114,
+    "log_date": "18-Jan-26",
+    "project_name": "LUSAIL( MARINA) - RESIDENTIAL TOWER RES. 10",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 306,
+    "total_used": 0
+  },
+  {
+    "id": "inv_115",
+    "sn": 115,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 14",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 305,
+    "total_used": 0
+  },
+  {
+    "id": "inv_116",
+    "sn": 116,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 15",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 304,
+    "total_used": 0
+  },
+  {
+    "id": "inv_117",
+    "sn": 117,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 16",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 303,
+    "total_used": 0
+  },
+  {
+    "id": "inv_118",
+    "sn": 118,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 17",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 302,
+    "total_used": 0
+  },
+  {
+    "id": "inv_119",
+    "sn": 119,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 18",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 301,
+    "total_used": 0
+  },
+  {
+    "id": "inv_120",
+    "sn": 120,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED -USE BUILDING -MU 19",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 300,
+    "total_used": 0
+  },
+  {
+    "id": "inv_121",
+    "sn": 121,
+    "log_date": "18-Jan-26",
+    "project_name": "RESIDENTIAL APARTMENT BUILDING (3B+G+9) AL-ERKYAH R26",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 299,
+    "total_used": 0
+  },
+  {
+    "id": "inv_122",
+    "sn": 122,
+    "log_date": "18-Jan-26",
+    "project_name": "NEWTON INTERNATIONAL ACADEMY LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 298,
+    "total_used": 0
+  },
+  {
+    "id": "inv_123",
+    "sn": 123,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED USE BUILDING MU05",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 297,
+    "total_used": 0
+  },
+  {
+    "id": "inv_124",
+    "sn": 124,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED USE BUILDING MU07",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 296,
+    "total_used": 0
+  },
+  {
+    "id": "inv_125",
+    "sn": 125,
+    "log_date": "18-Jan-26",
+    "project_name": "AL-YASMEEN CITY- MIXED USE BUILDING MU06",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 295,
+    "total_used": 0
+  },
+  {
+    "id": "inv_126",
+    "sn": 126,
+    "log_date": "11-Feb-26",
+    "project_name": "HIGHER ADMINISTRATION BUILDING",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 294,
+    "total_used": 0
+  },
+  {
+    "id": "inv_127",
+    "sn": 127,
+    "log_date": "11-Feb-26",
+    "project_name": "MUSEUM OF ISLAMIC ART (MIA) - QATAR MUSEUMS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 293,
+    "total_used": 0
+  },
+  {
+    "id": "inv_128",
+    "sn": 128,
+    "log_date": "11-Feb-26",
+    "project_name": "NATIONAL MUSEUM OF QATAR - QATAR MUSEUMS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 292,
+    "total_used": 0
+  },
+  {
+    "id": "inv_129",
+    "sn": 129,
+    "log_date": "11-Feb-26",
+    "project_name": "AL SADD HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 291,
+    "total_used": 0
+  },
+  {
+    "id": "inv_130",
+    "sn": 130,
+    "log_date": "11-Feb-26",
+    "project_name": "AL KHOR HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 290,
+    "total_used": 0
+  },
+  {
+    "id": "inv_131",
+    "sn": 131,
+    "log_date": "11-Feb-26",
+    "project_name": "AL MASHAF HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 289,
+    "total_used": 0
+  },
+  {
+    "id": "inv_132",
+    "sn": 132,
+    "log_date": "11-Feb-26",
+    "project_name": "UMM AL SENEEM HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 288,
+    "total_used": 0
+  },
+  {
+    "id": "inv_133",
+    "sn": 133,
+    "log_date": "11-Feb-26",
+    "project_name": "LIBERAL ARTS & SCIENCE (PENROSE HOUSE)",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 287,
+    "total_used": 0
+  },
+  {
+    "id": "inv_134",
+    "sn": 134,
+    "log_date": "11-Feb-26",
+    "project_name": "ENAD RESIDENCE R2",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 286,
+    "total_used": 0
+  },
+  {
+    "id": "inv_135",
+    "sn": 135,
+    "log_date": "11-Feb-26",
+    "project_name": "KAHRAMAA AWARENESS PARK",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 285,
+    "total_used": 0
+  },
+  {
+    "id": "inv_136",
+    "sn": 136,
+    "log_date": "11-Feb-26",
+    "project_name": "KAHRAMAA AWARENESS PARK",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 284,
+    "total_used": 0
+  },
+  {
+    "id": "inv_137",
+    "sn": 137,
+    "log_date": "5-May-26",
+    "project_name": "45 WATERFRONT",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 283,
+    "total_used": 0
+  },
+  {
+    "id": "inv_138",
+    "sn": 138,
+    "log_date": "5-May-26",
+    "project_name": "AQAR-A09",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 282,
+    "total_used": 0
+  },
+  {
+    "id": "inv_139",
+    "sn": 139,
+    "log_date": "5-May-26",
+    "project_name": "KOREAN MEDICAL CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 281,
+    "total_used": 0
+  },
+  {
+    "id": "inv_140",
+    "sn": 140,
+    "log_date": "5-May-26",
+    "project_name": "QNB HEAD OFFICE",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 280,
+    "total_used": 0
+  },
+  {
+    "id": "inv_141",
+    "sn": 141,
+    "log_date": "5-May-26",
+    "project_name": "QATAR CHARITY RESIDENTIAL TOWER - COM 47",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 279,
+    "total_used": 0
+  },
+  {
+    "id": "inv_142",
+    "sn": 142,
+    "log_date": "5-May-26",
+    "project_name": "THE OQ RESIDENCES",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 278,
+    "total_used": 0
+  },
+  {
+    "id": "inv_143",
+    "sn": 143,
+    "log_date": "5-May-26",
+    "project_name": "AHMADI HEAD OFFICE",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 277,
+    "total_used": 0
+  },
+  {
+    "id": "inv_144",
+    "sn": 144,
+    "log_date": "5-May-26",
+    "project_name": "HIND BINT UTBAH PREPARATORY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 276,
+    "total_used": 0
+  },
+  {
+    "id": "inv_145",
+    "sn": 145,
+    "log_date": "5-May-26",
+    "project_name": "QATAR FINANCIAL CENTER AUTHORITY - LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 275,
+    "total_used": 0
+  },
+  {
+    "id": "inv_146",
+    "sn": 146,
+    "log_date": "5-May-26",
+    "project_name": "AL-MESHAF HEALTH CENTER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 274,
+    "total_used": 0
+  },
+  {
+    "id": "inv_147",
+    "sn": 147,
+    "log_date": "11-Jun-26",
+    "project_name": "AL SA'AD PLAZA TOWER",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 273,
+    "total_used": 0
+  },
+  {
+    "id": "inv_148",
+    "sn": 148,
+    "log_date": "11-Jun-26",
+    "project_name": "QNB GROUP HEADQUARTERS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 272,
+    "total_used": 0
+  },
+  {
+    "id": "inv_149",
+    "sn": 149,
+    "log_date": "11-Jun-26",
+    "project_name": "RESIDENTIAL BUILDING (A19+A22) - FOXHILLS SOUTH, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 271,
+    "total_used": 0
+  },
+  {
+    "id": "inv_150",
+    "sn": 150,
+    "log_date": "11-Jun-26",
+    "project_name": "RESIDENTIAL BUILDING (A19+A22) - FOXHILLS SOUTH, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 270,
+    "total_used": 0
+  },
+  {
+    "id": "inv_151",
+    "sn": 151,
+    "log_date": "11-Jun-26",
+    "project_name": "TALHA IBN UBAYD ALLAH PREPARATORY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 269,
+    "total_used": 0
+  },
+  {
+    "id": "inv_152",
+    "sn": 152,
+    "log_date": "11-Jun-26",
+    "project_name": "HIND BINT UTBAH PREPARATORY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 268,
+    "total_used": 0
+  },
+  {
+    "id": "inv_153",
+    "sn": 153,
+    "log_date": "11-Jun-26",
+    "project_name": "ARTAN RESIDENCES - FOX HILLS N13",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 267,
+    "total_used": 0
+  },
+  {
+    "id": "inv_154",
+    "sn": 154,
+    "log_date": "23-Jun-26",
+    "project_name": "LA VERDE",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 266,
+    "total_used": 0
+  },
+  {
+    "id": "inv_155",
+    "sn": 155,
+    "log_date": "23-Jun-26",
+    "project_name": "VERA TOWER - RES - 27",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 265,
+    "total_used": 0
+  },
+  {
+    "id": "inv_156",
+    "sn": 156,
+    "log_date": "23-Jun-26",
+    "project_name": "RAMLAH BINT ABI SUFYAN SECONDARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 264,
+    "total_used": 0
+  },
+  {
+    "id": "inv_157",
+    "sn": 157,
+    "log_date": "23-Jun-26",
+    "project_name": "HIND BINT AMR AL-ANSARIYYAH PREPARATORY  SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 263,
+    "total_used": 0
+  },
+  {
+    "id": "inv_158",
+    "sn": 158,
+    "log_date": "23-Jun-26",
+    "project_name": "IBN TAYMEYA SECONDARY SCHOOL  FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 262,
+    "total_used": 0
+  },
+  {
+    "id": "inv_159",
+    "sn": 159,
+    "log_date": "23-Jun-26",
+    "project_name": "AL-WUKAIR MODEL SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 261,
+    "total_used": 0
+  },
+  {
+    "id": "inv_160",
+    "sn": 160,
+    "log_date": "23-Jun-26",
+    "project_name": "AMR IBN-AS SECONDARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 260,
+    "total_used": 0
+  },
+  {
+    "id": "inv_161",
+    "sn": 161,
+    "log_date": "23-Jun-26",
+    "project_name": "SAID IBN ZAYD PREPARATORY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 259,
+    "total_used": 0
+  },
+  {
+    "id": "inv_162",
+    "sn": 162,
+    "log_date": "23-Jun-26",
+    "project_name": "IBN SEENA SECONDARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 258,
+    "total_used": 0
+  },
+  {
+    "id": "inv_163",
+    "sn": 163,
+    "log_date": "16-Aug-26",
+    "project_name": "BUSINESS INNOVATION PARK-QATAR FREE ZONES AUTHORITY",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 257,
+    "total_used": 0
+  },
+  {
+    "id": "inv_164",
+    "sn": 164,
+    "log_date": "16-Aug-26",
+    "project_name": "BUSINESS INNOVATION PARK-QATAR FREE ZONES AUTHORITY",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 256,
+    "total_used": 0
+  },
+  {
+    "id": "inv_165",
+    "sn": 165,
+    "log_date": "16-Aug-26",
+    "project_name": "BLISS RESIDENCE 1",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 255,
+    "total_used": 0
+  },
+  {
+    "id": "inv_166",
+    "sn": 166,
+    "log_date": "16-Aug-26",
+    "project_name": "WAAB AL MASHRIB 2",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 254,
+    "total_used": 0
+  },
+  {
+    "id": "inv_167",
+    "sn": 167,
+    "log_date": "16-Aug-26",
+    "project_name": "AL WAJBAH PRIMARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 253,
+    "total_used": 0
+  },
+  {
+    "id": "inv_168",
+    "sn": 168,
+    "log_date": "16-Aug-26",
+    "project_name": "AL THUMAMA PRIMARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 252,
+    "total_used": 0
+  },
+  {
+    "id": "inv_169",
+    "sn": 169,
+    "log_date": "16-Aug-26",
+    "project_name": "AL THUMAMA SECONDARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 251,
+    "total_used": 0
+  },
+  {
+    "id": "inv_170",
+    "sn": 170,
+    "log_date": "16-Aug-26",
+    "project_name": "EDUCATION CITY HIGH SCHOOL – STEM",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 250,
+    "total_used": 0
+  },
+  {
+    "id": "inv_171",
+    "sn": 171,
+    "log_date": "16-Aug-26",
+    "project_name": "EDUCATION CITY HIGH SCHOOL – LIBERAL ARTS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 249,
+    "total_used": 0
+  },
+  {
+    "id": "inv_172",
+    "sn": 172,
+    "log_date": "16-Aug-26",
+    "project_name": "KATARA TOWERS - MARINA, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 248,
+    "total_used": 0
+  },
+  {
+    "id": "inv_173",
+    "sn": 173,
+    "log_date": "16-Aug-26",
+    "project_name": "EDUCATION CITY HIGH SCHOOL – LIBERAL ARTS & STEM",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 247,
+    "total_used": 0
+  },
+  {
+    "id": "inv_174",
+    "sn": 174,
+    "log_date": "16-Aug-26",
+    "project_name": "QATAR ACADEMY SIDRA",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 246,
+    "total_used": 0
+  },
+  {
+    "id": "inv_175",
+    "sn": 175,
+    "log_date": "16-Aug-26",
+    "project_name": "MUAITHER SECONDARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 245,
+    "total_used": 0
+  },
+  {
+    "id": "inv_176",
+    "sn": 176,
+    "log_date": "16-Aug-26",
+    "project_name": "AL SHAHANIYA PREPARATORY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 244,
+    "total_used": 0
+  },
+  {
+    "id": "inv_177",
+    "sn": 177,
+    "log_date": "16-Aug-26",
+    "project_name": "AL MASHAF PRIMARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 243,
+    "total_used": 0
+  },
+  {
+    "id": "inv_178",
+    "sn": 178,
+    "log_date": "16-Aug-26",
+    "project_name": "AL THUMAMA PRIMARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 242,
+    "total_used": 0
+  },
+  {
+    "id": "inv_179",
+    "sn": 179,
+    "log_date": "21-Sep-26",
+    "project_name": "AL SHAHANIYA PREPARATORY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 241,
+    "total_used": 0
+  },
+  {
+    "id": "inv_180",
+    "sn": 180,
+    "log_date": "21-Sep-26",
+    "project_name": "AL THUMAMA PRIMARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 240,
+    "total_used": 0
+  },
+  {
+    "id": "inv_181",
+    "sn": 181,
+    "log_date": "21-Sep-26",
+    "project_name": "AL THUMAMA SECONDARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 239,
+    "total_used": 0
+  },
+  {
+    "id": "inv_182",
+    "sn": 182,
+    "log_date": "21-Sep-26",
+    "project_name": "AL WAJBAH PRIMARY SCHOOL FOR BOYS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 238,
+    "total_used": 0
+  },
+  {
+    "id": "inv_183",
+    "sn": 183,
+    "log_date": "21-Sep-26",
+    "project_name": "KATARA TOWERS - MARINA, LUSAIL",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 237,
+    "total_used": 0
+  },
+  {
+    "id": "inv_184",
+    "sn": 184,
+    "log_date": "21-Sep-26",
+    "project_name": "AL THUMAMA PRIMARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 236,
+    "total_used": 0
+  },
+  {
+    "id": "inv_185",
+    "sn": 185,
+    "log_date": "21-Sep-26",
+    "project_name": "MUAITHER SECONDARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 235,
+    "total_used": 0
+  },
+  {
+    "id": "inv_186",
+    "sn": 186,
+    "log_date": "21-Sep-26",
+    "project_name": "VOYA",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 234,
+    "total_used": 0
+  },
+  {
+    "id": "inv_187",
+    "sn": 187,
+    "log_date": "21-Sep-26",
+    "project_name": "AL MASHAF PRIMARY SCHOOL FOR GIRLS",
+    "qty_in": 0,
+    "qty_out": 1,
+    "remaining": 233,
+    "total_used": 0
+  }
+]

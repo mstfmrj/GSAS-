@@ -1,0 +1,295 @@
+/* ==========================================================================
+   GSAS Modern Stationary Dashboard Layout & Styles
+   ========================================================================== */
+
+/* Main outer container: locked to viewport height with 0 body scroll */
+.apex-dashboard-layout {
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: var(--dashboard-bg, #f8fafc);
+  color: var(--dashboard-color, #0f172a);
+}
+
+/* Stationary Left Sidebar */
+.apex-sidebar {
+  width: 256px;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: var(--sidebar-bg, #ffffff);
+  color: var(--sidebar-color, #374151);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  z-index: 100;
+  border-right: 1px solid var(--sidebar-border, #e5e7eb);
+  overflow: hidden;
+}
+
+.apex-sidebar-brand {
+  height: 68px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid var(--sidebar-border, #f1f5f9);
+  background-color: inherit;
+}
+
+/* Scrollable nav links inside sidebar */
+.apex-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.85rem 0.65rem;
+  min-height: 0;
+}
+
+/* Stationary fitted bottom logo inside sidebar */
+.apex-sidebar-footer {
+  flex-shrink: 0;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--sidebar-border, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: inherit;
+  min-height: 110px;
+}
+
+.apex-nav-header {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9ca3af;
+  font-weight: 700;
+  padding: 0.75rem 0.75rem 0.35rem 0.75rem;
+}
+
+/* Primary nav items */
+.apex-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.85rem;
+  border-radius: 0.5rem;
+  color: var(--sidebar-item-color, #6b7280);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+  margin-bottom: 2px;
+}
+
+.apex-nav-item:hover {
+  background-color: var(--sidebar-item-hover-bg, #f9fafb);
+  color: var(--sidebar-item-hover-color, #111827);
+}
+
+.apex-nav-item.active {
+  background-color: var(--sidebar-active-bg, rgba(var(--bs-primary-rgb), 0.14)) !important;
+  color: var(--sidebar-active-color, var(--bs-primary)) !important;
+  font-weight: 600;
+}
+
+.apex-nav-item.active i {
+  color: var(--sidebar-active-color, var(--bs-primary)) !important;
+}
+
+/* Subsection links under Projects (comfortable readable size) */
+.apex-nav-subitem {
+  padding: 0.45rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  gap: 0.65rem !important;
+  margin-bottom: 2px !important;
+  border-radius: 0.5rem !important;
+  line-height: 1.3 !important;
+}
+
+.apex-nav-subitem i {
+  font-size: 1.05rem !important;
+}
+
+/* Stationary Main Content Area */
+.apex-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Stationary Topbar Header */
+.apex-topbar {
+  height: 68px;
+  flex-shrink: 0;
+  background-color: var(--topbar-bg, #ffffff);
+  color: var(--topbar-color, #0f172a);
+  border-bottom: 1px solid var(--topbar-border, #e2e8f0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+/* Non-table pages workspace scrolling */
+.apex-main-content > div:not(.paged-list-content) {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Any banner/alert message right under topbar should not expand */
+.apex-main-content > div.px-4,
+.apex-main-content > div.alert {
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+}
+
+/* Paged Projects Viewport: only table scrolls, header/filters/pagination stationary */
+.paged-list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.25rem 1.5rem !important;
+}
+
+.paged-list-header {
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
+.paged-list-filters {
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Table card: fills available space with fixed bottom pagination */
+.paged-list-table-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  margin-bottom: 0 !important;
+  background-color: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 0.75rem;
+}
+
+/* Scrollable container for the project rows */
+.paged-list-table-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  min-height: 0;
+}
+
+.paged-list-table-scroll thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--table-header-bg, #f8fafc);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Stationary bottom bar showing 1-50 of 107 docked at the bottom */
+.paged-list-footer {
+  flex-shrink: 0;
+  background-color: var(--card-footer-bg, #ffffff);
+  border-top: 1px solid var(--card-border, #e2e8f0);
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+/* Search Box */
+.apex-search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  width: 320px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.apex-search-box:focus-within {
+  border-color: #10b981;
+  background-color: #ffffff;
+}
+
+.apex-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+/* Metric / Stat Card */
+.apex-stat-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 0.875rem;
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.apex-stat-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.apex-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+/* Chart Canvas Card */
+.apex-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 0.875rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* SVG Line & Area Draw Animations */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-chart-curve {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawLine 10s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

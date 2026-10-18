@@ -1,49 +1,214 @@
+@import "./dashboard.css";
+
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  --app-primary: #e5e7ec;
+  --bs-primary: #186ff0;
 }
 
 body {
-  min-height: 100%;
+  font-family: var(--bs-body-font-family, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--bs-body-font-size, 16px);
+  color: #1e293b;
+  transition: font-size 0.15s ease, font-family 0.15s ease;
+}
+
+.card {
+  border-radius: var(--bs-border-radius, 0.75rem);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn {
+  border-radius: var(--bs-border-radius, 0.5rem);
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.92);
+}
+
+.text-primary {
+  color: var(--bs-primary);
+}
+
+.bg-primary {
+  background-color: var(--bs-primary);
+}
+
+.border-primary {
+  border-color: var(--bs-primary);
+}
+
+/* Feature icon styling ensuring clear high-contrast icon and soft tinted badge */
+.feature-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--bs-border-radius, 0.75rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.feature-icon i {
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
+}
+
+.feature-icon-primary {
+  background-color: rgba(13, 110, 253, 0.12) !important;
+  color: #0d6efd !important;
+  border: 1px solid rgba(13, 110, 253, 0.2);
+}
+
+.feature-icon-success {
+  background-color: rgba(25, 135, 84, 0.12) !important;
+  color: #198754 !important;
+  border: 1px solid rgba(25, 135, 84, 0.2);
+}
+
+.feature-icon-info {
+  background-color: rgba(13, 202, 240, 0.14) !important;
+  color: #0891b2 !important;
+  border: 1px solid rgba(13, 202, 240, 0.25);
+}
+
+.feature-icon-secondary {
+  background-color: rgba(108, 117, 125, 0.12) !important;
+  color: #4b5563 !important;
+  border: 1px solid rgba(108, 117, 125, 0.2);
+}
+
+.feature-icon-dark {
+  background-color: rgba(33, 37, 41, 0.1) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(33, 37, 41, 0.2);
+}
+
+.badge-saas-pill {
+  background-color: #ecfdf5 !important;
+  color: #059669 !important;
+  border: 1px solid #a7f3d0 !important;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.form-control {
+  border-radius: var(--bs-border-radius, 0.5rem);
+  padding: 0.65rem 0.9rem;
+}
+
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 4.5rem 0;
+}
+
+
+/* Fullpage Scenery Auth Background */
+.auth-scenery-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: #0b1120;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.22) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.25) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.2) 0px, transparent 50%),
+    linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.82)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.auth-modal-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45) !important;
+  border-radius: 1.25rem !important;
+  animation: modalPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeInBackdrop 0.2s ease-out;
+}
+
+.dashboard-modal-dialog {
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  animation: modalPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.dashboard-modal-dialog-full {
+  width: 95vw !important;
+  max-width: 1320px !important;
+  height: 90vh !important;
+  max-height: 90vh !important;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.dashboard-modal-body-scroll {
+  overflow-y: auto;
+  flex: 1;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@keyframes modalPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
+
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

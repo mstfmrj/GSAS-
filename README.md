@@ -41,57 +41,54 @@ A modern, production-ready starter boilerplate built with **Next.js (App Router)
   - Keep the frontend pages and backend API routes in one Next.js application.
   - Use server and client components for the relevant parts of the app.
 
-##  Project Structure
 
+## Project Structure
+
+```text
 src/
 ├── app/
-│   ├── (auth)/                         # Login, registration, and password recovery pages
-│   ├── (protected)/                    # Authenticated dashboard and user pages
-│   │   ├── dashboard/                  # Dashboard, users, roles, permissions, and projects
-│   │   └── users/
-│   ├── api/
-│   │   ├── auth/                       # Login, registration, session, and password recovery
-│   │   ├── data/                       # Dashboard statistics
-│   │   ├── gsas/                       # GSAS project and reporting endpoints
-│   │   ├── project-files/              # Project file endpoints
-│   │   ├── plaque-batches/             # Plaque batch endpoints
-│   │   ├── plaque-inventory/           # Plaque inventory endpoints
-│   │   ├── iprint-inventory/           # iPrint inventory endpoints
-│   │   ├── medal-made-inventory/       # MedalMade inventory endpoints
-│   │   ├── roles/                      # Role and permission endpoints
-│   │   └── users/                      # User management endpoints
-│   ├── globals.css                     # Global styles
-│   ├── dashboard.css                   # Dashboard styles
-│   ├── layout.tsx                      # Root layout
-│   └── page.tsx                        # Root route
+│   ├── (auth)/                      # Login, registration, and password recovery
+│   ├── (protected)/                 # Authenticated pages
+│   │   ├── dashboard/               # Dashboard, users, roles, permissions, and projects
+│   │   └── users/                   # User management
+│   ├── api/                          # Backend API routes
+│   │   ├── auth/                    # Authentication and password recovery
+│   │   ├── data/                    # Dashboard statistics
+│   │   ├── gsas/                    # GSAS projects, summaries, and reports
+│   │   ├── project-files/           # Project files
+│   │   ├── plaque-batches/          # Plaque batches
+│   │   ├── plaque-inventory/        # Plaque inventory
+│   │   ├── iprint-inventory/        # iPrint inventory
+│   │   ├── medal-made-inventory/    # MedalMade inventory
+│   │   ├── roles/                   # Roles and permissions
+│   │   └── users/                   # User management API
+│   ├── globals.css                  # Global styles
+│   ├── dashboard.css                # Dashboard styles
+│   ├── layout.tsx                   # Root layout
+│   └── page.tsx                     # Root page
 ├── apiService/
-│   ├── client/                         # Client-side API services
-│   └── server/                         # Server-side API services
+│   ├── client/                      # Client-side API services
+│   └── server/                      # Server-side API services
 ├── components/
-│   ├── dashboard/                      # Dashboard, project, inventory, and admin UI
-│   └── main/                           # App providers and layout components
-├── context/                            # Authentication and theme state
+│   ├── dashboard/                  # Dashboard, project, inventory, and admin UI
+│   └── main/                       # Providers and layout components
+├── context/                         # Authentication and theme state
 ├── helpers/
-│   ├── client/                         # Client-side API and data helpers
-│   └── server/                         # Authentication and validation helpers
+│   ├── client/                      # Client-side API and data helpers
+│   └── server/                      # Authentication and validation helpers
 ├── lib/
-│   ├── seeds/                          # Seed data for projects and inventory
-│   ├── server/                         # Shared API handlers and responses
-│   ├── db.ts                           # PostgreSQL access and schema setup
-│   ├── auth.ts                         # Authentication utilities
-│   ├── permissions.ts                  # Permission helpers
-│   └── types.ts                        # Shared TypeScript types
-├── middleware.ts                       # Protected route handling
-└── types/
-    └── declarations.d.ts               # Type declarations
+│   ├── seeds/                       # Project and inventory seed data
+│   ├── server/                      # Shared API handlers and responses
+│   ├── db.ts                        # PostgreSQL access and schema setup
+│   ├── auth.ts                      # Authentication utilities
+│   ├── permissions.ts               # Permission helpers
+│   └── types.ts                     # Shared TypeScript types
+├── types/                           # TypeScript declarations
+└── middleware.ts                    # Protected route handling
 
-public/                                 # Static assets and GSAS branding
-scripts/                                # Seed generation scripts
-README.md
-package.json
-next.config.ts
-tsconfig.json
-eslint.config.mjs
+public/                              # Static assets and GSAS branding
+scripts/                             # Seed generation scripts
+```
 
 ##  Getting Started
 

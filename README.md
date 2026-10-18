@@ -1,4 +1,4 @@
-# GORD
+# GSAS
 
 A modern, production-ready starter boilerplate built with **Next.js (App Router)**, a secure **Username & Email Authentication** backend system using **bcrypt** and **JWT (HTTP-only cookies)**, and a real-time **Admin UI Customization Studio**.
 
@@ -6,55 +6,92 @@ A modern, production-ready starter boilerplate built with **Next.js (App Router)
 
 ##  Features
 
-- **Next.js App Router Architecture**:
-  - Unified frontend and backend architecture in one codebase.
-  - Server & Client Components cleanly separated.
-- **Dual Login (Username or Email)**:
-  - Users can sign in using either their **Username** or registered **Email Address**.
-  - Interactive method switcher toggle on the login page.
-  - Secure credential verification using `bcryptjs` password hashing.
-  - Stateless JWT sessions signed with `jose` and persisted via secure HTTP-Only cookies.
-  - Instant trial accounts ready out-of-the-box.
-- **Consistent High-Visibility Buttons**:
-  - Login and Register buttons share matched cohesive tones across all navigation bar styles (Dark, Light, Brand Primary).
-- **Admin UI Customizer Studio**:
-  - Exclusive admin mode panel allowing real-time adjustment of primary colors, typography/fonts, base font size scale, corner radius, and navigation bar styles.
-- **Route Protection & Middleware**:
-  - Server-side middleware interceptor for `/dashboard` and protected paths.
-  - Automatic redirect for unauthenticated users (`/login?redirect=...`).
-- **Clean Interactive Dashboard & Backend API**:
-  - Streamlined system health and active user metrics fetched from authenticated route `GET /api/data/stats`.
-  - User profile display showing Username, Email, Role, and Display Name.
-  - Real-time user profile state management with React `AuthContext`.
+## Features
 
----
+- **GSAS Project Management**
+  - Manage projects across Construction Management (CM), Design & Build (DB), and Operations (OP).
+  - Track project details, certification status, ratings, dates, and related files.
+  - View project summaries, reports, and certification rating charts.
 
-## Trial Accounts
+- **Plaque and Print Inventory**
+  - Manage plaque batches and plaque inventory.
+  - Track iPrint stock and MedalMade plaque orders, deliveries, and remaining quantities.
+  - Review inventory and project status from the dashboard.
 
-Choose a role-specific trial sign-in on the `/login` page:
+- **Dashboard and Reporting**
+  - View project totals, issued certificates, pending actions, and print and frame stock.
+  - Explore certified project distributions by category and rating.
+  - Filter project data and generate reports.
 
-| Trial role | Email | Password |
-| :--- | :--- | :--- |
-| **Super Admin** | `admin@example.com` | `password123` |
-| **Viewer** | `viewer.trial@example.com` | `password123` |
-| **Manager** | `mustafa@example.com` | `password123` |
+- **User and Role Management**
+  - Create and manage user accounts.
+  - Assign built-in or custom roles with granular permissions.
+  - Restrict access to dashboard, user, project, GSAS, and plaque features.
 
-*(You can also register any new account on `/register`!)*
+- **Authentication and Account Security**
+  - Sign in with a username or email address.
+  - Hash passwords with `bcryptjs` and use JWT sessions stored in HTTP-only cookies.
+  - Protect dashboard routes and provide password recovery.
 
----
+- **Theme Customization**
+  - Customize the primary color, font family, font size, corner radius, and sidebar appearance.
+  - Apply changes in the browser and save theme preferences locally.
+
+- **Next.js App Router**
+  - Keep the frontend pages and backend API routes in one Next.js application.
+  - Use server and client components for the relevant parts of the app.
 
 ##  Project Structure
 
-```text
 src/
-├── app/                  # Routes, layouts, and API route handlers
-├── components/           # Shared UI and feature-specific components
-│   └── dashboard/        # Dashboard cards and admin theme settings
-├── context/              # Authentication and theme state
-├── lib/                  # Authentication, data access, and shared types
-└── middleware.ts         # Protected route handling
-data/                     # Local user data
-```
+├── app/
+│   ├── (auth)/                         # Login, registration, and password recovery pages
+│   ├── (protected)/                    # Authenticated dashboard and user pages
+│   │   ├── dashboard/                  # Dashboard, users, roles, permissions, and projects
+│   │   └── users/
+│   ├── api/
+│   │   ├── auth/                       # Login, registration, session, and password recovery
+│   │   ├── data/                       # Dashboard statistics
+│   │   ├── gsas/                       # GSAS project and reporting endpoints
+│   │   ├── project-files/              # Project file endpoints
+│   │   ├── plaque-batches/             # Plaque batch endpoints
+│   │   ├── plaque-inventory/           # Plaque inventory endpoints
+│   │   ├── iprint-inventory/           # iPrint inventory endpoints
+│   │   ├── medal-made-inventory/       # MedalMade inventory endpoints
+│   │   ├── roles/                      # Role and permission endpoints
+│   │   └── users/                      # User management endpoints
+│   ├── globals.css                     # Global styles
+│   ├── dashboard.css                   # Dashboard styles
+│   ├── layout.tsx                      # Root layout
+│   └── page.tsx                        # Root route
+├── apiService/
+│   ├── client/                         # Client-side API services
+│   └── server/                         # Server-side API services
+├── components/
+│   ├── dashboard/                      # Dashboard, project, inventory, and admin UI
+│   └── main/                           # App providers and layout components
+├── context/                            # Authentication and theme state
+├── helpers/
+│   ├── client/                         # Client-side API and data helpers
+│   └── server/                         # Authentication and validation helpers
+├── lib/
+│   ├── seeds/                          # Seed data for projects and inventory
+│   ├── server/                         # Shared API handlers and responses
+│   ├── db.ts                           # PostgreSQL access and schema setup
+│   ├── auth.ts                         # Authentication utilities
+│   ├── permissions.ts                  # Permission helpers
+│   └── types.ts                        # Shared TypeScript types
+├── middleware.ts                       # Protected route handling
+└── types/
+    └── declarations.d.ts               # Type declarations
+
+public/                                 # Static assets and GSAS branding
+scripts/                                # Seed generation scripts
+README.md
+package.json
+next.config.ts
+tsconfig.json
+eslint.config.mjs
 
 ##  Getting Started
 

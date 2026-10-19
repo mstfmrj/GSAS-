@@ -20,7 +20,7 @@ export default function ProjectDateFilter({
   years,
   disabled = false,
 }: ProjectDateFilterProps) {
-  // Default year list: current year + 2 down to 2015
+
   const yearOptions = useMemo(() => {
     if (years && years.length > 0) return years;
     const current = new Date().getFullYear();
@@ -32,20 +32,20 @@ export default function ProjectDateFilter({
     return list;
   }, [years]);
 
-  // Compute days in currently selected month and year
+
   const daysInMonth = useMemo(() => {
     if (!month) return 31;
     const m = parseInt(month, 10);
-    const y = year ? parseInt(year, 10) : 2024; // leap-year fallback if no year
+    const y = year ? parseInt(year, 10) : 2024;
     return new Date(y, m, 0).getDate();
   }, [year, month]);
 
   const handleYearChange = (newYear: string) => {
     if (!newYear) {
-      // Clearing year clears month and day
+
       onChange({ year: "", month: "", day: "" });
     } else {
-      // If month is set and day exceeds daysInMonth of the new year (e.g. Feb 29 on non-leap year)
+
       let adjustedDay = day;
       if (month && day) {
         const dNum = parseInt(day, 10);
@@ -61,10 +61,10 @@ export default function ProjectDateFilter({
 
   const handleMonthChange = (newMonth: string) => {
     if (!newMonth) {
-      // Clearing month clears day
+
       onChange({ year, month: "", day: "" });
     } else {
-      // Adjust day if exceeds days in new month
+
       let adjustedDay = day;
       if (day) {
         const dNum = parseInt(day, 10);
@@ -91,7 +91,7 @@ export default function ProjectDateFilter({
 
   return (
     <div className="d-flex align-items-center gap-1 flex-wrap">
-      {/* Year Dropdown */}
+      {                   }
       <div style={{ minWidth: 105 }}>
         <select
           className="form-select form-select-sm"
@@ -109,7 +109,7 @@ export default function ProjectDateFilter({
         </select>
       </div>
 
-      {/* Month Dropdown (enabled only when Year is selected) */}
+      {                                                         }
       <div style={{ minWidth: 115 }}>
         <select
           className="form-select form-select-sm"
@@ -127,7 +127,7 @@ export default function ProjectDateFilter({
         </select>
       </div>
 
-      {/* Day Dropdown (enabled only when Month is selected) */}
+      {                                                        }
       <div style={{ minWidth: 95 }}>
         <select
           className="form-select form-select-sm"
@@ -145,7 +145,7 @@ export default function ProjectDateFilter({
         </select>
       </div>
 
-      {/* Clear Date Filters Button */}
+      {                               }
       {hasFilter && (
         <button
           type="button"

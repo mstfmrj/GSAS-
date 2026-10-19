@@ -1,9 +1,9 @@
-/**
- * src/lib/server/api-handler.ts
- *
- * PURPOSE:
- * Higher-order API action dispatcher checking authentication and permissions for POST endpoints.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

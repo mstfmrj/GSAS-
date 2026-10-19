@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/main/providers.tsx
- *
- * PURPOSE:
- * Client-side root providers tree combining AuthContext and ThemeContext.
- */
+
+
+
+
+
+
 
 import React from "react";
 import { AuthProvider } from "@/context/AuthContext";

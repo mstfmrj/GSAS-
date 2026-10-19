@@ -1,9 +1,9 @@
-/**
- * src/app/api/auth/logout/route.ts
- *
- * PURPOSE:
- * API route handler for clearing user session cookies and signing out.
- */
+
+
+
+
+
+
 
 import { NextResponse } from "next/server";
 import { AUTH_COOKIE_NAME } from "@/lib/auth";

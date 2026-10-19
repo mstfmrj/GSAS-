@@ -1,9 +1,9 @@
-/**
- * src/app/api/roles/[roleKey]/route.ts
- *
- * PURPOSE:
- * API route handler for fetching, updating, or deleting a specific role configuration.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

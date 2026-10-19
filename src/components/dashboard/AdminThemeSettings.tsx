@@ -1,9 +1,9 @@
-/**
- * src/components/dashboard/AdminThemeSettings.tsx
- *
- * PURPOSE:
- * Admin interface for tweaking primary theme colors, dark/light modes, and layout styles.
- */
+
+
+
+
+
+
 
 import { useState } from "react";
 import { useTheme } from "@/context/ThemeContext";

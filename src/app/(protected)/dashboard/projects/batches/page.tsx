@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/batches/page.tsx
- *
- * PURPOSE:
- * For Designers-Printing Plaque Batches page showing production queues, printing stages, and quantities.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -286,7 +286,7 @@ function PlaqueBatchesContent() {
 
           {error && <div className="alert alert-danger">{error}</div>}
 
-          {/* Filters & Sorting Bar */}
+          {                           }
           <div className="card border-0 shadow-sm mb-3 paged-list-filters">
             <div className="card-body py-2 px-3">
               <div className="d-flex align-items-center gap-2 flex-wrap">

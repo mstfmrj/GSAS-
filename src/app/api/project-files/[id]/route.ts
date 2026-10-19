@@ -1,9 +1,9 @@
-/**
- * src/app/api/project-files/[id]/route.ts
- *
- * PURPOSE:
- * API route handler for viewing/downloading (GET) and deleting (DELETE) a specific project file.
- */
+
+
+
+
+
+
 
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";
@@ -27,7 +27,7 @@ export async function GET(req: NextRequest, context: RouteContext) {
     const { searchParams } = new URL(req.url);
     const download = searchParams.get("download") === "1";
 
-    // Parse file buffer from base64 string
+
     let buffer: Buffer;
     let mimeType = file.mimeType || "application/octet-stream";
 

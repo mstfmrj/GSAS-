@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/iprint/page.tsx
- *
- * PURPOSE:
- * New-Iprint Inventory management page displaying stock counts, printable items, and tracking status.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -229,7 +229,7 @@ function IprintInventoryContent() {
         <DashboardHeader />
 
         <div className="paged-list-content">
-          {/* Header */}
+          {            }
           <div className="paged-list-header d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div className="d-flex align-items-center gap-3">
               <Link href="/dashboard/projects" className="btn btn-sm btn-outline-secondary">
@@ -274,7 +274,7 @@ function IprintInventoryContent() {
 
           {error && <div className="alert alert-danger">{error}</div>}
 
-          {/* Filters */}
+          {             }
           <div className="card border-0 shadow-sm mb-3 paged-list-filters">
             <div className="card-body py-2 px-3">
               <div className="d-flex align-items-center gap-2 flex-wrap">
@@ -328,7 +328,7 @@ function IprintInventoryContent() {
             </div>
           </div>
 
-          {/* Table */}
+          {           }
           <div className="card border-0 shadow-sm paged-list-table-card">
             <div className="table-responsive paged-list-table-scroll">
               <table className="table table-hover align-middle mb-0">

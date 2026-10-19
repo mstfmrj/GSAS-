@@ -1,9 +1,9 @@
-/**
- * src/app/layout.tsx
- *
- * PURPOSE:
- * Root application layout injecting Bootstrap CSS/JS, global providers, navbar, and main content wrappers.
- */
+
+
+
+
+
+
 
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";

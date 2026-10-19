@@ -1,9 +1,9 @@
-/**
- * src/lib/types.ts
- *
- * PURPOSE:
- * Comprehensive TypeScript type definitions for users, roles, permissions, projects, and inventory.
- */
+
+
+
+
+
+
 
 export type BuiltinRole = "super_admin" | "admin" | "moderator" | "viewer";
 export type UserRole = BuiltinRole | `custom:${string}`;

@@ -1,9 +1,9 @@
-/**
- * src/helpers/server/getUserToken.ts
- *
- * PURPOSE:
- * Server helper reading the raw auth_token string from HTTP cookies.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { AUTH_COOKIE_NAME } from "@/lib/auth";

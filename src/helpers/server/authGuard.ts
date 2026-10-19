@@ -1,9 +1,9 @@
-/**
- * src/helpers/server/authGuard.ts
- *
- * PURPOSE:
- * Route guard helper asserting user roles and permission capabilities on server-side requests.
- */
+
+
+
+
+
+
 
 import type { SessionPayload, UserRole } from "@/lib/types";
 import type { PermissionKey } from "@/lib/types";

@@ -1,17 +1,17 @@
-/**
- * src/app/api/project-files/route.ts
- *
- * PURPOSE:
- * API route handler for listing project files (GET) and uploading new project files (POST).
- * Rejects video files and files exceeding 10MB. Stores file data directly in the database.
- */
+
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";
 import { errorResponse, successResponse } from "@/lib/server/api-response";
 import { addProjectFile, getProjectFiles } from "@/lib/db";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 const VIDEO_EXTENSIONS = new Set([
   "mp4", "m4v", "mov", "avi", "mkv", "webm", "wmv", "flv", "3gp", "3g2",
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
       const buffer = Buffer.from(await file.arrayBuffer());
       fileData = `data:${mimeType};base64,${buffer.toString("base64")}`;
     } else {
-      // JSON payload support
+
       const body = await req.json();
       projectId = body.projectId || "";
       projectType = body.projectType || "gsas";

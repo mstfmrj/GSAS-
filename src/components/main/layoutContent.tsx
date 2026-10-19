@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/main/layoutContent.tsx
- *
- * PURPOSE:
- * Wrapper managing navbar and footer visibility depending on route context.
- */
+
+
+
+
+
+
 
 import React from "react";
 import Navbar from "@/components/Navbar";

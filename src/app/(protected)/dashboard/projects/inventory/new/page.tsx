@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/inventory/new/page.tsx
- *
- * PURPOSE:
- * Form page for adding a new IKEA Frame inventory batch or item.
- */
+
+
+
+
+
+
 
 import { use } from "react";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";

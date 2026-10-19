@@ -1,9 +1,9 @@
-/**
- * src/app/api/plaque-batches/route.ts
- *
- * PURPOSE:
- * API route handler for Plaque Printing Batches list retrieval (GET) and new batch creation (POST).
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

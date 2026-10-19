@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/[id]/page.tsx
- *
- * PURPOSE:
- * Generic project detail view page showing comprehensive GSAS project attributes.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
@@ -116,7 +116,7 @@ export default function ProjectDetailPage({
         <DashboardHeader />
 
         <div className="p-3 p-md-4">
-          {/* Breadcrumbs & Navigation */}
+          {                              }
           <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
             <div className="d-flex align-items-center gap-3">
               <Link href={backHref} className="btn btn-sm btn-outline-secondary">
@@ -243,7 +243,7 @@ export default function ProjectDetailPage({
               </div>
             </div>
 
-            {/* 3. Project Stakeholders & Contacts */}
+            {                                        }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">
@@ -277,7 +277,7 @@ export default function ProjectDetailPage({
               </div>
             </div>
 
-            {/* 4. Plaque & Logistics */}
+            {                           }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">
@@ -316,7 +316,7 @@ export default function ProjectDetailPage({
               </div>
             </div>
 
-            {/* 5. Media & Documentation */}
+            {                              }
             <div className="col-12">
               <div className="card border-0 shadow-sm">
                 <div className="card-header bg-transparent border-bottom py-3">

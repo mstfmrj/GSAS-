@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/edit-user/page.tsx
- *
- * PURPOSE:
- * Administrator page for updating existing user details, changing roles, and adjusting individual permissions.
- */
+
+
+
+
+
+
 
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
@@ -27,7 +27,6 @@ function EditUserContent() {
   const [loadingUser, setLoadingUser] = useState(true);
   const [userData, setUserData] = useState<User | null>(null);
 
-  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [assignedRole, setAssignedRole] = useState<UserRole>("viewer");
   const [customRoles, setCustomRoles] = useState<CustomRole[]>([]);
@@ -50,7 +49,6 @@ function EditUserContent() {
       .then((data) => {
         if (data?.user) {
           setUserData(data.user);
-          setName(data.user.name || "");
           setUsername(data.user.username || "");
           setAssignedRole(data.user.role);
         } else {
@@ -96,7 +94,6 @@ function EditUserContent() {
     try {
       const res = await updateUser({
         id: userId,
-        name: name.trim(),
         username: username.trim(),
         role: assignedRole,
         permissions: null,
@@ -182,31 +179,12 @@ function EditUserContent() {
 
           {userData ? (
             <div className="row g-4">
-              {/* Left Column: Edit Form */}
+              {                            }
               <div className="col-12 col-lg-7">
                 <div className="apex-card h-100">
                   <h5 className="fw-bold mb-4 pb-2 border-bottom">Edit Account Information</h5>
 
                   <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
-                        Full Name
-                      </label>
-                      <div className="input-group">
-                        <span className="input-group-text bg-light text-muted border-end-0">
-                          <i className="bi bi-card-heading"></i>
-                        </span>
-                        <input
-                          type="text"
-                          className="form-control border-start-0"
-                          placeholder="Full name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          disabled={submitting}
-                        />
-                      </div>
-                    </div>
-
                     <div className="mb-3">
                       <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
                         Username <span className="text-danger">*</span>
@@ -248,7 +226,7 @@ function EditUserContent() {
                       </small>
                     </div>
 
-                    {/* Assigned Role */}
+                    {                   }
                     <div className="mb-4">
                       <label htmlFor="edit-user-role" className="form-label small fw-semibold text-muted text-uppercase mb-1">
                         Assigned Role
@@ -316,7 +294,7 @@ function EditUserContent() {
                 </div>
               </div>
 
-              {/* Right Column: User Details Card */}
+              {                                     }
               <div className="col-12 col-lg-5">
                 <div className="apex-card h-100">
                   <h5 className="fw-bold mb-4 pb-2 border-bottom">User Details &amp; Activity</h5>

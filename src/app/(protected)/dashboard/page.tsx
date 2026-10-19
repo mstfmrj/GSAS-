@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/page.tsx
- *
- * PURPOSE:
- * Main Dashboard screen hosting the Analytics charts, User Management, Theme Customizer, and Profile tabs.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import Link from "next/link";

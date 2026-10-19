@@ -45,22 +45,62 @@ Choose a role-specific trial sign-in on the `/login` page:
 
 ##  Project Structure
 
-```text
 src/
-├── app/                  # Routes, layouts, and API route handlers
-├── components/           # Shared UI and feature-specific components
-│   └── dashboard/        # Dashboard cards and admin theme settings
-├── context/              # Authentication and theme state
-├── lib/                  # Authentication, data access, and shared types
-└── middleware.ts         # Protected route handling
-data/                     # Local user data
-```
+├── app/
+│   ├── (auth)/                         # Login, registration, and password recovery pages
+│   ├── (protected)/                    # Authenticated dashboard and user pages
+│   │   ├── dashboard/                  # Dashboard, users, roles, permissions, and projects
+│   │   └── users/
+│   ├── api/
+│   │   ├── auth/                       # Login, registration, session, and password recovery
+│   │   ├── data/                       # Dashboard statistics
+│   │   ├── gsas/                       # GSAS project and reporting endpoints
+│   │   ├── project-files/              # Project file endpoints
+│   │   ├── plaque-batches/             # Plaque batch endpoints
+│   │   ├── plaque-inventory/           # Plaque inventory endpoints
+│   │   ├── iprint-inventory/           # iPrint inventory endpoints
+│   │   ├── medal-made-inventory/       # MedalMade inventory endpoints
+│   │   ├── roles/                      # Role and permission endpoints
+│   │   └── users/                      # User management endpoints
+│   ├── globals.css                     # Global styles
+│   ├── dashboard.css                   # Dashboard styles
+│   ├── layout.tsx                      # Root layout
+│   └── page.tsx                        # Root route
+├── apiService/
+│   ├── client/                         # Client-side API services
+│   └── server/                         # Server-side API services
+├── components/
+│   ├── dashboard/                      # Dashboard, project, inventory, and admin UI
+│   └── main/                           # App providers and layout components
+├── context/                            # Authentication and theme state
+├── helpers/
+│   ├── client/                         # Client-side API and data helpers
+│   └── server/                         # Authentication and validation helpers
+├── lib/
+│   ├── seeds/                          # Seed data for projects and inventory
+│   ├── server/                         # Shared API handlers and responses
+│   ├── db.ts                           # PostgreSQL access and schema setup
+│   ├── auth.ts                         # Authentication utilities
+│   ├── permissions.ts                  # Permission helpers
+│   └── types.ts                        # Shared TypeScript types
+├── middleware.ts                       # Protected route handling
+└── types/
+    └── declarations.d.ts               # Type declarations
+
+public/                                 # Static assets and GSAS branding
+scripts/                                # Seed generation scripts
+README.md
+package.json
+next.config.ts
+tsconfig.json
+eslint.config.mjs
 
 ##  Getting Started
 
 ### 1. Start the Development Server
 
 ```bash
+cd /Users/mustafa/FOLDER2/FOLDER3/scratch/GSAS
 npm run dev
 ```
 

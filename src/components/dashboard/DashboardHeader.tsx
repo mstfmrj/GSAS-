@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/dashboard/DashboardHeader.tsx
- *
- * PURPOSE:
- * Topbar header component featuring user identity, role badge, and profile logout dropdown.
- */
+
+
+
+
+
+
 
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";

@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/page.tsx
- *
- * PURPOSE:
- * Projects master hub displaying summary metrics, search filters, and navigation to project categories.
- */
+
+
+
+
+
+
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -206,7 +206,7 @@ export default function ProjectsHubPage() {
             ))}
           </div>
 
-          {/* Summary row */}
+          {                 }
           {counts && (
             <div className="card border-0 shadow-sm mt-4">
               <div className="card-body">

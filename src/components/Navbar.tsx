@@ -36,7 +36,7 @@ export default function Navbar() {
     navClasses += "navbar-dark bg-dark";
   }
 
-  
+
   const authBtnClass = isLightNav
     ? "btn btn-sm px-3 fw-semibold text-dark border border-dark border-opacity-25 shadow-sm"
     : "btn btn-sm px-3 fw-semibold text-white border border-light border-opacity-50 shadow-sm";
@@ -137,8 +137,8 @@ export default function Navbar() {
                   <li>
                     <h6 className="dropdown-header">Signed in as @{user.username}</h6>
                   </li>
-                  
-  {user.role === "admin" && (
+
+{(user.role === "admin" || user.role === "super_admin") && (
   <li>
     <Link href="/dashboard" className="dropdown-item">
       <i className="bi bi-layout-text-window-reverse me-2"></i> Dashboard
@@ -159,22 +159,13 @@ export default function Navbar() {
                 </ul>
               </div>
             ) : (
-              <div className="d-flex gap-2">
-                <Link
-                  href="/login"
-                  className={authBtnClass}
-                  style={authBtnBg(pathname === "/login")}
-                >
-                  <i className="bi bi-box-arrow-in-right me-1"></i> Login
-                </Link>
-                <Link
-                  href="/register"
-                  className={authBtnClass}
-                  style={authBtnBg(pathname === "/register")}
-                >
-                  <i className="bi bi-person-plus me-1"></i> Register
-                </Link>
-              </div>
+              <Link
+                href="/login"
+                className={authBtnClass}
+                style={authBtnBg(pathname === "/login")}
+              >
+                <i className="bi bi-box-arrow-in-right me-1"></i> Sign in
+              </Link>
             )}
           </div>
         </div>

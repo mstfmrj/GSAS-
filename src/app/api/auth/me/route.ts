@@ -1,9 +1,9 @@
-/**
- * src/app/api/auth/me/route.ts
- *
- * PURPOSE:
- * API route handler for returning the currently authenticated user's session payload and permissions.
- */
+
+
+
+
+
+
 
 import { NextRequest, NextResponse } from "next/server";
 import { AUTH_COOKIE_NAME, verifyJwt } from "@/lib/auth";

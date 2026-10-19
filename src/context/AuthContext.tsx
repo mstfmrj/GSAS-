@@ -1,25 +1,19 @@
 "use client";
 
-/**
- * src/context/AuthContext.tsx
- *
- * PURPOSE:
- * Authentication Context providing login, register, logout, and current user session state to all client components.
- */
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+
+
+
+
+
+
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
 import { User } from "@/lib/types";
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (identifier: string, password: string) => Promise<{ success: boolean; error?: string }>;
-  register: (
-    username: string,
-    email: string,
-    password: string,
-    name?: string
-  ) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -30,7 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const refreshUser = async () => {
+  const refreshUser = useCallback(async () => {
     try {
       const res = await fetch("/api/auth/me");
       if (res.ok) {
@@ -44,7 +38,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const refreshTimer = window.setTimeout(() => {
@@ -54,58 +48,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => window.clearTimeout(refreshTimer);
   }, []);
 
-  const login = async (identifier: string, password: string) => {
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier, password }),
-      });
-
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        return { success: false, error: data.error || "Login failed" };
-      }
-
-      setUser(data.data.user);
-      return { success: true };
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Network error";
-      return { success: false, error: message };
-    }
-  };
-
-  const register = async (
-    username: string,
-    email: string,
-    password: string,
-    name?: string
-  ) => {
-    try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password, name }),
-      });
-
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        return { success: false, error: data.error || "Registration failed" };
-      }
-
-      setUser(data.data.user);
-      return { success: true };
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Network error";
-      return { success: false, error: message };
-    }
-  };
-
   const logout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
     } finally {
       setUser(null);
+      await signOut({ redirect: false }).catch(() => undefined);
       window.location.href = "/login";
     }
   };
@@ -115,8 +63,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       value={{
         user,
         loading,
-        login,
-        register,
         logout,
         refreshUser,
       }}

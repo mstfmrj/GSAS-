@@ -1,9 +1,9 @@
-/**
- * src/helpers/server/getAuthUser.ts
- *
- * PURPOSE:
- * Server helper extracting and verifying authenticated user session from incoming request cookies.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { verifyJwt } from "@/lib/auth";

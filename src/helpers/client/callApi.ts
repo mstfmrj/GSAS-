@@ -1,9 +1,9 @@
-/**
- * src/helpers/client/callApi.ts
- *
- * PURPOSE:
- * Frontend HTTP fetch wrapper adding authorization headers, error handling, and JSON parsing.
- */
+
+
+
+
+
+
 
 export async function callApi(
   url: string,

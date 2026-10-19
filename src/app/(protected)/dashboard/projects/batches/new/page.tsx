@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/batches/new/page.tsx
- *
- * PURPOSE:
- * Form page for queueing and registering a new Plaque Printing Batch.
- */
+
+
+
+
+
+
 
 import { use } from "react";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";

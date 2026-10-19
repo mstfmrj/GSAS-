@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/BootstrapClient.tsx
- *
- * PURPOSE:
- * Client-only bootstrap initiator loading Bootstrap 5 JavaScript components dynamically.
- */
+
+
+
+
+
+
 
 import { useEffect } from "react";
 

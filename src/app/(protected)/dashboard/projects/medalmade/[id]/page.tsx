@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/medalmade/[id]/page.tsx
- *
- * PURPOSE:
- * Detail view page displaying complete information for a selected Outgoing Plaque item.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
@@ -100,7 +100,7 @@ export default function MedalmadeDetailPage({
         <DashboardHeader />
 
         <div className="p-3 p-md-4">
-          {/* Header */}
+          {            }
           <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
             <div className="d-flex align-items-center gap-3">
               <Link href={backHref} className="btn btn-sm btn-outline-secondary">
@@ -137,7 +137,7 @@ export default function MedalmadeDetailPage({
           </div>
 
           <div className="row g-4">
-            {/* Total Inventory section */}
+            {                             }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-0 pt-4 pb-0">
@@ -172,7 +172,7 @@ export default function MedalmadeDetailPage({
               </div>
             </div>
 
-            {/* Delivery & Stock section */}
+            {                              }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-0 pt-4 pb-0">
@@ -207,7 +207,7 @@ export default function MedalmadeDetailPage({
               </div>
             </div>
 
-            {/* Outgoing & Future Orders section */}
+            {                                      }
             <div className="col-12">
               <div className="card border-0 shadow-sm">
                 <div className="card-header bg-transparent border-0 pt-4 pb-0">

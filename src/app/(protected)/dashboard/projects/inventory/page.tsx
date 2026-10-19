@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/inventory/page.tsx
- *
- * PURPOSE:
- * IKEA Frame Plaque Inventory list page tracking plaque frame quantities, types, and statuses.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -271,7 +271,7 @@ function PlaqueInventoryContent() {
 
           {error && <div className="alert alert-danger">{error}</div>}
 
-          {/* Filters & Sorting Bar */}
+          {                           }
           <div className="card border-0 shadow-sm mb-3 paged-list-filters">
             <div className="card-body py-2 px-3">
               <div className="d-flex align-items-center gap-2 flex-wrap">

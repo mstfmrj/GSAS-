@@ -1,9 +1,9 @@
-/**
- * src/lib/db.ts
- *
- * PURPOSE:
- * Primary PostgreSQL database access layer with connection pooling, schema migrations, and query helpers.
- */
+
+
+
+
+
+
 
 import { Pool, QueryResult, QueryResultRow } from "pg";
 import bcrypt from "bcryptjs";
@@ -167,49 +167,30 @@ export async function ensureDatabaseSchema(): Promise<void> {
         );
       `);
 
-      const adminCheck = await query(
-        `SELECT id FROM users WHERE username = $1 OR email = $2 LIMIT 1`,
-        ["admin", "admin@example.com"]
-      );
+      const microsoftSuperAdminEmail =
+        process.env.MICROSOFT_SUPER_ADMIN_EMAIL?.trim().toLowerCase();
 
-      if (adminCheck.rows.length === 0) {
-        const adminHash = bcrypt.hashSync("password123", 10);
+      const microsoftSuperAdmin = microsoftSuperAdminEmail
+        ? await query(`SELECT id FROM users WHERE LOWER(email) = $1 LIMIT 1`, [microsoftSuperAdminEmail])
+        : { rows: [] as Array<{ id: string }> };
+      const existingSuperAdmin = await query(`SELECT id FROM users WHERE role = 'super_admin' LIMIT 1`);
+
+
+      const superAdminId: string | undefined =
+        microsoftSuperAdmin.rows[0]?.id ?? existingSuperAdmin.rows[0]?.id;
+
+      if (superAdminId) {
+
+
         await query(
-          `INSERT INTO users (id, username, email, name, role, password_hash)
-           VALUES ($1, $2, $3, $4, $5, $6)
-           ON CONFLICT DO NOTHING`,
-          [
-            "usr_admin_001",
-            "admin",
-            "admin@example.com",
-            "Super Administrator",
-            "super_admin",
-            adminHash,
-          ]
+          `UPDATE users SET role = 'viewer' WHERE role = 'super_admin' AND id <> $1`,
+          [superAdminId]
+        );
+        await query(
+          `UPDATE users SET role = 'super_admin' WHERE id = $1`,
+          [superAdminId]
         );
       }
-
-      const seededAdmin = await query(
-        `SELECT id FROM users
-         WHERE username = $1 OR email = $2
-         ORDER BY CASE WHEN username = $1 THEN 0 ELSE 1 END
-         LIMIT 1`,
-        ["admin", "admin@example.com"]
-      );
-      const seededAdminId = seededAdmin.rows[0]?.id;
-      if (!seededAdminId) {
-        throw new Error("Could not identify the seeded Super Admin account");
-      }
-      await query(
-        `UPDATE users SET role = 'super_admin', name = 'Super Administrator'
-         WHERE id = $1`,
-        [seededAdminId]
-      );
-      await query(
-        `UPDATE users SET role = 'viewer'
-         WHERE role = 'super_admin' AND id <> $1`,
-        [seededAdminId]
-      );
       await query(`
         CREATE UNIQUE INDEX IF NOT EXISTS users_single_super_admin
         ON users (role) WHERE role = 'super_admin';
@@ -259,54 +240,6 @@ export async function ensureDatabaseSchema(): Promise<void> {
       }
       if (!managerRoleKey) {
         throw new Error("Could not identify the Manager trial role");
-      }
-
-      const mustafaCheck = await query(
-        `SELECT id FROM users WHERE username = $1 OR email = $2 LIMIT 1`,
-        ["mustafa", "mustafa@example.com"]
-      );
-
-      if (mustafaCheck.rows.length === 0) {
-        const userHash = bcrypt.hashSync("password123", 10);
-        await query(
-          `INSERT INTO users (id, username, email, name, role, password_hash)
-           VALUES ($1, $2, $3, $4, $5, $6)
-           ON CONFLICT DO NOTHING`,
-          [
-            "usr_user_002",
-            "mustafa",
-            "mustafa@example.com",
-            "Mustafa",
-            managerRoleKey,
-            userHash,
-          ]
-        );
-      }
-      await query(
-        `UPDATE users SET role = $2
-         WHERE username = $1 AND email = $3 AND role = 'viewer'`,
-        ["mustafa", managerRoleKey, "mustafa@example.com"]
-      );
-
-      const viewerTrialCheck = await query(
-        `SELECT id FROM users WHERE username = $1 OR email = $2 LIMIT 1`,
-        ["viewer_trial", "viewer.trial@example.com"]
-      );
-      if (viewerTrialCheck.rows.length === 0) {
-        const viewerTrialHash = bcrypt.hashSync("password123", 10);
-        await query(
-          `INSERT INTO users (id, username, email, name, role, password_hash)
-           VALUES ($1, $2, $3, $4, $5, $6)
-           ON CONFLICT DO NOTHING`,
-          [
-            "usr_viewer_trial_001",
-            "viewer_trial",
-            "viewer.trial@example.com",
-            "Viewer Trial",
-            "viewer",
-            viewerTrialHash,
-          ]
-        );
       }
 
       await query(`
@@ -1594,7 +1527,7 @@ export async function listGSASProjects(
     conditions.push(`rating = $${params.length}`);
   }
 
-  // Apply date filter
+
   applyDateFilter(conditions, params, "advisory_date", filterYear, filterMonth, filterDay, "advisory_year");
 
   const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
@@ -1959,7 +1892,7 @@ export async function listPlaqueBatches(
     conditions.push(`plaque_rating = $${params.length}`);
   }
 
-  // Apply date filter
+
   applyDateFilter(conditions, params, "batch_date", filterYear, filterMonth, filterDay);
 
   const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
@@ -2069,7 +2002,7 @@ export async function listInventory(
     conditions.push(`qty_out > 0`);
   }
 
-  // Apply date filter
+
   applyDateFilter(conditions, params, "log_date", filterYear, filterMonth, filterDay);
 
   const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
@@ -2199,7 +2132,7 @@ export async function listIprintInventory(
     }
   }
 
-  // Apply date filter
+
   applyDateFilter(conditions, params, "date", filterYear, filterMonth, filterDay);
 
   const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";

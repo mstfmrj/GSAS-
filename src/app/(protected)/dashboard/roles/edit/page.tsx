@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/roles/edit/page.tsx
- *
- * PURPOSE:
- * Role edit page for modifying custom role titles, descriptions, and assigned permission matrices.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";

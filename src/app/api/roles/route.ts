@@ -1,9 +1,9 @@
-/**
- * src/app/api/roles/route.ts
- *
- * PURPOSE:
- * API route handler for listing all available system roles and creating custom roles.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

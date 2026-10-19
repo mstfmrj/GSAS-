@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/batches/edit/[id]/page.tsx
- *
- * PURPOSE:
- * Edit page for updating an existing Plaque Printing Batch.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";

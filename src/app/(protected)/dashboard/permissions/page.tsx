@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/permissions/page.tsx
- *
- * PURPOSE:
- * Role Management overview table displaying active system roles, built-in tiers, and custom definitions.
- */
+
+
+
+
+
+
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";

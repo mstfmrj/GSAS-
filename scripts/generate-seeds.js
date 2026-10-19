@@ -26,7 +26,7 @@ function parseCSV(text) {
   return result;
 }
 
-// 1. Parse OP Projects
+
 const opCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791886001673.csv", "utf8");
 const opRows = parseCSV(opCsv);
 
@@ -37,7 +37,7 @@ for (let i = 2; i < opRows.length; i++) {
   const sn = parseInt(r[0], 10);
   const projectId = r[3] || "";
   const id = `op_${sn}_${projectId.replace(/\s+/g, "_")}`;
-  
+
   opProjects.push({
     id,
     category: "OP",
@@ -76,7 +76,7 @@ for (let i = 2; i < opRows.length; i++) {
 console.log("Parsed OP projects:", opProjects.length);
 fs.writeFileSync("./src/lib/seeds/op_projects.json", JSON.stringify(opProjects, null, 2));
 
-// 2. Parse Iprint CSV
+
 const iprintCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791885995614.csv", "utf8");
 const iprintLines = iprintCsv.split("\n");
 let currentSeries = "Series 1 (2025 - 100 pcs)";
@@ -92,7 +92,7 @@ for (let i = 0; i < iprintLines.length; i++) {
   if (line.includes("200 pcs 2026")) {
     currentSeries = "Series 3 (2026 - 200 pcs)";
   }
-  
+
   const parts = [];
   let inQuotes = false;
   let cur = "";
@@ -126,15 +126,15 @@ for (let i = 0; i < iprintLines.length; i++) {
 console.log("Parsed Iprint items:", iprintItems.length);
 fs.writeFileSync("./src/lib/seeds/iprint_inventory.json", JSON.stringify(iprintItems, null, 2));
 
-// 3. Parse Medalmade Inventory
+
 const medalmadeCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791886010277.csv", "utf8");
 const medalmadeRows = parseCSV(medalmadeCsv);
 
-// The 17 plaque types are listed across 4 sections:
-// Lines 2-18: Total Inventory
-// Lines 33-49: Delivery Inventory
-// Lines 63-79: 2025 Outgoing Plaques
-// Lines 98-114: 2026 Outgoing Plaques
+
+
+
+
+
 
 const plaqueTypes = [
   { name: "PLAQUE Certified (CERTIFIED)", category: "CERTIFIED" },
@@ -156,15 +156,15 @@ const plaqueTypes = [
   { name: "PLAQUE Operations Diamond", category: "OP" }
 ];
 
-// Map rows by plaque name
+
 const medalmadeItems = plaqueTypes.map((pt, idx) => {
-  // Find total inventory row
+
   const totRow = medalmadeRows.find(r => r[0] && r[0].trim() === pt.name) || [];
-  // Find delivery row (starts from line index ~25)
+
   const delRow = medalmadeRows.slice(25).find(r => r[0] && r[0].trim() === pt.name) || [];
-  // Find 2025 outgoing row
+
   const out25Row = medalmadeRows.slice(55).find(r => r[0] && r[0].trim() === pt.name) || [];
-  // Find 2026 outgoing row
+
   const out26Row = medalmadeRows.slice(85).find(r => r[0] && r[0].trim() === pt.name) || [];
 
   const stockOnHand = parseInt(totRow[1], 10) || 0;

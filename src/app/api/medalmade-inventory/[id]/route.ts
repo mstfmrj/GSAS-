@@ -1,9 +1,9 @@
-/**
- * src/app/api/medalmade-inventory/[id]/route.ts
- *
- * PURPOSE:
- * API route handler for single Outgoing Plaque record fetch (GET), update (PUT), and deletion (DELETE).
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

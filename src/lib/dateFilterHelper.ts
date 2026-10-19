@@ -1,10 +1,10 @@
-/**
- * src/lib/dateFilterHelper.ts
- *
- * PURPOSE:
- * Utility for parsing dates, constructing SQL WHERE conditions for date filtering (Year, Year+Month, Year+Month+Day),
- * and supporting date dropdown options across projects.
- */
+
+
+
+
+
+
+
 
 export const MONTH_NAMES = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -26,9 +26,9 @@ export const MONTH_OPTIONS = [
   { value: "12", label: "12 - Dec" },
 ];
 
-/**
- * Builds and applies SQL WHERE conditions for filtering by Year, Year+Month, or Year+Month+Day.
- */
+
+
+
 export function applyDateFilter(
   conditions: string[],
   params: any[],
@@ -74,7 +74,7 @@ export function applyDateFilter(
       }
     }
 
-    // Case 1: Year + Month + Day
+
     if (mName && dNum) {
       const regex = `(^0?${dNum}([-/ ])(${mName}|${mNum}|0?${parseInt(mNum, 10)})([-/ ])(${y4}|${y2})$|^${y4}([-/ ])(${mName}|${mNum}|0?${parseInt(mNum, 10)})([-/ ])0?${dNum}$)`;
       params.push(regex);
@@ -82,7 +82,7 @@ export function applyDateFilter(
       return;
     }
 
-    // Case 2: Year + Month
+
     if (mName) {
       const regex = `(([-/ ])(${mName}|${mNum}|0?${parseInt(mNum, 10)})([-/ ])(${y4}|${y2})$|^${y4}([-/ ])(${mName}|${mNum}|0?${parseInt(mNum, 10)})([-/ ]))`;
       params.push(regex);
@@ -90,7 +90,7 @@ export function applyDateFilter(
       return;
     }
 
-    // Case 3: Year only
+
     const regex = `(([-/ ])(${y4}|${y2})$|^${y4}([-/ ]))`;
     if (yearColumn) {
       params.push(y4);

@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/roles/new/page.tsx
- *
- * PURPOSE:
- * Role creation page for designing and configuring new custom access control roles.
- */
+
+
+
+
+
+
 
 import { useState } from "react";
 import Link from "next/link";

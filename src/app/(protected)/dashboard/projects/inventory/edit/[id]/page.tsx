@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/inventory/edit/[id]/page.tsx
- *
- * PURPOSE:
- * Edit page for updating an IKEA Frame inventory record.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";

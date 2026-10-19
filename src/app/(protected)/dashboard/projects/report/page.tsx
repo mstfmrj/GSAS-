@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/report/page.tsx
- *
- * PURPOSE:
- * GSAS Year-to-Date Report and pivot summaries breaking down certifications across all project types.
- */
+
+
+
+
+
+
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";

@@ -1,12 +1,12 @@
 "use client";
 
-/**
- * src/components/dashboard/UserProfileCard.tsx
- *
- * PURPOSE:
- * Full-page profile overview card displaying personal account details, assigned permissions,
- * and role badges with a top-right Edit button.
- */
+
+
+
+
+
+
+
 
 import { useTheme } from "@/context/ThemeContext";
 import { getUserRoleLabel } from "@/lib/types";

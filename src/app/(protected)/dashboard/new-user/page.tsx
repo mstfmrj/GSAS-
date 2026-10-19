@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/new-user/page.tsx
- *
- * PURPOSE:
- * User registration interface for administrators to invite and provision new team accounts.
- */
+
+
+
+
+
+
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -16,42 +16,16 @@ import { addUser } from "@/apiService/client/users";
 import { getUserRoleLabel, userHasPermission } from "@/lib/types";
 import type { CustomRole, UserRole } from "@/lib/types";
 
-function generateSecurePassword(): string {
-  const upper = "ABCDEFGHJKLMNPQRSTUVWXYZ";
-  const lower = "abcdefghjkmnpqrstuvwxyz";
-  const numbers = "23456789";
-  const special = "!@#$%^&*()_+~=";
-
-  let pwd = "";
-  pwd += upper[Math.floor(Math.random() * upper.length)];
-  pwd += lower[Math.floor(Math.random() * lower.length)];
-  pwd += numbers[Math.floor(Math.random() * numbers.length)];
-  pwd += special[Math.floor(Math.random() * special.length)];
-
-  const allChars = upper + lower + numbers + special;
-  for (let i = 4; i < 14; i++) {
-    pwd += allChars[Math.floor(Math.random() * allChars.length)];
-  }
-
-  return pwd
-    .split("")
-    .sort(() => 0.5 - Math.random())
-    .join("");
-}
-
 export default function AdminNewUserPage() {
   const { user, loading } = useAuth();
 
   const [username, setUsername] = useState("");
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [assignedRole, setAssignedRole] = useState<UserRole>("viewer");
   const [customRoles, setCustomRoles] = useState<CustomRole[]>([]);
   const [builtinRoles, setBuiltinRoles] = useState<
     { roleKey: "admin" | "moderator" | "viewer"; name: string }[]
   >([]);
-  const [showPassword, setShowPassword] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -59,14 +33,8 @@ export default function AdminNewUserPage() {
     id: string;
     username: string;
     email: string;
-    name?: string;
     role: UserRole;
-    plainPassword: string;
   } | null>(null);
-
-  useEffect(() => {
-    setPassword(generateSecurePassword());
-  }, []);
 
   useEffect(() => {
     if (!user || (user.role !== "super_admin" && user.role !== "admin")) return;
@@ -98,8 +66,8 @@ export default function AdminNewUserPage() {
     e.preventDefault();
     setError(null);
 
-    if (!username.trim() || !email.trim() || !password) {
-      setError("Please fill in username, email, and password.");
+    if (!username.trim() || !email.trim()) {
+      setError("Please enter a username and Microsoft account email address.");
       return;
     }
 
@@ -107,9 +75,7 @@ export default function AdminNewUserPage() {
     try {
       const res = await addUser({
         username: username.trim(),
-        name: name.trim() || undefined,
         email: email.trim().toLowerCase(),
-        password,
         role: assignedRole,
       });
 
@@ -118,9 +84,7 @@ export default function AdminNewUserPage() {
           id: res.user.id,
           username: res.user.username,
           email: res.user.email,
-          name: res.user.name,
           role: res.user.role,
-          plainPassword: password,
         });
       } else {
         setError("Failed to create user account.");
@@ -135,9 +99,7 @@ export default function AdminNewUserPage() {
 
   const handleReset = () => {
     setUsername("");
-    setName("");
     setEmail("");
-    setPassword(generateSecurePassword());
     setAssignedRole("viewer");
     setCreatedUser(null);
     setError(null);
@@ -179,7 +141,7 @@ export default function AdminNewUserPage() {
           <div className="mb-4">
             <h3 className="fw-bold mb-1">Add New User</h3>
             <p className="text-muted small mb-0">
-              Provision a new user account with an assigned role and secure credentials.
+              Add a GSAS user using the email address they use to sign in with Microsoft.
             </p>
           </div>
 
@@ -201,7 +163,7 @@ export default function AdminNewUserPage() {
                 </div>
 
                 <div className="p-3 bg-light rounded-3 border mb-4">
-                  <h6 className="fw-bold mb-3">Provisioned Account Credentials:</h6>
+                  <h6 className="fw-bold mb-3">User Details:</h6>
                   <div className="row g-2 mb-2">
                     <div className="col-4 text-muted small">Username:</div>
                     <div className="col-8 fw-semibold">@{createdUser.username}</div>
@@ -221,14 +183,6 @@ export default function AdminNewUserPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="row g-2">
-                    <div className="col-4 text-muted small">Generated Password:</div>
-                    <div className="col-8">
-                      <code className="text-success fs-6 fw-bold user-select-all">
-                        {createdUser.plainPassword}
-                      </code>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="d-flex gap-2">
@@ -243,25 +197,6 @@ export default function AdminNewUserPage() {
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="row g-3 mb-3">
-                  <div className="col-md-6">
-                    <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
-                      Full Name
-                    </label>
-                    <div className="input-group">
-                      <span className="input-group-text bg-light text-muted border-end-0">
-                        <i className="bi bi-card-heading"></i>
-                      </span>
-                      <input
-                        type="text"
-                        className="form-control border-start-0"
-                        placeholder="e.g. Sarah Connor"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        disabled={submitting}
-                      />
-                    </div>
-                  </div>
-
                   <div className="col-md-6">
                     <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
                       Username <span className="text-danger">*</span>
@@ -301,6 +236,9 @@ export default function AdminNewUserPage() {
                       required
                     />
                   </div>
+                  <div className="form-text small">
+                    GSAS cannot verify whether an email belongs to a Microsoft account at this step. The user must sign in with Microsoft using this exact email; Microsoft confirms the account during sign-in.
+                  </div>
                 </div>
 
                 <div className="mb-4">
@@ -329,41 +267,6 @@ export default function AdminNewUserPage() {
                   </select>
                   <div className="form-text small">
                     Permissions and access privileges are determined by the assigned role.
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <div className="d-flex justify-content-between align-items-center mb-1">
-                    <label className="form-label small fw-semibold text-muted text-uppercase mb-0">
-                      Generated Password <span className="text-danger">*</span>
-                    </label>
-                    <button
-                      type="button"
-                      className="btn btn-link btn-sm text-decoration-none p-0"
-                      onClick={() => setPassword(generateSecurePassword())}
-                    >
-                      <i className="bi bi-arrow-repeat me-1"></i> Regenerate
-                    </button>
-                  </div>
-                  <div className="input-group">
-                    <span className="input-group-text bg-light text-muted border-end-0">
-                      <i className="bi bi-key"></i>
-                    </span>
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      className="form-control border-start-0 border-end-0 font-monospace"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      disabled={submitting}
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
-                    </button>
                   </div>
                 </div>
 

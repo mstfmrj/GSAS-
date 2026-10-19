@@ -1,12 +1,12 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/files/upload/page.tsx
- *
- * PURPOSE:
- * Dedicated file upload page for project attachments matching the user-specified design.
- * Accepts all file types EXCEPT videos, with a 10 MB maximum size limit.
- */
+
+
+
+
+
+
+
 
 import { useState, useEffect, useRef, use } from "react";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { ProjectFile } from "@/lib/types";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 const VIDEO_EXTENSIONS = new Set([
   "mp4", "m4v", "mov", "avi", "mkv", "webm", "wmv", "flv", "3gp", "3g2",
@@ -94,7 +94,7 @@ export default function ProjectFileUploadPage({
     }
   }, [authLoading, user, router]);
 
-  // Load existing files
+
   const loadFiles = async () => {
     if (!projectId) return;
     try {
@@ -231,7 +231,7 @@ export default function ProjectFileUploadPage({
 
         <div className="p-3 p-md-4 d-flex justify-content-center">
           <div style={{ width: "100%", maxWidth: "680px" }}>
-            {/* Top Navigation Bar */}
+            {                        }
             <div className="d-flex align-items-center justify-content-between mb-4">
               <Link href={returnTo} className="btn btn-outline-secondary btn-sm">
                 <i className="bi bi-arrow-left me-1"></i>Back to Project
@@ -241,7 +241,7 @@ export default function ProjectFileUploadPage({
               </div>
             </div>
 
-            {/* Upload Card Container matching Mockup */}
+            {                                           }
             <div
               className="card border-0 shadow-sm"
               style={{
@@ -250,12 +250,12 @@ export default function ProjectFileUploadPage({
                 backgroundColor: "#ffffff",
               }}
             >
-              {/* Header Title */}
+              {                  }
               <h3 className="fw-bold text-dark mb-4" style={{ fontSize: "1.65rem", letterSpacing: "-0.02em" }}>
                 Upload Files
               </h3>
 
-              {/* Upload Drop Zone */}
+              {                      }
               <div
                 onClick={() => fileInputRef.current?.click()}
                 onDrop={handleDrop}
@@ -282,7 +282,7 @@ export default function ProjectFileUploadPage({
                   }}
                 />
 
-                {/* Plus circle icon */}
+                {                      }
                 <div
                   className="mb-3 d-flex align-items-center justify-content-center"
                   style={{
@@ -296,19 +296,19 @@ export default function ProjectFileUploadPage({
                   <i className="bi bi-plus-circle"></i>
                 </div>
 
-                {/* Drop zone instructions */}
+                {                            }
                 <p className="mb-2 fw-medium" style={{ color: "#4b5563", fontSize: "1.05rem" }}>
                   Drag &amp; drop or click to choose files
                 </p>
 
-                {/* Max size guideline */}
+                {                        }
                 <div className="d-flex align-items-center text-muted" style={{ fontSize: "0.9rem" }}>
                   <i className="bi bi-info-circle me-1" style={{ fontSize: "0.85rem" }}></i>
                   <span>Max file size: 10 MB</span>
                 </div>
               </div>
 
-              {/* Alerts */}
+              {            }
               {uploadError && (
                 <div className="alert alert-danger d-flex align-items-center mt-3 mb-0" role="alert">
                   <i className="bi bi-exclamation-triangle-fill me-2"></i>
@@ -322,7 +322,7 @@ export default function ProjectFileUploadPage({
                 </div>
               )}
 
-              {/* Selected Staged File (before upload) */}
+              {                                          }
               {selectedFile && (
                 <div className="mt-4">
                   <div
@@ -334,7 +334,7 @@ export default function ProjectFileUploadPage({
                     }}
                   >
                     <div className="d-flex align-items-center gap-3 overflow-hidden">
-                      {/* File Icon Badge */}
+                      {                     }
                       {(() => {
                         const iconMeta = getFileIconClass(selectedFile.name, selectedFile.type);
                         return (
@@ -354,7 +354,7 @@ export default function ProjectFileUploadPage({
                         );
                       })()}
 
-                      {/* File Details */}
+                      {                  }
                       <div className="overflow-hidden">
                         <div className="fw-semibold text-dark text-truncate" style={{ fontSize: "0.98rem" }}>
                           {selectedFile.name}
@@ -365,7 +365,7 @@ export default function ProjectFileUploadPage({
                       </div>
                     </div>
 
-                    {/* Actions: Cancel staging */}
+                    {                             }
                     <div className="d-flex align-items-center gap-2">
                       <button
                         type="button"
@@ -387,7 +387,7 @@ export default function ProjectFileUploadPage({
                     </div>
                   </div>
 
-                  {/* Upload Confirm Button */}
+                  {                           }
                   <div className="mt-3">
                     <button
                       type="button"
@@ -417,7 +417,7 @@ export default function ProjectFileUploadPage({
                 </div>
               )}
 
-              {/* Already Uploaded Files Section */}
+              {                                    }
               <div className="mt-4 pt-3 border-top">
                 <div className="d-flex align-items-center justify-content-between mb-3">
                   <h6 className="fw-bold mb-0 text-dark">
@@ -465,7 +465,7 @@ export default function ProjectFileUploadPage({
                           }}
                         >
                           <div className="d-flex align-items-center gap-3 overflow-hidden">
-                            {/* File Type Icon */}
+                            {                    }
                             <div
                               className="d-flex align-items-center justify-content-center flex-shrink-0"
                               style={{
@@ -480,7 +480,7 @@ export default function ProjectFileUploadPage({
                               <i className={`bi ${iconMeta.icon}`}></i>
                             </div>
 
-                            {/* File Name & Info */}
+                            {                      }
                             <div className="overflow-hidden">
                               <div className="fw-semibold text-dark text-truncate" style={{ fontSize: "0.95rem" }}>
                                 {file.fileName}
@@ -496,9 +496,9 @@ export default function ProjectFileUploadPage({
                             </div>
                           </div>
 
-                          {/* Action Buttons: View/Download + Delete */}
+                          {                                            }
                           <div className="d-flex align-items-center gap-2 flex-shrink-0">
-                            {/* View / Download */}
+                            {                     }
                             <a
                               href={`/api/project-files/${encodeURIComponent(file.id)}`}
                               target="_blank"
@@ -516,7 +516,7 @@ export default function ProjectFileUploadPage({
                               <i className="bi bi-eye text-dark"></i>
                             </a>
 
-                            {/* Download */}
+                            {              }
                             <a
                               href={`/api/project-files/${encodeURIComponent(file.id)}?download=1`}
                               download={file.fileName}
@@ -533,7 +533,7 @@ export default function ProjectFileUploadPage({
                               <i className="bi bi-download text-dark"></i>
                             </a>
 
-                            {/* Delete */}
+                            {            }
                             <button
                               type="button"
                               disabled={deletingId === file.id}
@@ -562,7 +562,7 @@ export default function ProjectFileUploadPage({
                 )}
               </div>
 
-              {/* Bottom Done / Return Button */}
+              {                                 }
               <div className="mt-4">
                 <Link
                   href={returnTo}

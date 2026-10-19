@@ -1,9 +1,9 @@
-/**
- * src/app/api/data/stats/route.ts
- *
- * PURPOSE:
- * API route handler providing platform health diagnostics, user counts, and server timestamp.
- */
+
+
+
+
+
+
 
 import { NextRequest, NextResponse } from "next/server";
 import { getAllUsers } from "@/lib/db";

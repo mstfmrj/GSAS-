@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/iprint/[id]/page.tsx
- *
- * PURPOSE:
- * Detail view page showing complete record metadata for a selected Iprint Inventory item.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
@@ -126,7 +126,7 @@ export default function IprintDetailPage({
             </div>
           </div>
 
-          {/* Detail Cards */}
+          {                  }
           <div className="row g-4">
             <div className="col-12">
               <div className="card border-0 shadow-sm">

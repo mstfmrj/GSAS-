@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/Footer.tsx
- *
- * PURPOSE:
- * Global footer component displaying branding, copyright notices, and platform links.
- */
+
+
+
+
+
+
 
 import { usePathname } from "next/navigation";
 

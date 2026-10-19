@@ -1,9 +1,9 @@
-/**
- * src/lib/server/api-response.ts
- *
- * PURPOSE:
- * Standardized JSON response formatters for success and error HTTP payloads.
- */
+
+
+
+
+
+
 
 import { NextResponse } from "next/server";
 

@@ -1,9 +1,9 @@
-/**
- * src/app/api/gsas/summary/route.ts
- *
- * PURPOSE:
- * API route handler returning high-level project counts and chart distributions for the home dashboard.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

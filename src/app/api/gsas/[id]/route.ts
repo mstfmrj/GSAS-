@@ -1,9 +1,9 @@
-/**
- * src/app/api/gsas/[id]/route.ts
- *
- * PURPOSE:
- * API route handler for retrieving (GET), updating (PUT), and deleting (DELETE) individual GSAS projects.
- */
+
+
+
+
+
+
 
 import { NextRequest } from "next/server";
 import { getAuthUser } from "@/helpers/server/getAuthUser";

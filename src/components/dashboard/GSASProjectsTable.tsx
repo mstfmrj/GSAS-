@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/dashboard/GSASProjectsTable.tsx
- *
- * PURPOSE:
- * Reusable data table component for GSAS projects with search, sort, pagination, and modal dialogs.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -109,7 +109,7 @@ function GSASProjectsTableContent({ category }: Props) {
   const canEdit = user && ["super_admin", "admin"].includes(user.role as string);
   const canDelete = user && ["super_admin", "admin"].includes(user.role as string);
 
-  // Sync state if browser Back / Forward navigation changes searchParams
+
   useEffect(() => {
     const p = parseInt(searchParams.get("page") || "1", 10);
     const validPage = isNaN(p) || p < 1 ? 1 : p;
@@ -315,7 +315,7 @@ function GSASProjectsTableContent({ category }: Props) {
         <DashboardHeader />
 
         <div className="paged-list-content">
-          {/* Header */}
+          {            }
           <div className="paged-list-header d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div className="d-flex align-items-center gap-3">
               <Link href="/dashboard/projects" className="btn btn-sm btn-outline-secondary">
@@ -369,7 +369,7 @@ function GSASProjectsTableContent({ category }: Props) {
 
           {error && <div className="alert alert-danger">{error}</div>}
 
-          {/* Filters & Sorting Bar */}
+          {                           }
           <div className="card border-0 shadow-sm mb-3 paged-list-filters">
             <div className="card-body py-2 px-3">
               <div className="d-flex align-items-center gap-2 flex-wrap">
@@ -465,7 +465,7 @@ function GSASProjectsTableContent({ category }: Props) {
             </div>
           </div>
 
-          {/* Table */}
+          {           }
           <div className="card border-0 shadow-sm paged-list-table-card">
             <div className="table-responsive paged-list-table-scroll">
               <table className="table table-hover align-middle mb-0">
@@ -627,7 +627,7 @@ function GSASProjectsTableContent({ category }: Props) {
         </div>
       </main>
 
-      {/* Add/Edit Modal */}
+      {                    }
       {showModal && (
         <div className="modal show d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog modal-xl modal-dialog-scrollable">
@@ -666,7 +666,7 @@ function GSASProjectsTableContent({ category }: Props) {
         </div>
       )}
 
-      {/* Delete Confirm Modal */}
+      {                          }
       {deleteId && (
         <div className="modal show d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog modal-dialog-centered">

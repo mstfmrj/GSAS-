@@ -75,7 +75,7 @@ export default function DashboardSidebar({
 
   return (
     <aside className="apex-sidebar">
-      {/* Sidebar brand header */}
+      {                          }
       <div className="apex-sidebar-brand d-flex align-items-center">
         <Link href="/dashboard" className="d-flex align-items-center text-decoration-none">
           <span
@@ -92,7 +92,7 @@ export default function DashboardSidebar({
         </Link>
       </div>
 
-      {/* Main scrollable navigation items */}
+      {                                      }
       <div className="apex-sidebar-nav">
         {user && userHasPermission(user, "dashboard.view") && (
           <NavItem {...navProps} tab="analytics" icon="bi bi-house" label="Home" href="/dashboard" />
@@ -102,7 +102,7 @@ export default function DashboardSidebar({
           <>
             <NavItem {...navProps} tab="projects" icon="bi bi-kanban" label="Projects" href="/dashboard/projects" navigate />
 
-            {/* Compact project subsections */}
+            {                                 }
             <div className="ps-2 border-start ms-3 py-1" style={{ borderColor: "var(--sidebar-border, #e2e8f0)" }}>
               <NavItem {...navProps} subItem tab="projects-cm"        icon="bi bi-building-check"     label="Construction Management" href="/dashboard/projects/cm"        navigate />
               <NavItem {...navProps} subItem tab="projects-db"        icon="bi bi-buildings"           label="Design & Build"          href="/dashboard/projects/db"        navigate />
@@ -145,7 +145,7 @@ export default function DashboardSidebar({
         <NavItem {...navProps} tab="profile" icon="bi bi-person-circle" label="My Profile" href="/dashboard?tab=profile" />
       </div>
 
-      {/* Stationary clearly visible bottom logo */}
+      {                                            }
       <div className="apex-sidebar-footer">
         <img
           src="/gsas-seal.png"

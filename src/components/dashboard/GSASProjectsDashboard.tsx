@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/dashboard/GSASProjectsDashboard.tsx
- *
- * PURPOSE:
- * Main dashboard widget showing top summary KPI counters and distribution charts.
- */
+
+
+
+
+
+
 
 import { useEffect, useState } from "react";
 import { GSASDashboardChartData } from "@/lib/types";

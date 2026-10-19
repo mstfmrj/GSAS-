@@ -1,9 +1,9 @@
-/**
- * src/lib/passwordStrength.ts
- *
- * PURPOSE:
- * Client and server helper evaluating password complexity, strength score, and rule checks.
- */
+
+
+
+
+
+
 
 export interface PasswordStrength {
   score: number;

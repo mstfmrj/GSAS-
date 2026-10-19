@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/inventory/[id]/page.tsx
- *
- * PURPOSE:
- * Detail view page displaying full inventory metadata for an IKEA Frame item.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
@@ -144,7 +144,7 @@ export default function InventoryDetailPage({
           </div>
 
           <div className="row g-4">
-            {/* Stock Movement Details */}
+            {                            }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">
@@ -181,7 +181,7 @@ export default function InventoryDetailPage({
               </div>
             </div>
 
-            {/* Balances & Notes */}
+            {                      }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">

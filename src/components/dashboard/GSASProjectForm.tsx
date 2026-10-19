@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/dashboard/GSASProjectForm.tsx
- *
- * PURPOSE:
- * Reusable interactive form component for creating or editing GSAS Project records.
- */
+
+
+
+
+
+
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -129,7 +129,7 @@ export default function GSASProjectForm({
       </div>
 
       <div className="row g-4">
-        {/* 1. General Information */}
+        {                            }
         <div className="col-12 col-lg-6">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-header bg-transparent border-bottom py-3">
@@ -218,7 +218,7 @@ export default function GSASProjectForm({
           </div>
         </div>
 
-        {/* 2. Certification & Status */}
+        {                               }
         <div className="col-12 col-lg-6">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-header bg-transparent border-bottom py-3">
@@ -341,7 +341,7 @@ export default function GSASProjectForm({
           </div>
         </div>
 
-        {/* 3. Stakeholders & Contacts */}
+        {                                }
         <div className="col-12 col-lg-6">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-header bg-transparent border-bottom py-3">
@@ -395,7 +395,7 @@ export default function GSASProjectForm({
           </div>
         </div>
 
-        {/* 4. Plaque & Logistics */}
+        {                           }
         <div className="col-12 col-lg-6">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-header bg-transparent border-bottom py-3">
@@ -483,7 +483,7 @@ export default function GSASProjectForm({
           </div>
         </div>
 
-        {/* 5. Media & Documentation */}
+        {                              }
         <div className="col-12">
           <div className="card border-0 shadow-sm">
             <div className="card-header bg-transparent border-bottom py-3">

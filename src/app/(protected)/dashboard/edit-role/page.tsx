@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/edit-role/page.tsx
- *
- * PURPOSE:
- * Dedicated role editor page for fine-tuning specific role privileges.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";

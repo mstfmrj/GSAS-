@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/components/dashboard/PermissionChecklist.tsx
- *
- * PURPOSE:
- * Interactive checkbox matrix component for assigning granular system permissions to roles.
- */
+
+
+
+
+
+
 
 import { normalizePermissions, PERMISSION_GROUPS, togglePermissionSelection } from "@/lib/types";
 import type { PermissionKey } from "@/lib/types";

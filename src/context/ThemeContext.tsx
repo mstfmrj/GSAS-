@@ -6,8 +6,8 @@ export interface ThemeSettings {
   primaryColor: string;
   primaryHover: string;
   fontFamily: string;
-  fontSize: string; // '14px', '16px', '18px'
-  borderRadius: string; // '4px', '8px', '14px', '24px'
+  fontSize: string;
+  borderRadius: string;
   navbarStyle: "dark" | "light" | "primary";
   cardShadow: "none" | "sm" | "md" | "lg";
   mode: "light" | "dark";
@@ -76,7 +76,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const root = document.documentElement;
       const rgb = hexToRgb(theme.primaryColor);
 
-      // Bootstrap & typography variables
+
       root.style.setProperty("--bs-primary", theme.primaryColor);
       root.style.setProperty("--bs-primary-rgb", rgb);
       root.style.setProperty("--bs-link-color", theme.primaryColor);
@@ -89,7 +89,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.setProperty("--bs-border-radius", theme.borderRadius);
       root.style.setProperty("--bs-border-radius-lg", theme.borderRadius);
 
-      // Dark / Light mode attribute and variables
+
       const isDark = theme.mode === "dark";
       root.setAttribute("data-bs-theme", isDark ? "dark" : "light");
 
@@ -115,7 +115,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         root.style.setProperty("--table-header-bg", "#f8fafc");
       }
 
-      // Sidebar Theme Styling: Light or Dark, with active button matching selected Primary Theme Color
+
       const isSidebarDark = theme.sidebarTheme === "dark";
       if (isSidebarDark) {
         root.style.setProperty("--sidebar-bg", "#111827");
@@ -128,7 +128,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         root.style.setProperty("--sidebar-active-bg", `rgba(${rgb}, 0.24)`);
         root.style.setProperty("--sidebar-active-color", theme.primaryColor);
       } else {
-        // default: light nav
+
         root.style.setProperty("--sidebar-bg", "#ffffff");
         root.style.setProperty("--sidebar-color", "#374151");
         root.style.setProperty("--sidebar-border", "#e5e7eb");
@@ -150,7 +150,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const updateTheme = (newSettings: Partial<ThemeSettings>) => {
     setTheme((prev) => {
       const updated = { ...prev, ...newSettings };
-    
+
       if (newSettings.primaryColor && !newSettings.primaryHover) {
         updated.primaryHover = newSettings.primaryColor;
       }

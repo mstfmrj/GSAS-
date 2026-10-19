@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/medalmade/page.tsx
- *
- * PURPOSE:
- * Outgoing Plaques (Medalmade) Inventory page tracking dispatch, recipient info, and delivery state.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, useCallback, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -172,7 +172,7 @@ function MedalmadePageContent() {
         <DashboardHeader />
 
         <div className="paged-list-content">
-          {/* Header */}
+          {            }
           <div className="paged-list-header d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div className="d-flex align-items-center gap-3">
               <Link href="/dashboard/projects" className="btn btn-sm btn-outline-secondary">
@@ -238,7 +238,7 @@ function MedalmadePageContent() {
 
           {error && <div className="alert alert-danger">{error}</div>}
 
-          {/* View switcher & Filters */}
+          {                             }
           <div className="card border-0 shadow-sm mb-3 paged-list-filters">
             <div className="card-body py-2 px-3">
               <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -331,7 +331,7 @@ function MedalmadePageContent() {
             </div>
           </div>
 
-          {/* Table */}
+          {           }
           <div className="card border-0 shadow-sm paged-list-table-card">
             <div className="table-responsive paged-list-table-scroll">
               <table className="table table-hover align-middle mb-0">

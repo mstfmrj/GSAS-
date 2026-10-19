@@ -1,11 +1,11 @@
 "use client";
 
-/**
- * src/app/(protected)/dashboard/projects/batches/[id]/page.tsx
- *
- * PURPOSE:
- * Detail view page displaying batch progress, item counts, and designer notes.
- */
+
+
+
+
+
+
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
@@ -152,7 +152,7 @@ export default function BatchDetailPage({
           </div>
 
           <div className="row g-3">
-            {/* Batch & Print Information */}
+            {                               }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">
@@ -188,7 +188,7 @@ export default function BatchDetailPage({
               </div>
             </div>
 
-            {/* Project Information */}
+            {                         }
             <div className="col-12 col-lg-6">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-header bg-transparent border-bottom py-3">

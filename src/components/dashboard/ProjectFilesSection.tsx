@@ -1,12 +1,12 @@
 "use client";
 
-/**
- * src/components/dashboard/ProjectFilesSection.tsx
- *
- * PURPOSE:
- * Displays all attached files for a given project under its details page.
- * Provides small "View" and "Delete" buttons for each file, along with an "Add File" shortcut.
- */
+
+
+
+
+
+
+
 
 import { useState, useEffect } from "react";
 import { ProjectFile } from "@/lib/types";
@@ -147,7 +147,7 @@ export default function ProjectFilesSection({
                   }}
                 >
                   <div className="d-flex align-items-center gap-3 overflow-hidden" style={{ minWidth: "220px" }}>
-                    {/* File Icon Badge */}
+                    {                     }
                     <div
                       className="d-flex align-items-center justify-content-center flex-shrink-0"
                       style={{
@@ -162,7 +162,7 @@ export default function ProjectFilesSection({
                       <i className={`bi ${meta.icon}`}></i>
                     </div>
 
-                    {/* File Details */}
+                    {                  }
                     <div className="overflow-hidden">
                       <div className="fw-semibold text-dark text-truncate" title={file.fileName} style={{ fontSize: "0.95rem" }}>
                         {file.fileName}
@@ -183,9 +183,9 @@ export default function ProjectFilesSection({
                     </div>
                   </div>
 
-                  {/* Action Buttons: small View, Download, Delete */}
+                  {                                                  }
                   <div className="d-flex align-items-center gap-2 ms-auto">
-                    {/* Small View button */}
+                    {                       }
                     <a
                       href={`/api/project-files/${encodeURIComponent(file.id)}`}
                       target="_blank"
@@ -197,7 +197,7 @@ export default function ProjectFilesSection({
                       <span>View</span>
                     </a>
 
-                    {/* Download button */}
+                    {                     }
                     <a
                       href={`/api/project-files/${encodeURIComponent(file.id)}?download=1`}
                       download={file.fileName}
@@ -207,7 +207,7 @@ export default function ProjectFilesSection({
                       <i className="bi bi-download"></i>
                     </a>
 
-                    {/* Small Delete button */}
+                    {                         }
                     {canEdit && (
                       <button
                         type="button"

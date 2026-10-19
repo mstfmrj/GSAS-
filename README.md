@@ -90,24 +90,3 @@ public/                              # Static assets and GSAS branding
 scripts/                             # Seed generation scripts
 ```
 
-##  Getting Started
-
-### 1. Start the Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Password Recovery Email Setup
-
-The forgot-password form sends a six-digit verification code through Resend. Configure these server-side environment variables in `.env.local` for development and in your hosting provider for production:
-
-| Variable | Purpose |
-| :--- | :--- |
-| `RESEND_API_KEY` | Resend API key used to send recovery emails |
-| `RESEND_FROM_EMAIL` | Sender address verified with Resend, for example `GORD <noreply@your-verified-domain.com>` |
-| `PASSWORD_RESET_CODE_SECRET` | Random secret of at least 32 bytes used to hash recovery codes |
-
-Create a code secret with `openssl rand -hex 32`. Never expose these variables with a `NEXT_PUBLIC_` prefix or commit them to source control. The database creates the recovery-code table automatically. Codes expire after 10 minutes, can be tried up to five times, and a new code can be requested once per minute for an account.

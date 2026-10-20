@@ -31,7 +31,7 @@ export const MONTH_OPTIONS = [
 
 export function applyDateFilter(
   conditions: string[],
-  params: any[],
+  params: unknown[],
   dateColumn: string,
   year?: string,
   month?: string,

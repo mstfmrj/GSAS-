@@ -7,7 +7,7 @@
 
 export async function callApi(
   url: string,
-  data: Record<string, any> = {},
+  data: Record<string, unknown> = {},
   isPost = true,
   withAuth = true
 ) {

@@ -62,9 +62,9 @@ export async function GET(req: NextRequest, context: RouteContext) {
         "Cache-Control": "private, max-age=3600",
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Error serving project file:", err);
-    return errorResponse(err?.message || "Failed to serve file", 500);
+    return errorResponse(err instanceof Error ? err.message : "Failed to serve file", 500);
   }
 }
 

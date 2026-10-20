@@ -451,7 +451,7 @@ function PlaqueInventoryContent() {
                         </button>
                       </li>
                       {Array.from({ length: Math.min(7, totalPages) }, (_, i) => {
-                        let p =
+                        const p =
                           totalPages <= 7
                             ? i + 1
                             : page <= 4

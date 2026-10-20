@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
   try {
     const files = await getProjectFiles(projectId, projectType);
     return successResponse(files);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Failed to fetch project files:", err);
     return errorResponse("Failed to load project files", 500);
   }
@@ -126,8 +126,8 @@ export async function POST(req: NextRequest) {
     });
 
     return successResponse(saved, 201);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Failed to upload project file:", err);
-    return errorResponse(err?.message || "Failed to upload file", 500);
+    return errorResponse(err instanceof Error ? err.message : "Failed to upload file", 500);
   }
 }

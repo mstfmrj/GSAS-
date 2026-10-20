@@ -12,7 +12,7 @@ import { successResponse, errorResponse } from "./api-response";
 import { SessionPayload } from "@/lib/types";
 
 export interface ActionHandlerConfig {
-  actions: Record<string, (data: any, user: SessionPayload) => Promise<any> | any>;
+  actions: Record<string, (data: Record<string, unknown>, user: SessionPayload) => Promise<unknown> | unknown>;
   access?: Record<string, PermissionRule>;
   requireUserFields?: boolean;
 }
@@ -25,7 +25,7 @@ export function createAuthenticatedActionHandler(config: ActionHandlerConfig) {
         return errorResponse("Authentication required", 401);
       }
 
-      const body = await req.json().catch(() => ({}));
+      const body: Record<string, unknown> = await req.json().catch(() => ({}));
       const { action, ...data } = body;
 
       if (!action || typeof action !== "string") {
@@ -44,11 +44,11 @@ export function createAuthenticatedActionHandler(config: ActionHandlerConfig) {
 
       const result = await handler(data, user);
       return successResponse(result);
-    } catch (err: any) {
+    } catch (err: unknown) {
       if (err instanceof AuthorizationError) {
         return errorResponse(err.message, 403);
       }
-      return errorResponse(err.message || "Internal server error", 500);
+      return errorResponse(err instanceof Error ? err.message : "Internal server error", 500);
     }
   };
 }

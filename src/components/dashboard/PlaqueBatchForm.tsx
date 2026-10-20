@@ -40,7 +40,7 @@ export default function PlaqueBatchForm({ initialData, mode, id, returnUrl }: Pr
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  const update = (key: keyof PlaqueBatchItem, val: any) => {
+  const update = <K extends keyof PlaqueBatchItem>(key: K, val: PlaqueBatchItem[K]) => {
     setForm((prev) => ({ ...prev, [key]: val }));
   };
 

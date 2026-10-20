@@ -5,7 +5,7 @@ import { callApi } from "@/helpers/client/callApi";
 const API_URL = "/api/users";
 
 
-export const getUser = async (data: Record<string, any> = {}) => {
+export const getUser = async (data: Record<string, unknown> = {}) => {
   try {
     data.action = "getUser";
     const response = await callApi(API_URL, data, true, true);
@@ -16,7 +16,7 @@ export const getUser = async (data: Record<string, any> = {}) => {
 };
 
 
-export const getUsers = async (data: Record<string, any> = {}) => {
+export const getUsers = async (data: Record<string, unknown> = {}) => {
   try {
     data.action = "getUsers";
     const response = await callApi(API_URL, data, true, true);
@@ -27,7 +27,7 @@ export const getUsers = async (data: Record<string, any> = {}) => {
 };
 
 
-export const addUser = async (data: Record<string, any>) => {
+export const addUser = async (data: Record<string, unknown>) => {
   try {
     data.action = "addUser";
     const response = await callApi(API_URL, data, true, true);
@@ -38,13 +38,13 @@ export const addUser = async (data: Record<string, any>) => {
 };
 
 
-export const updateUser = async (data: Record<string, any>) => {
+export const updateUser = async (data: Record<string, unknown>) => {
   const response = await callApi(API_URL, { ...data, action: "updateUser" }, true, true);
   return response?.data;
 };
 
 
-export const toggleBlockUser = async (data: Record<string, any>) => {
+export const toggleBlockUser = async (data: Record<string, unknown>) => {
   try {
     data.action = "toggleBlockUser";
     const response = await callApi(API_URL, data, true, true);
@@ -55,7 +55,7 @@ export const toggleBlockUser = async (data: Record<string, any>) => {
 };
 
 
-export const deleteUser = async (data: Record<string, any>) => {
+export const deleteUser = async (data: Record<string, unknown>) => {
   try {
     data.action = "deleteUser";
     const response = await callApi(API_URL, data, true, true);
@@ -65,12 +65,12 @@ export const deleteUser = async (data: Record<string, any>) => {
   }
 };
 
-export const deletePendingUser = async (data: Record<string, any>) => {
+export const deletePendingUser = async (data: Record<string, unknown>) => {
   const response = await callApi(API_URL, { ...data, action: "deletePendingUser" }, true, true);
   return response?.data;
 };
 
-export const approvePendingUser = async (data: Record<string, any>) => {
+export const approvePendingUser = async (data: Record<string, unknown>) => {
   const response = await callApi(API_URL, { ...data, action: "approvePendingUser" }, true, true);
   return response?.data;
 };

@@ -183,8 +183,8 @@ export default function ProjectFileUploadPage({
       setSelectedFile(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
       await loadFiles();
-    } catch (err: any) {
-      setUploadError(err.message || "Upload failed. Please try again.");
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed. Please try again.");
     } finally {
       setUploading(false);
     }

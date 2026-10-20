@@ -60,9 +60,9 @@ if (process.env.NODE_ENV !== "production") {
   global._pgPool = pool;
 }
 
-export async function query<T extends QueryResultRow = any>(
+export async function query<T extends QueryResultRow = QueryResultRow>(
   text: string,
-  params?: any[]
+  params?: unknown[]
 ): Promise<QueryResult<T>> {
   return pool.query<T>(text, params);
 }
@@ -336,7 +336,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
       const gsasCheck = await query(`SELECT COUNT(*) FROM gsas_projects WHERE project_id IS NOT NULL AND project_id <> ''`);
       if (parseInt(gsasCheck.rows[0].count, 10) === 0) {
         await query(`DELETE FROM gsas_projects`);
-        const allProjects = [...(cmSeed as any[]), ...(dbSeed as any[])];
+        const allProjects = [...(cmSeed as unknown as Record<string, unknown>[]), ...(dbSeed as unknown as Record<string, unknown>[])];
         for (const p of allProjects) {
           await query(
             `INSERT INTO gsas_projects (
@@ -421,7 +421,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
       const batchCheck = await query(`SELECT COUNT(*) FROM plaque_batches WHERE batch_name IS NOT NULL AND batch_name <> ''`);
       if (parseInt(batchCheck.rows[0].count, 10) === 0) {
         await query(`DELETE FROM plaque_batches`);
-        for (const b of batchesSeed as any[]) {
+        for (const b of batchesSeed as unknown as Record<string, unknown>[]) {
           await query(
             `INSERT INTO plaque_batches (
               id, sn, batch_date, batch_name, project_id,
@@ -458,7 +458,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
       const invCheck = await query(`SELECT COUNT(*) FROM plaque_inventory WHERE project_name IS NOT NULL AND project_name <> ''`);
       if (parseInt(invCheck.rows[0].count, 10) === 0) {
         await query(`DELETE FROM plaque_inventory`);
-        for (const i of inventorySeed as any[]) {
+        for (const i of inventorySeed as unknown as Record<string, unknown>[]) {
           await query(
             `INSERT INTO plaque_inventory (
               id, sn, log_date, project_name, qty_in, qty_out, remaining, total_used, notes
@@ -489,7 +489,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
 
       const opCheck = await query(`SELECT COUNT(*) FROM gsas_projects WHERE category = 'OP'`);
       if (parseInt(opCheck.rows[0].count, 10) === 0) {
-        for (const p of opSeed as any[]) {
+        for (const p of opSeed as unknown as Record<string, unknown>[]) {
           await query(
             `INSERT INTO gsas_projects (
               id, category, sn, advisory_date, advisory_year, project_id,
@@ -589,7 +589,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
       `);
       const iprintCheck = await query(`SELECT COUNT(*) FROM iprint_inventory`);
       if (parseInt(iprintCheck.rows[0].count, 10) === 0) {
-        for (const item of iprintSeed as any[]) {
+        for (const item of iprintSeed as unknown as Record<string, unknown>[]) {
           await query(
             `INSERT INTO iprint_inventory (
               id, series, sn, date, project_name, count, batch, remarks, type, count_order, status
@@ -637,7 +637,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
       `);
       const mmCheck = await query(`SELECT COUNT(*) FROM medalmade_inventory`);
       if (parseInt(mmCheck.rows[0].count, 10) === 0) {
-        for (const item of medalmadeSeed as any[]) {
+        for (const item of medalmadeSeed as unknown as Record<string, unknown>[]) {
           await query(
             `INSERT INTO medalmade_inventory (
               id, plaque_type, category, stock_on_hand, first_order, second_order,
@@ -697,7 +697,7 @@ export async function ensureDatabaseSchema(): Promise<void> {
   return initPromise;
 }
 
-function mapRowToUserWithPassword(row: any): UserWithPassword {
+function mapRowToUserWithPassword(row: QueryResultRow): UserWithPassword {
   return {
     id: row.id,
     username: row.username,
@@ -734,7 +734,7 @@ export async function getAllUsers(): Promise<UserWithPassword[]> {
   return res.rows.map(mapRowToUserWithPassword);
 }
 
-function mapRowToCustomRole(row: any): CustomRole {
+function mapRowToCustomRole(row: QueryResultRow): CustomRole {
   return {
     roleKey: row.role_key as UserRole,
     name: row.name,
@@ -1030,7 +1030,7 @@ export async function findUserByEmail(email: string): Promise<UserWithPassword |
   return mapRowToUserWithPassword(res.rows[0]);
 }
 
-function mapRowToPendingUser(row: any): PendingUser {
+function mapRowToPendingUser(row: QueryResultRow): PendingUser {
   return {
     id: row.id,
     name: row.name || row.username,
@@ -1634,7 +1634,7 @@ export async function changeUserPassword(
   return { success: true };
 }
 
-function mapRowToGSASProject(row: any): GSASProject {
+function mapRowToGSASProject(row: QueryResultRow): GSASProject {
   return {
     id: row.id,
     category: row.category,
@@ -1686,7 +1686,7 @@ export async function listGSASProjects(
 ): Promise<{ rows: GSASProject[]; total: number }> {
   await ensureDatabaseSchema();
   const conditions: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
 
   if (category) {
     params.push(category);
@@ -2007,7 +2007,7 @@ export async function updateGSASProject(
   ];
 
   const setClauses: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
   let idx = 1;
 
   for (let i = 0; i < fields.length; i++) {
@@ -2035,7 +2035,7 @@ export async function deleteGSASProject(id: string): Promise<boolean> {
   return (res.rowCount ?? 0) > 0;
 }
 
-function mapRowToPlaqueBatch(row: any): PlaqueBatchItem {
+function mapRowToPlaqueBatch(row: QueryResultRow): PlaqueBatchItem {
   return {
     id: row.id,
     sn: row.sn ?? undefined,
@@ -2066,7 +2066,7 @@ export async function listPlaqueBatches(
 ): Promise<{ rows: PlaqueBatchItem[]; total: number }> {
   await ensureDatabaseSchema();
   const conditions: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
 
   if (search && search.trim()) {
     params.push(`%${search.trim()}%`);
@@ -2152,7 +2152,7 @@ export async function deletePlaqueBatch(id: string): Promise<boolean> {
   return (res.rowCount ?? 0) > 0;
 }
 
-function mapRowToInventoryItem(row: any): PlaqueInventoryItem {
+function mapRowToInventoryItem(row: QueryResultRow): PlaqueInventoryItem {
   return {
     id: row.id,
     sn: row.sn ?? undefined,
@@ -2180,7 +2180,7 @@ export async function listInventory(
 ): Promise<{ rows: PlaqueInventoryItem[]; total: number }> {
   await ensureDatabaseSchema();
   const conditions: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
 
   if (search && search.trim()) {
     params.push(`%${search.trim()}%`);
@@ -2262,7 +2262,7 @@ export async function deleteInventoryItem(id: string): Promise<boolean> {
   return (res.rowCount ?? 0) > 0;
 }
 
-function mapRowToIprintItem(row: any): IprintInventoryItem {
+function mapRowToIprintItem(row: QueryResultRow): IprintInventoryItem {
   return {
     id: row.id,
     series: row.series ?? "",
@@ -2294,7 +2294,7 @@ export async function listIprintInventory(
 ): Promise<{ rows: IprintInventoryItem[]; total: number }> {
   await ensureDatabaseSchema();
   const conditions: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
 
   if (search && search.trim()) {
     params.push(`%${search.trim()}%`);
@@ -2423,7 +2423,7 @@ export async function deleteIprintItem(id: string): Promise<boolean> {
   return (res.rowCount ?? 0) > 0;
 }
 
-function mapRowToMedalmadeItem(row: any): MedalmadeInventoryItem {
+function mapRowToMedalmadeItem(row: QueryResultRow): MedalmadeInventoryItem {
   return {
     id: row.id,
     plaqueType: row.plaque_type ?? "",
@@ -2456,7 +2456,7 @@ export async function listMedalmadeInventory(
 ): Promise<{ rows: MedalmadeInventoryItem[]; total: number }> {
   await ensureDatabaseSchema();
   const conditions: string[] = [];
-  const params: any[] = [];
+  const params: unknown[] = [];
   let idx = 1;
 
   if (search && search.trim()) {

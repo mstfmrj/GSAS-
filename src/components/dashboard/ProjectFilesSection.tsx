@@ -74,8 +74,8 @@ export default function ProjectFilesSection({
       if (!res.ok) throw new Error("Failed to load files");
       const json = await res.json();
       setFiles(json.data ?? json ?? []);
-    } catch (err: any) {
-      setError(err?.message || "Failed to load project files");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to load project files");
     } finally {
       setLoading(false);
     }

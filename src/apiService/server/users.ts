@@ -17,16 +17,17 @@ import { AuthorizationError } from "@/helpers/server/authGuard";
 import { ALL_PERMISSION_KEYS, can, isBuiltinRole, normalizePermissions, PermissionKey, UserRole } from "@/lib/types";
 import { findCustomRole } from "@/lib/db";
 import { getPermissionsForUser, roleHasPermission } from "@/lib/permissions";
+import { SessionPayload } from "@/lib/types";
 
 
-async function assertPermission(user: any, permission: Parameters<typeof roleHasPermission>[1], message: string) {
+async function assertPermission(user: SessionPayload | undefined, permission: Parameters<typeof roleHasPermission>[1], message: string) {
   if (user && !(await roleHasPermission(user.role, permission, user.permissions))) {
     throw new AuthorizationError(message);
   }
 }
 
 
-async function assertRoleAssignment(actor: any, targetRole: UserRole) {
+async function assertRoleAssignment(actor: SessionPayload | undefined, targetRole: UserRole) {
   if (!actor) return;
 
   if (targetRole === "super_admin") {
@@ -54,9 +55,9 @@ async function assertRoleAssignment(actor: any, targetRole: UserRole) {
 }
 
 
-export async function getUser(data: Record<string, any>, currentUser?: any) {
+export async function getUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   const { id } = data;
-  if (!id) throw new Error("User ID is required");
+  if (typeof id !== "string" || !id) throw new Error("User ID is required");
   const user = await findUserById(id);
   if (!user) throw new Error("User not found");
   const safeUser = sanitizeUser(user);
@@ -64,7 +65,7 @@ export async function getUser(data: Record<string, any>, currentUser?: any) {
 }
 
 
-export async function getUsers(data?: Record<string, any>, currentUser?: any) {
+export async function getUsers(data?: Record<string, unknown>, currentUser?: SessionPayload) {
   const activity = await getUserActivity();
   const pendingUsers = await getPendingUsersFromDb();
   const onlineCount = activity.filter((u) => u.isOnline).length;
@@ -82,7 +83,7 @@ export async function getUsers(data?: Record<string, any>, currentUser?: any) {
 }
 
 
-export async function addUser(data: Record<string, any>, currentUser?: any) {
+export async function addUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   await assertPermission(currentUser, "users.create", "You do not have permission to add users");
 
   const { name, email, role, permissions } = data;
@@ -110,7 +111,7 @@ export async function addUser(data: Record<string, any>, currentUser?: any) {
   return { pendingUser };
 }
 
-export async function deletePendingUser(data: Record<string, any>, currentUser?: any) {
+export async function deletePendingUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   const { id } = data;
   if (typeof id !== "string" || !id) throw new Error("Pending user ID is required");
   await assertPermission(currentUser, "users.delete", "You do not have permission to remove pending users");
@@ -119,7 +120,7 @@ export async function deletePendingUser(data: Record<string, any>, currentUser?:
   return { success };
 }
 
-export async function approvePendingUser(data: Record<string, any>, currentUser?: any) {
+export async function approvePendingUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   const { id } = data;
   if (typeof id !== "string" || !id) throw new Error("Pending user ID is required");
   await assertPermission(currentUser, "users.edit", "You do not have permission to approve users");
@@ -132,12 +133,12 @@ export async function approvePendingUser(data: Record<string, any>, currentUser?
 
 
 
-export async function updateUser(data: Record<string, any>, currentUser?: any) {
+export async function updateUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   if ("password" in data || "newPassword" in data) {
     throw new Error("Password cannot be changed here.");
   }
   const { id, name, role, permissions } = data;
-  if (!id) throw new Error("User ID is required");
+  if (typeof id !== "string" || !id) throw new Error("User ID is required");
 
   await assertPermission(currentUser, "users.edit", "You do not have permission to edit users");
 
@@ -186,9 +187,10 @@ function validatePermissions(value: unknown): PermissionKey[] | null | undefined
 
 
 
-export async function toggleBlockUser(data: Record<string, any>, currentUser?: any) {
+export async function toggleBlockUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   const { id, blocked } = data;
-  if (!id) throw new Error("User ID is required");
+  if (typeof id !== "string" || !id) throw new Error("User ID is required");
+  if (typeof blocked !== "boolean") throw new Error("Blocked status must be a boolean");
 
   await assertPermission(currentUser, "users.edit", "You do not have permission to block/unblock users");
 
@@ -212,9 +214,9 @@ export async function toggleBlockUser(data: Record<string, any>, currentUser?: a
 
 
 
-export async function deleteUser(data: Record<string, any>, currentUser?: any) {
+export async function deleteUser(data: Record<string, unknown>, currentUser?: SessionPayload) {
   const { id } = data;
-  if (!id) throw new Error("User ID is required");
+  if (typeof id !== "string" || !id) throw new Error("User ID is required");
 
   await assertPermission(currentUser, "users.delete", "You do not have permission to delete users");
 
@@ -236,7 +238,7 @@ export async function deleteUser(data: Record<string, any>, currentUser?: any) {
 
 
 
-export async function updateProfile(data: Record<string, any>, currentUser?: any) {
+export async function updateProfile(data: Record<string, unknown>, currentUser?: SessionPayload) {
   if (!currentUser?.userId) {
     throw new AuthorizationError("Authentication required");
   }

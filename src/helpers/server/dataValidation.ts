@@ -19,7 +19,7 @@ export function isValidEmail(email: string): boolean {
 }
 
 export function validateRequiredFields(
-  data: Record<string, any>,
+  data: Record<string, unknown>,
   requiredFields: string[]
 ): { valid: boolean; missing: string[] } {
   const missing = requiredFields.filter((field) => {

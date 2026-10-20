@@ -38,7 +38,7 @@ export default function PlaqueInventoryForm({ initialData, mode, id, returnUrl }
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  const update = (key: keyof PlaqueInventoryItem, val: any) => {
+  const update = <K extends keyof PlaqueInventoryItem>(key: K, val: PlaqueInventoryItem[K]) => {
     setForm((prev) => ({ ...prev, [key]: val }));
   };
 

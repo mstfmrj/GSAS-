@@ -13,6 +13,8 @@ import {
   updateUser,
   toggleBlockUser,
   deleteUser,
+  deletePendingUser,
+  approvePendingUser,
   updateProfile,
 } from "@/apiService/server/users";
 import { createAuthenticatedActionHandler } from "@/lib/server/api-handler";
@@ -28,6 +30,8 @@ export const POST = createAuthenticatedActionHandler({
     updateUser,
     toggleBlockUser,
     deleteUser,
+    deletePendingUser,
+    approvePendingUser,
     updateProfile,
   },
   access: {
@@ -37,6 +41,8 @@ export const POST = createAuthenticatedActionHandler({
     updateUser:      { permission: "users.edit" },
     toggleBlockUser: { permission: "users.edit" },
     deleteUser:      { permission: "users.delete" },
+    deletePendingUser: { permission: "users.delete" },
+    approvePendingUser: { permission: "users.edit" },
   },
   requireUserFields: true,
 });

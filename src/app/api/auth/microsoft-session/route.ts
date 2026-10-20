@@ -2,12 +2,16 @@ import { NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import {
   createUser,
+  claimPendingUser,
+  findPendingUserByEmail,
   findUserByEmail,
+  requestPendingUser,
   recordSessionStart,
   updateUser,
 } from "@/lib/db";
 import { signJwt, AUTH_COOKIE_NAME } from "@/lib/auth";
 import { getPermissionsForUser, getRoleName } from "@/lib/permissions";
+import type { User } from "@/lib/types";
 
 const SUPER_ADMIN_EMAIL = (process.env.MICROSOFT_SUPER_ADMIN_EMAIL || "mstf.meraj@gmail.com").trim().toLowerCase();
 
@@ -23,8 +27,36 @@ export async function POST() {
   }
 
   try {
-    let user = await findUserByEmail(email);
+    let user: User | undefined = await findUserByEmail(email);
     const name = session?.user?.name?.trim() || email.split("@")[0];
+
+    if (!user) {
+      user = await claimPendingUser(email, name);
+      if (!user) user = await findUserByEmail(email);
+    }
+
+    if (!user && email !== SUPER_ADMIN_EMAIL) {
+      let pendingUser = await findPendingUserByEmail(email);
+      if (!pendingUser) pendingUser = await requestPendingUser(email, name);
+      if (pendingUser.approved) {
+        user = await claimPendingUser(email, name);
+        if (!user) user = await findUserByEmail(email);
+      }
+      if (!user) {
+        const response = NextResponse.json({
+          success: true,
+          data: { status: "pending", email: pendingUser.email },
+        });
+        response.cookies.set(AUTH_COOKIE_NAME, "", {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          maxAge: 0,
+          path: "/",
+        });
+        return response;
+      }
+    }
 
     if (!user) {
       const baseUsername = (email.split("@")[0].replace(/[^a-zA-Z0-9_.-]/g, "").slice(0, 40) || "microsoft-user");
@@ -61,7 +93,7 @@ export async function POST() {
       permissions: await getPermissionsForUser(user),
     };
 
-    const response = NextResponse.json({ success: true, data: { user: safeUser } });
+    const response = NextResponse.json({ success: true, data: { status: "active", user: safeUser } });
     response.cookies.set(AUTH_COOKIE_NAME, token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

@@ -19,7 +19,7 @@ import type { CustomRole, UserRole } from "@/lib/types";
 export default function AdminNewUserPage() {
   const { user, loading } = useAuth();
 
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [assignedRole, setAssignedRole] = useState<UserRole>("viewer");
   const [customRoles, setCustomRoles] = useState<CustomRole[]>([]);
@@ -29,9 +29,9 @@ export default function AdminNewUserPage() {
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [createdUser, setCreatedUser] = useState<{
+  const [pendingUser, setPendingUser] = useState<{
     id: string;
-    username: string;
+    name: string;
     email: string;
     role: UserRole;
   } | null>(null);
@@ -66,25 +66,25 @@ export default function AdminNewUserPage() {
     e.preventDefault();
     setError(null);
 
-    if (!username.trim() || !email.trim()) {
-      setError("Please enter a username and Microsoft account email address.");
+    if (!name.trim() || !email.trim()) {
+      setError("Please enter a full name and Microsoft account email address.");
       return;
     }
 
     setSubmitting(true);
     try {
       const res = await addUser({
-        username: username.trim(),
+        name: name.trim(),
         email: email.trim().toLowerCase(),
         role: assignedRole,
       });
 
-      if (res?.user) {
-        setCreatedUser({
-          id: res.user.id,
-          username: res.user.username,
-          email: res.user.email,
-          role: res.user.role,
+      if (res?.pendingUser) {
+        setPendingUser({
+          id: res.pendingUser.id,
+          name: res.pendingUser.name,
+          email: res.pendingUser.email,
+          role: res.pendingUser.role,
         });
       } else {
         setError("Failed to create user account.");
@@ -98,10 +98,10 @@ export default function AdminNewUserPage() {
   };
 
   const handleReset = () => {
-    setUsername("");
+    setName("");
     setEmail("");
     setAssignedRole("viewer");
-    setCreatedUser(null);
+    setPendingUser(null);
     setError(null);
   };
 
@@ -141,7 +141,7 @@ export default function AdminNewUserPage() {
           <div className="mb-4">
             <h3 className="fw-bold mb-1">Add New User</h3>
             <p className="text-muted small mb-0">
-              Add a GSAS user using the email address they use to sign in with Microsoft.
+              Add an email to Pending. It becomes a GSAS user after the matching Microsoft account signs in.
             </p>
           </div>
 
@@ -153,32 +153,32 @@ export default function AdminNewUserPage() {
               </div>
             )}
 
-            {createdUser ? (
+            {pendingUser ? (
               <div>
                 <div className="alert alert-success d-flex align-items-center gap-2 mb-4">
                   <i className="bi bi-check-circle-fill fs-5"></i>
                   <div>
-                    <strong>User Created Successfully!</strong> Record has been written to PostgreSQL.
+                    <strong>Added to Pending.</strong> This email becomes an actual GSAS user after the matching Microsoft account signs in.
                   </div>
                 </div>
 
                 <div className="p-3 bg-light rounded-3 border mb-4">
-                  <h6 className="fw-bold mb-3">User Details:</h6>
+                  <h6 className="fw-bold mb-3">Pending invitation:</h6>
                   <div className="row g-2 mb-2">
-                    <div className="col-4 text-muted small">Username:</div>
-                    <div className="col-8 fw-semibold">@{createdUser.username}</div>
+                    <div className="col-4 text-muted small">Full Name:</div>
+                    <div className="col-8 fw-semibold">{pendingUser.name}</div>
                   </div>
                   <div className="row g-2 mb-2">
                     <div className="col-4 text-muted small">Email:</div>
-                    <div className="col-8">{createdUser.email}</div>
+                    <div className="col-8">{pendingUser.email}</div>
                   </div>
                   <div className="row g-2 mb-2">
                     <div className="col-4 text-muted small">Assigned Role:</div>
                     <div className="col-8">
                       <span className="badge bg-light text-secondary border">
                         {getUserRoleLabel(
-                          createdUser.role,
-                          customRoles.find(({ roleKey }) => roleKey === createdUser.role)?.name
+                          pendingUser.role,
+                          customRoles.find(({ roleKey }) => roleKey === pendingUser.role)?.name
                         )}
                       </span>
                     </div>
@@ -199,7 +199,7 @@ export default function AdminNewUserPage() {
                 <div className="row g-3 mb-3">
                   <div className="col-md-6">
                     <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
-                      Username <span className="text-danger">*</span>
+                      Full Name <span className="text-danger">*</span>
                     </label>
                     <div className="input-group">
                       <span className="input-group-text bg-light text-muted border-end-0">
@@ -208,9 +208,9 @@ export default function AdminNewUserPage() {
                       <input
                         type="text"
                         className="form-control border-start-0"
-                        placeholder="e.g. sconnor"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                          placeholder="e.g. Sam Connor"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                         disabled={submitting}
                         required
                       />

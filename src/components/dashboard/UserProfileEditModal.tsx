@@ -17,14 +17,14 @@ export default function UserProfileEditModal({
   onClose,
   onProfileUpdated,
 }: UserProfileEditModalProps) {
-  const [username, setUsername] = useState(user.username || "");
+  const [name, setName] = useState(user.name || "");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     if (show) {
-      setUsername(user.username || "");
+      setName(user.name || "");
       setError(null);
       setSuccess(null);
     }
@@ -34,9 +34,9 @@ export default function UserProfileEditModal({
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const trimmedUsername = username.trim();
-    if (!trimmedUsername) {
-      setError("Username cannot be empty.");
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      setError("Full name cannot be empty.");
       return;
     }
 
@@ -44,12 +44,12 @@ export default function UserProfileEditModal({
     setError(null);
     setSuccess(null);
     try {
-      await updateProfile({ username: trimmedUsername });
-      setSuccess("Username updated successfully.");
+      await updateProfile({ name: trimmedName });
+      setSuccess("Full name updated successfully.");
       await onProfileUpdated();
       setTimeout(onClose, 900);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Failed to update username.");
+      setError(err instanceof Error ? err.message : "Failed to update full name.");
     } finally {
       setSaving(false);
     }
@@ -91,22 +91,19 @@ export default function UserProfileEditModal({
             {error && <div className="alert alert-danger py-2" role="alert">{error}</div>}
 
             <div className="mb-2">
-              <label htmlFor="editUsername" className="form-label fw-semibold text-muted small">
-                Username <span className="text-danger">*</span>
+              <label htmlFor="editName" className="form-label fw-semibold text-muted small">
+                Full Name <span className="text-danger">*</span>
               </label>
-              <div className="input-group">
-                <span className="input-group-text bg-light text-muted">@</span>
-                <input
-                  id="editUsername"
-                  type="text"
-                  className="form-control"
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-                  placeholder="username"
-                  required
-                  disabled={saving}
-                />
-              </div>
+              <input
+                id="editName"
+                type="text"
+                className="form-control"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Full name"
+                required
+                disabled={saving}
+              />
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { SessionPayload } from "./types";
 
-const SECRET_KEY = process.env.JWT_SECRET || "fallback_default_jwt_secret_antigravity_key_987654321";
+const SECRET_KEY = process.env.JWT_SECRET || "fallback_default_jwt_secret_key_987654321";
 const key = new TextEncoder().encode(SECRET_KEY);
 
 export const AUTH_COOKIE_NAME = "auth_token";

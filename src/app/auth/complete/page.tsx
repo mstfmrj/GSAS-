@@ -17,6 +17,11 @@ export default function MicrosoftSignInCompletePage() {
         const result = await response.json();
         if (!response.ok || !result.success) throw new Error(result.error || "Sign-in failed");
 
+        if (result.data?.status === "pending") {
+          router.replace("/access-pending");
+          return;
+        }
+
         await refreshUser();
         const requestedPath = new URLSearchParams(window.location.search).get("redirect") || "/dashboard";
         const destination = requestedPath.startsWith("/") && !requestedPath.startsWith("//")

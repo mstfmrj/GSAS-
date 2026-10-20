@@ -27,7 +27,7 @@ function EditUserContent() {
   const [loadingUser, setLoadingUser] = useState(true);
   const [userData, setUserData] = useState<User | null>(null);
 
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [assignedRole, setAssignedRole] = useState<UserRole>("viewer");
   const [customRoles, setCustomRoles] = useState<CustomRole[]>([]);
   const [builtinRoles, setBuiltinRoles] = useState<
@@ -49,7 +49,7 @@ function EditUserContent() {
       .then((data) => {
         if (data?.user) {
           setUserData(data.user);
-          setUsername(data.user.username || "");
+          setName(data.user.name || "");
           setAssignedRole(data.user.role);
         } else {
           setError("User not found or failed to load user.");
@@ -82,8 +82,8 @@ function EditUserContent() {
     e.preventDefault();
     if (!userId) return;
 
-    if (!username.trim()) {
-      setError("Username cannot be empty.");
+    if (!name.trim()) {
+      setError("Full name cannot be empty.");
       return;
     }
 
@@ -94,7 +94,7 @@ function EditUserContent() {
     try {
       const res = await updateUser({
         id: userId,
-        username: username.trim(),
+        name: name.trim(),
         role: assignedRole,
         permissions: null,
       });
@@ -102,7 +102,7 @@ function EditUserContent() {
       if (res?.user) {
         setUserData(res.user);
         setAssignedRole(res.user.role);
-        setSuccessMessage(`User @${res.user.username} details updated successfully.`);
+        setSuccessMessage(`${res.user.name} details updated successfully.`);
       } else {
         setError("The update completed without returning the updated user. Refresh and verify the account before trying again.");
       }
@@ -187,18 +187,18 @@ function EditUserContent() {
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label className="form-label small fw-semibold text-muted text-uppercase mb-1">
-                        Username <span className="text-danger">*</span>
+                        Full Name <span className="text-danger">*</span>
                       </label>
                       <div className="input-group">
                         <span className="input-group-text bg-light text-muted border-end-0">
-                          <i className="bi bi-at"></i>
+                          <i className="bi bi-person"></i>
                         </span>
                         <input
                           type="text"
                           className="form-control border-start-0"
-                          placeholder="username"
-                          value={username}
-                          onChange={(e) => setUsername(e.target.value)}
+                          placeholder="Full name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                           disabled={submitting}
                           required
                         />
@@ -318,10 +318,10 @@ function EditUserContent() {
                             : "#10b981",
                       }}
                     >
-                      {getUserInitial(userData.name || userData.username)}
+                      {getUserInitial(userData.name)}
                     </div>
-                    <h5 className="fw-bold mb-1">{userData.name || userData.username}</h5>
-                    <p className="text-muted small mb-2">@{userData.username}</p>
+                    <h5 className="fw-bold mb-1">{userData.name}</h5>
+                    <p className="text-muted small mb-2">{userData.email}</p>
                     <div className="d-flex justify-content-center gap-2">
                       <span className={`badge ${
                         userData.role === "super_admin"

@@ -1,10 +1,12 @@
 
 
-import { randomBytes } from "node:crypto";
 import {
   getUserActivity,
-  createUser,
+  createPendingUser,
+  approvePendingUser as approvePendingUserInDb,
+  deletePendingUser as removePendingUserFromDb,
   deleteUser as removeUserFromDb,
+  getPendingUsers as getPendingUsersFromDb,
   findUserById,
   isBuiltinRoleAvailable,
   updateUser as updateUserInDb,
@@ -64,11 +66,13 @@ export async function getUser(data: Record<string, any>, currentUser?: any) {
 
 export async function getUsers(data?: Record<string, any>, currentUser?: any) {
   const activity = await getUserActivity();
+  const pendingUsers = await getPendingUsersFromDb();
   const onlineCount = activity.filter((u) => u.isOnline).length;
   const offlineCount = activity.filter((u) => !u.isOnline).length;
 
   return {
     users: activity,
+    pendingUsers,
     summary: {
       total: activity.length,
       online: onlineCount,
@@ -81,10 +85,10 @@ export async function getUsers(data?: Record<string, any>, currentUser?: any) {
 export async function addUser(data: Record<string, any>, currentUser?: any) {
   await assertPermission(currentUser, "users.create", "You do not have permission to add users");
 
-  const { username, email, role, permissions } = data;
+  const { name, email, role, permissions } = data;
 
-  if (typeof username !== "string" || !username.trim()) {
-    throw new Error("Username is required");
+  if (typeof name !== "string" || !name.trim()) {
+    throw new Error("Full name is required");
   }
   if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
     throw new Error("Enter a valid email address for the user's Microsoft sign-in");
@@ -95,17 +99,33 @@ export async function addUser(data: Record<string, any>, currentUser?: any) {
   await assertRoleAssignment(currentUser, targetRole);
   const permissionList = validatePermissions(permissions);
 
-  const user = await createUser({
-    username,
+  const pendingUser = await createPendingUser({
+    name,
     email,
-
-
-    passwordPlain: randomBytes(48).toString("base64url"),
     role: targetRole,
     permissions: permissionList ?? undefined,
+    createdBy: currentUser?.userId,
   });
 
-  return { user };
+  return { pendingUser };
+}
+
+export async function deletePendingUser(data: Record<string, any>, currentUser?: any) {
+  const { id } = data;
+  if (typeof id !== "string" || !id) throw new Error("Pending user ID is required");
+  await assertPermission(currentUser, "users.delete", "You do not have permission to remove pending users");
+  const success = await removePendingUserFromDb(id);
+  if (!success) throw new Error("Pending user not found");
+  return { success };
+}
+
+export async function approvePendingUser(data: Record<string, any>, currentUser?: any) {
+  const { id } = data;
+  if (typeof id !== "string" || !id) throw new Error("Pending user ID is required");
+  await assertPermission(currentUser, "users.edit", "You do not have permission to approve users");
+  const pendingUser = await approvePendingUserInDb(id);
+  if (!pendingUser) throw new Error("Pending user not found");
+  return { pendingUser };
 }
 
 
@@ -113,10 +133,10 @@ export async function addUser(data: Record<string, any>, currentUser?: any) {
 
 
 export async function updateUser(data: Record<string, any>, currentUser?: any) {
-  if ("name" in data || "password" in data || "newPassword" in data) {
-    throw new Error("Full name and password cannot be changed here; update the username instead.");
+  if ("password" in data || "newPassword" in data) {
+    throw new Error("Password cannot be changed here.");
   }
-  const { id, username, role, permissions } = data;
+  const { id, name, role, permissions } = data;
   if (!id) throw new Error("User ID is required");
 
   await assertPermission(currentUser, "users.edit", "You do not have permission to edit users");
@@ -132,11 +152,14 @@ export async function updateUser(data: Record<string, any>, currentUser?: any) {
   if (role) {
     await assertRoleAssignment(currentUser, role as UserRole);
   }
+  if (name !== undefined && (typeof name !== "string" || !name.trim())) {
+    throw new Error("Full name cannot be empty");
+  }
   const permissionList = permissions === undefined ? (role ? null : undefined) : validatePermissions(permissions);
 
   const user = await updateUserInDb({
     id,
-    username,
+    name: typeof name === "string" ? name.trim() : undefined,
     role: role as UserRole | undefined,
     permissions: permissionList,
   });
@@ -182,7 +205,7 @@ export async function toggleBlockUser(data: Record<string, any>, currentUser?: a
   }
 
   const user = await toggleUserBlock(id, blocked);
-  return { user, message: `User @${user.username} is now ${user.isBlocked ? "blocked" : "unblocked"}.` };
+  return { user, message: `${user.name} is now ${user.isBlocked ? "blocked" : "unblocked"}.` };
 }
 
 
@@ -207,7 +230,7 @@ export async function deleteUser(data: Record<string, any>, currentUser?: any) {
   }
 
   const success = await removeUserFromDb(id);
-  return { success, message: `User @${user.username} deleted successfully` };
+  return { success, message: `User ${user.name} deleted successfully` };
 }
 
 
@@ -217,20 +240,20 @@ export async function updateProfile(data: Record<string, any>, currentUser?: any
   if (!currentUser?.userId) {
     throw new AuthorizationError("Authentication required");
   }
-  if ("name" in data || "currentPassword" in data || "newPassword" in data || "password" in data) {
-    throw new Error("Only the username can be changed in your profile.");
+  if ("username" in data || "currentPassword" in data || "newPassword" in data || "password" in data) {
+    throw new Error("Only your full name can be changed in your profile.");
   }
 
-  const { username } = data;
-  const updateFields: { id: string; username?: string } = {
+  const { name } = data;
+  const updateFields: { id: string; name?: string } = {
     id: currentUser.userId,
   };
 
-  if (username !== undefined) {
-    if (typeof username !== "string" || !username.trim()) {
-      throw new Error("Username cannot be empty");
+  if (name !== undefined) {
+    if (typeof name !== "string" || !name.trim()) {
+      throw new Error("Full name cannot be empty");
     }
-    updateFields.username = username.trim();
+    updateFields.name = name.trim();
   }
 
   const user = await updateUserInDb(updateFields);

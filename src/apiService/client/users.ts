@@ -65,9 +65,19 @@ export const deleteUser = async (data: Record<string, any>) => {
   }
 };
 
+export const deletePendingUser = async (data: Record<string, any>) => {
+  const response = await callApi(API_URL, { ...data, action: "deletePendingUser" }, true, true);
+  return response?.data;
+};
+
+export const approvePendingUser = async (data: Record<string, any>) => {
+  const response = await callApi(API_URL, { ...data, action: "approvePendingUser" }, true, true);
+  return response?.data;
+};
+
 
 export const updateProfile = async (data: {
-  username?: string;
+  name?: string;
 }) => {
   const response = await callApi(API_URL, { ...data, action: "updateProfile" }, true, true);
   return response?.data;

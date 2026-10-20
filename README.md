@@ -1,164 +1,85 @@
-# GORD
 # GSAS
 
-A modern, production-ready starter boilerplate built with **Next.js (App Router)**, a secure **Username & Email Authentication** backend system using **bcrypt** and **JWT (HTTP-only cookies)**, and a real-time **Admin UI Customization Studio**.
-
----
-
-##  Features
+GSAS is a Next.js application for managing GSAS projects, certification information, plaque and print inventories, users, roles, and permissions. Authentication uses Microsoft sign-in through Auth.js. PostgreSQL stores application data and GSAS user records.
 
 ## Features
 
-- **GSAS Project Management**
-  - Manage projects across Construction Management (CM), Design & Build (DB), and Operations (OP).
-  - Track project details, certification status, ratings, dates, and related files.
-  - View project summaries, reports, and certification rating charts.
+- Manage Construction Management, Design & Build, and Operations projects.
+- Track certification status, ratings, project dates, and related files.
+- Manage plaque batches, plaque inventory, iPrint stock, and MedalMade orders.
+- View dashboard summaries, reports, and certification charts.
+- Manage users, built-in roles, custom roles, and permissions.
+- Customize dashboard appearance and themes.
 
-- **Plaque and Print Inventory**
-  - Manage plaque batches and plaque inventory.
-  - Track iPrint stock and MedalMade plaque orders, deliveries, and remaining quantities.
-  - Review inventory and project status from the dashboard.
+## Requirements
 
-- **Dashboard and Reporting**
-  - View project totals, issued certificates, pending actions, and print and frame stock.
-  - Explore certified project distributions by category and rating.
-  - Filter project data and generate reports.
+- Node.js and npm
+- PostgreSQL
+- A Microsoft Entra app registration configured for personal Microsoft accounts and organizational accounts
 
-- **User and Role Management**
-  - Create and manage user accounts.
-  - Assign built-in or custom roles with granular permissions.
-  - Restrict access to dashboard, user, project, GSAS, and plaque features.
+## Local setup
 
-- **Authentication and Account Security**
-  - Sign in with a username or email address.
-  - Hash passwords with `bcryptjs` and use JWT sessions stored in HTTP-only cookies.
-  - Protect dashboard routes and provide password recovery.
+1. Clone the repository and open its folder:
 
-- **Theme Customization**
-  - Customize the primary color, font family, font size, corner radius, and sidebar appearance.
-  - Apply changes in the browser and save theme preferences locally.
+   ```bash
+   git clone https://github.com/mstfmrj/GSAS-.git
+   cd GSAS-
+   ```
 
-- **Next.js App Router**
-  - Keep the frontend pages and backend API routes in one Next.js application.
-  - Use server and client components for the relevant parts of the app.
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a PostgreSQL database and set up a Microsoft app registration. Add a web redirect URI for local development:
+
+   ```text
+   http://localhost:3000/api/auth/callback/microsoft-entra-id
+   ```
+
+4. Create `.env.local` in the project root. Fill in the values for your own database and Microsoft app registration:
+
+   ```dotenv
+   DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/DATABASE_NAME
+   AUTH_MICROSOFT_ENTRA_ID_ID=YOUR_MICROSOFT_APPLICATION_CLIENT_ID
+   AUTH_MICROSOFT_ENTRA_ID_SECRET=YOUR_MICROSOFT_CLIENT_SECRET_VALUE
+   AUTH_SECRET=GENERATE_A_LONG_RANDOM_SECRET
+   JWT_SECRET=GENERATE_ANOTHER_LONG_RANDOM_SECRET
+   MICROSOFT_LOGIN_ENABLED=true
+   MICROSOFT_TENANT_ID=common
+   MICROSOFT_SUPER_ADMIN_EMAIL=admin@example.com (for starters)
+   ```
+
+   `common` allows personal Microsoft accounts and work or school accounts. Set `MICROSOFT_SUPER_ADMIN_EMAIL` to the email that should receive the GSAS Super Admin role. The first sign-in creates a GSAS user record; other first-time Microsoft users are created as viewers.
+
+   Keep `.env.local` private. It is ignored by Git and must not be committed. For a deployed site, add these variables in the hosting provider's environment-variable settings and register the production callback URL there too:
+
+   ```text
+   https://YOUR_DOMAIN/api/auth/callback/microsoft-entra-id
+   ```
 
 
-## Project Structure
+## Available scripts
 
-src/
-├── app/
-<<<<<<< HEAD
-│   ├── (auth)/                         # Login, registration, and password recovery pages
-│   ├── (protected)/                    # Authenticated dashboard and user pages
-│   │   ├── dashboard/                  # Dashboard, users, roles, permissions, and projects
-│   │   └── users/
-│   ├── api/
-│   │   ├── auth/                       # Login, registration, session, and password recovery
-│   │   ├── data/                       # Dashboard statistics
-│   │   ├── gsas/                       # GSAS project and reporting endpoints
-│   │   ├── project-files/              # Project file endpoints
-│   │   ├── plaque-batches/             # Plaque batch endpoints
-│   │   ├── plaque-inventory/           # Plaque inventory endpoints
-│   │   ├── iprint-inventory/           # iPrint inventory endpoints
-│   │   ├── medal-made-inventory/       # MedalMade inventory endpoints
-│   │   ├── roles/                      # Role and permission endpoints
-│   │   └── users/                      # User management endpoints
-│   ├── globals.css                     # Global styles
-│   ├── dashboard.css                   # Dashboard styles
-│   ├── layout.tsx                      # Root layout
-│   └── page.tsx                        # Root route
-├── apiService/
-│   ├── client/                         # Client-side API services
-│   └── server/                         # Server-side API services
-├── components/
-│   ├── dashboard/                      # Dashboard, project, inventory, and admin UI
-│   └── main/                           # App providers and layout components
-├── context/                            # Authentication and theme state
-├── helpers/
-│   ├── client/                         # Client-side API and data helpers
-│   └── server/                         # Authentication and validation helpers
-├── lib/
-│   ├── seeds/                          # Seed data for projects and inventory
-│   ├── server/                         # Shared API handlers and responses
-│   ├── db.ts                           # PostgreSQL access and schema setup
-│   ├── auth.ts                         # Authentication utilities
-│   ├── permissions.ts                  # Permission helpers
-│   └── types.ts                        # Shared TypeScript types
-├── middleware.ts                       # Protected route handling
-└── types/
-    └── declarations.d.ts               # Type declarations
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local Next.js development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Start the production server after building |
+| `npm run lint` | Run ESLint |
 
-public/                                 # Static assets and GSAS branding
-scripts/                                # Seed generation scripts
-README.md
-package.json
-next.config.ts
-tsconfig.json
-eslint.config.mjs
+## Project layout
 
-##  Getting Started
+- `src/app/` — Next.js pages and API routes
+- `src/apiService/` — Client-side and server-side API operations
+- `src/components/` — Shared UI and dashboard components
+- `src/context/` — Authentication and theme contexts
+- `src/lib/` — Database access, permissions, data types, and seed data
+- `public/` — GSAS logos and static assets
+- `scripts/` — Utility scripts for generating seed data
+- `auth.ts` — Auth.js Microsoft provider configuration
 
-### 1. Start the Development Server
+## Deployment notes
 
-```bash
-cd /Users/mustafa/FOLDER2/FOLDER3/scratch/GSAS
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Password Recovery Email Setup
-
-The forgot-password form sends a six-digit verification code through Resend. Configure these server-side environment variables in `.env.local` for development and in your hosting provider for production:
-
-| Variable | Purpose |
-| :--- | :--- |
-| `RESEND_API_KEY` | Resend API key used to send recovery emails |
-| `RESEND_FROM_EMAIL` | Sender address verified with Resend, for example `GORD <noreply@your-verified-domain.com>` |
-| `PASSWORD_RESET_CODE_SECRET` | Random secret of at least 32 bytes used to hash recovery codes |
-
-Create a code secret with `openssl rand -hex 32`. Never expose these variables with a `NEXT_PUBLIC_` prefix or commit them to source control. The database creates the recovery-code table automatically. Codes expire after 10 minutes, can be tried up to five times, and a new code can be requested once per minute for an account.
-=======
-│   ├── (auth)/                      # Login, registration, and password recovery
-│   ├── (protected)/                 # Authenticated pages
-│   │   ├── dashboard/               # Dashboard, users, roles, permissions, and projects
-│   │   └── users/                   # User management
-│   ├── api/                          # Backend API routes
-│   │   ├── auth/                    # Authentication and password recovery
-│   │   ├── data/                    # Dashboard statistics
-│   │   ├── gsas/                    # GSAS projects, summaries, and reports
-│   │   ├── project-files/           # Project files
-│   │   ├── plaque-batches/          # Plaque batches
-│   │   ├── plaque-inventory/        # Plaque inventory
-│   │   ├── iprint-inventory/        # iPrint inventory
-│   │   ├── medal-made-inventory/    # MedalMade inventory
-│   │   ├── roles/                   # Roles and permissions
-│   │   └── users/                   # User management API
-│   ├── globals.css                  # Global styles
-│   ├── dashboard.css                # Dashboard styles
-│   ├── layout.tsx                   # Root layout
-│   └── page.tsx                     # Root page
-├── apiService/
-│   ├── client/                      # Client-side API services
-│   └── server/                      # Server-side API services
-├── components/
-│   ├── dashboard/                  # Dashboard, project, inventory, and admin UI
-│   └── main/                       # Providers and layout components
-├── context/                         # Authentication and theme state
-├── helpers/
-│   ├── client/                      # Client-side API and data helpers
-│   └── server/                      # Authentication and validation helpers
-├── lib/
-│   ├── seeds/                       # Project and inventory seed data
-│   ├── server/                      # Shared API handlers and responses
-│   ├── db.ts                        # PostgreSQL access and schema setup
-│   ├── auth.ts                      # Authentication utilities
-│   ├── permissions.ts               # Permission helpers
-│   └── types.ts                     # Shared TypeScript types
-├── types/                           # TypeScript declarations
-└── middleware.ts                    # Protected route handling
-
-public/                              # Static assets and GSAS branding
-scripts/                             # Seed generation scripts
-```
-
+The hosting provider must have access to a PostgreSQL database and the environment variables above. Set the Microsoft app registration's redirect URI to the deployed domain's callback URL. Use a separate `AUTH_SECRET` and `JWT_SECRET` for each environment, and never place real secrets in this README or in GitHub.

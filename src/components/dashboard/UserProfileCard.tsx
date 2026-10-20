@@ -32,14 +32,13 @@ export default function UserProfileCard({ user }: UserProfileCardProps) {
           </div>
           <div>
             <h4 className="mb-1 fw-bold" style={{ color: theme.primaryColor }}>
-              {user.name || user.username}
+              {user.name || "—"}
             </h4>
             <div className="d-flex align-items-center gap-2 flex-wrap">
               <span className="badge bg-dark text-white px-2 py-1" style={{ fontSize: "11px" }}>
                 <i className="bi bi-shield-check me-1" style={{ color: theme.primaryColor }}></i>
                 {roleLabel}
               </span>
-              <small className="text-muted">@{user.username}</small>
             </div>
           </div>
         </div>
@@ -53,14 +52,8 @@ export default function UserProfileCard({ user }: UserProfileCardProps) {
           </div>
           <div className="col-12 col-md-6">
             <div className="p-3 bg-light rounded-3 border">
-              <small className="text-muted d-block fw-semibold mb-1">Username</small>
-              <div className="fw-semibold text-dark fs-6">@{user.username}</div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6">
-            <div className="p-3 bg-light rounded-3 border">
               <small className="text-muted d-block fw-semibold mb-1">Email</small>
-              <div className="fw-semibold text-dark fs-6">{user.email || `${user.username}@example.com`}</div>
+              <div className="fw-semibold text-dark fs-6">{user.email || "—"}</div>
             </div>
           </div>
           <div className="col-12 col-md-6">

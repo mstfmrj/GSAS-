@@ -17,6 +17,7 @@ import {
   UserRole,
   UserWithPassword,
   UserActivity,
+  PendingUser,
   normalizePermissions,
   BUILTIN_ROLE_PERMISSIONS,
   isBuiltinRoleLabel,
@@ -90,6 +91,24 @@ export async function ensureDatabaseSchema(): Promise<void> {
           is_blocked BOOLEAN NOT NULL DEFAULT FALSE
         );
       `);
+
+      await query(`
+        CREATE TABLE IF NOT EXISTS pending_users (
+          id VARCHAR(64) PRIMARY KEY,
+          username VARCHAR(64) NOT NULL,
+          name VARCHAR(128) NOT NULL DEFAULT '',
+          email VARCHAR(255) NOT NULL,
+          role VARCHAR(64) NOT NULL DEFAULT 'viewer',
+          user_permissions JSONB,
+          approved BOOLEAN NOT NULL DEFAULT TRUE,
+          created_by VARCHAR(64) REFERENCES users(id) ON DELETE SET NULL,
+          created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        );
+      `);
+      await query(`ALTER TABLE pending_users ADD COLUMN IF NOT EXISTS name VARCHAR(128) NOT NULL DEFAULT '';`);
+      await query(`UPDATE pending_users SET name = username WHERE name = '';`);
+      await query(`ALTER TABLE pending_users ADD COLUMN IF NOT EXISTS approved BOOLEAN NOT NULL DEFAULT TRUE;`);
+      await query(`CREATE UNIQUE INDEX IF NOT EXISTS pending_users_email_unique ON pending_users (LOWER(email));`);
 
       await query(`
         ALTER TABLE users ALTER COLUMN role TYPE VARCHAR(64);
@@ -682,8 +701,8 @@ function mapRowToUserWithPassword(row: any): UserWithPassword {
   return {
     id: row.id,
     username: row.username,
+    name: row.name || row.username,
     email: row.email,
-    name: row.name,
     role: row.role as UserRole,
     roleName: row.custom_role_name || undefined,
     permissions: row.user_permissions == null
@@ -1009,6 +1028,177 @@ export async function findUserByEmail(email: string): Promise<UserWithPassword |
   );
   if (res.rows.length === 0) return undefined;
   return mapRowToUserWithPassword(res.rows[0]);
+}
+
+function mapRowToPendingUser(row: any): PendingUser {
+  return {
+    id: row.id,
+    name: row.name || row.username,
+    email: row.email,
+    role: row.role as UserRole,
+    roleName: row.custom_role_name || undefined,
+    permissions: row.user_permissions == null
+      ? undefined
+      : normalizePermissions(row.user_permissions as PermissionKey[]),
+    createdAt: row.created_at instanceof Date ? row.created_at.toISOString() : String(row.created_at),
+    approved: Boolean(row.approved),
+  };
+}
+
+export async function getPendingUsers(): Promise<PendingUser[]> {
+  await ensureDatabaseSchema();
+  const result = await query(
+    `SELECT pending_users.*, custom_roles.name AS custom_role_name
+     FROM pending_users
+     LEFT JOIN custom_roles ON custom_roles.role_key = pending_users.role
+     ORDER BY pending_users.created_at ASC`
+  );
+  return result.rows.map(mapRowToPendingUser);
+}
+
+export async function createPendingUser(data: {
+  name: string;
+  email: string;
+  role: UserRole;
+  createdBy?: string;
+  permissions?: PermissionKey[];
+}): Promise<PendingUser> {
+  await ensureDatabaseSchema();
+  const name = data.name.trim();
+  const email = data.email.trim().toLowerCase();
+  const existingUser = await findUserByEmail(email);
+  if (existingUser) throw new Error(`Email "${email}" already belongs to an active user`);
+  const existingPending = await query(`SELECT 1 FROM pending_users WHERE LOWER(email) = $1 LIMIT 1`, [email]);
+  if (existingPending.rowCount) throw new Error(`Email "${email}" is already pending`);
+
+  const id = `pending_${crypto.randomUUID()}`;
+  const result = await query(
+    `INSERT INTO pending_users (id, username, name, email, role, user_permissions, created_by, approved)
+     VALUES ($1, $2, $3, $4, $5, $6::jsonb, $7, TRUE)
+     RETURNING *, NULL::text AS custom_role_name`,
+    [id, `member-${crypto.randomUUID()}`, name, email, data.role, data.permissions ? JSON.stringify(normalizePermissions(data.permissions)) : null, data.createdBy ?? null]
+  );
+  return mapRowToPendingUser(result.rows[0]);
+}
+
+export async function requestPendingUser(email: string, name: string): Promise<PendingUser> {
+  await ensureDatabaseSchema();
+  const cleanEmail = email.trim().toLowerCase();
+  const cleanName = name.trim().slice(0, 128) || cleanEmail.split("@")[0].slice(0, 128);
+  await query(
+    `INSERT INTO pending_users (id, username, name, email, role, approved)
+     VALUES ($1, $2, $3, $4, 'viewer', FALSE)
+     ON CONFLICT DO NOTHING`,
+    [`pending_${crypto.randomUUID()}`, `member-${crypto.randomUUID()}`, cleanName, cleanEmail]
+  );
+  const result = await query(
+    `SELECT pending_users.*, custom_roles.name AS custom_role_name
+     FROM pending_users
+     LEFT JOIN custom_roles ON custom_roles.role_key = pending_users.role
+     WHERE LOWER(pending_users.email) = $1 LIMIT 1`,
+    [cleanEmail]
+  );
+  if (!result.rows[0]) throw new Error("Could not create an access request for this Microsoft account");
+  return mapRowToPendingUser(result.rows[0]);
+}
+
+export async function approvePendingUser(id: string): Promise<PendingUser | undefined> {
+  await ensureDatabaseSchema();
+  const result = await query(
+    `UPDATE pending_users SET approved = TRUE WHERE id = $1
+     RETURNING *, NULL::text AS custom_role_name`,
+    [id]
+  );
+  return result.rows[0] ? mapRowToPendingUser(result.rows[0]) : undefined;
+}
+
+export async function findPendingUserById(id: string): Promise<PendingUser | undefined> {
+  await ensureDatabaseSchema();
+  const result = await query(
+    `SELECT pending_users.*, custom_roles.name AS custom_role_name
+     FROM pending_users
+     LEFT JOIN custom_roles ON custom_roles.role_key = pending_users.role
+     WHERE pending_users.id = $1 LIMIT 1`,
+    [id]
+  );
+  return result.rows[0] ? mapRowToPendingUser(result.rows[0]) : undefined;
+}
+
+export async function findPendingUserByEmail(email: string): Promise<PendingUser | undefined> {
+  await ensureDatabaseSchema();
+  const result = await query(
+    `SELECT pending_users.*, custom_roles.name AS custom_role_name
+     FROM pending_users
+     LEFT JOIN custom_roles ON custom_roles.role_key = pending_users.role
+     WHERE LOWER(pending_users.email) = $1 LIMIT 1`,
+    [email.trim().toLowerCase()]
+  );
+  return result.rows[0] ? mapRowToPendingUser(result.rows[0]) : undefined;
+}
+
+export async function deletePendingUser(id: string): Promise<boolean> {
+  await ensureDatabaseSchema();
+  const result = await query(`DELETE FROM pending_users WHERE id = $1`, [id]);
+  return (result.rowCount ?? 0) > 0;
+}
+
+export async function claimPendingUser(email: string, displayName?: string): Promise<UserWithPassword | undefined> {
+  await ensureDatabaseSchema();
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    const pendingResult = await client.query(
+      `SELECT * FROM pending_users WHERE LOWER(email) = $1 AND approved = TRUE FOR UPDATE`,
+      [email.trim().toLowerCase()]
+    );
+    const pending = pendingResult.rows[0];
+    if (!pending) {
+      await client.query("ROLLBACK");
+      return undefined;
+    }
+
+    const existingResult = await client.query(
+      `SELECT users.*, custom_roles.name AS custom_role_name FROM users
+       LEFT JOIN custom_roles ON custom_roles.role_key = users.role
+       WHERE LOWER(users.email) = $1 LIMIT 1`,
+      [email.trim().toLowerCase()]
+    );
+    if (existingResult.rows[0]) {
+      await client.query(`DELETE FROM pending_users WHERE id = $1`, [pending.id]);
+      await client.query("COMMIT");
+      return mapRowToUserWithPassword(existingResult.rows[0]);
+    }
+
+    const username = `member-${crypto.randomUUID()}`;
+
+    let role = pending.role as UserRole;
+    if (role.startsWith("custom:")) {
+      const roleResult = await client.query(`SELECT 1 FROM custom_roles WHERE role_key = $1`, [role]);
+      if (!roleResult.rowCount) role = "viewer";
+    } else if (role !== "viewer" && role !== "moderator" && role !== "admin") {
+      role = "viewer";
+    } else {
+      const roleResult = await client.query(`SELECT is_deleted FROM builtin_role_permissions WHERE role_key = $1`, [role]);
+      if (roleResult.rows[0]?.is_deleted) role = "viewer";
+    }
+
+    const passwordHash = bcrypt.hashSync(crypto.randomUUID() + crypto.randomUUID(), bcrypt.genSaltSync(10));
+    const id = `usr_${Date.now()}_${crypto.randomUUID().slice(0, 8)}`;
+    const inserted = await client.query(
+      `INSERT INTO users (id, username, email, name, role, password_hash, user_permissions)
+       VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb)
+       RETURNING *, NULL::text AS custom_role_name`,
+      [id, username, email.trim().toLowerCase(), String(pending.name || displayName?.trim() || email.split("@")[0]).trim(), role, passwordHash, pending.user_permissions]
+    );
+    await client.query(`DELETE FROM pending_users WHERE id = $1`, [pending.id]);
+    await client.query("COMMIT");
+    return mapRowToUserWithPassword(inserted.rows[0]);
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
 }
 
 export async function findUserByUsernameOrEmail(identifier: string): Promise<UserWithPassword | undefined> {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const SECRET_KEY = process.env.JWT_SECRET || "fallback_default_jwt_secret_antigravity_key_987654321";
+const SECRET_KEY = process.env.JWT_SECRET || "fallback_default_jwt_secret_key_987654321";
 
 const key = new TextEncoder().encode(SECRET_KEY);
 

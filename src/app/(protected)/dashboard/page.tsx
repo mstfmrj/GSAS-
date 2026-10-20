@@ -17,9 +17,9 @@ import UserProfileEditModal from "@/components/dashboard/UserProfileEditModal";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import GSASProjectsDashboard from "@/components/dashboard/GSASProjectsDashboard";
-import type { UserActivity, UserRole } from "@/lib/types";
+import type { PendingUser, UserActivity, UserRole } from "@/lib/types";
 import { can, getUserRoleLabel, userHasPermission } from "@/lib/types";
-import { getUsers, deleteUser, toggleBlockUser } from "@/apiService/client/users";
+import { getUsers, deleteUser, deletePendingUser, approvePendingUser, toggleBlockUser } from "@/apiService/client/users";
 import { formatMinutes, timeAgo, prioritizeAdmins } from "@/helpers/client/dataHelpers";
 
 type ActiveTab = "analytics" | "users" | "customizer" | "profile";
@@ -36,6 +36,7 @@ function DashboardContent() {
     : "analytics";
 
   const [activityUsers, setActivityUsers] = useState<UserActivity[]>([]);
+  const [pendingUsers, setPendingUsers] = useState<PendingUser[]>([]);
   const [activitySummary, setActivitySummary] = useState({ total: 0, online: 0, offline: 0 });
 
   const [deleteTarget, setDeleteTarget] = useState<UserActivity | null>(null);
@@ -58,7 +59,7 @@ function DashboardContent() {
 
       if (res?.user) {
         setActionMessage({
-          text: `User @${res.user.username} is now ${res.user.isBlocked ? "blocked/banned" : "unblocked"}.`,
+          text: `${res.user.name} is now ${res.user.isBlocked ? "blocked/banned" : "unblocked"}.`,
           type: res.user.isBlocked ? "danger" : "success",
         });
         setBlockTarget(null);
@@ -79,11 +80,42 @@ function DashboardContent() {
       const data = await getUsers();
       if (data) {
         setActivityUsers(data.users || []);
+        setPendingUsers(data.pendingUsers || []);
         setActivitySummary(data.summary || { total: 0, online: 0, offline: 0 });
       }
     } catch {
     }
   }, []);
+
+  const handleDeletePendingUser = async (pendingUser: PendingUser) => {
+    setActionMessage(null);
+    try {
+      const result = await deletePendingUser({ id: pendingUser.id });
+      if (result?.success) {
+        setPendingUsers((current) => current.filter((item) => item.id !== pendingUser.id));
+        setActionMessage({ text: `${pendingUser.email} was removed from Pending.`, type: "success" });
+      } else {
+        setActionMessage({ text: "Could not remove pending user.", type: "danger" });
+      }
+    } catch {
+      setActionMessage({ text: "Network error removing pending user.", type: "danger" });
+    }
+  };
+
+  const handleApprovePendingUser = async (pendingUser: PendingUser) => {
+    setActionMessage(null);
+    try {
+      const result = await approvePendingUser({ id: pendingUser.id });
+      if (result?.pendingUser) {
+        setPendingUsers((current) => current.map((item) => item.id === pendingUser.id ? result.pendingUser : item));
+        setActionMessage({ text: `${pendingUser.email} is approved. Their waiting screen will grant access automatically.`, type: "success" });
+      } else {
+        setActionMessage({ text: "Could not approve this access request.", type: "danger" });
+      }
+    } catch {
+      setActionMessage({ text: "Network error approving access request.", type: "danger" });
+    }
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -99,7 +131,7 @@ function DashboardContent() {
     try {
       const res = await deleteUser({ id: deleteTarget.userId });
       if (res?.success) {
-        setActionMessage({ text: `User @${deleteTarget.username} was removed.`, type: "success" });
+        setActionMessage({ text: `User ${deleteTarget.name} was removed.`, type: "success" });
         setDeleteTarget(null);
         fetchActivity();
       } else {
@@ -232,11 +264,11 @@ function DashboardContent() {
                                         : "#10b981",
                                   }}
                                 >
-                                  {(u.name || u.username).charAt(0).toUpperCase()}
+                                  {(u.name || "?").charAt(0).toUpperCase()}
                                 </div>
                                 <div>
-                                  <div className="fw-bold">{u.name || u.username}</div>
-                                  <small className="text-muted">@{u.username} &bull; {u.email}</small>
+                                  <div className="fw-bold">{u.name || "—"}</div>
+                                  <small className="text-muted">{u.email}</small>
                                 </div>
                               </div>
                             </td>
@@ -315,6 +347,62 @@ function DashboardContent() {
                   </table>
                 </div>
               </div>
+
+              <div className="d-flex justify-content-between align-items-center mt-5 mb-3">
+                <div>
+                  <h4 className="fw-bold mb-1">Pending</h4>
+                  <p className="text-muted small mb-0">Admin-added entries are approved; first-time sign-in requests need approval before becoming users.</p>
+                </div>
+                <span className="badge bg-warning-subtle text-warning-emphasis border">{pendingUsers.length} pending</span>
+              </div>
+              <div className="apex-card">
+                <div className="table-responsive">
+                  <table className="table table-hover align-middle mb-0">
+                    <thead className="table-light">
+                      <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Assigned Role</th>
+                        <th>Access</th>
+                        <th>Added</th>
+                        <th className="text-end">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pendingUsers.map((pendingUser) => (
+                        <tr key={pendingUser.id}>
+                          <td className="fw-semibold">{pendingUser.name || "—"}</td>
+                          <td>{pendingUser.email}</td>
+                          <td><span className="badge bg-light text-secondary border">{getUserRoleLabel(pendingUser.role, pendingUser.roleName)}</span></td>
+                          <td>
+                            {pendingUser.approved ? (
+                              <span className="badge bg-success-subtle text-success-emphasis border">Approved</span>
+                            ) : (
+                              <span className="badge bg-warning-subtle text-warning-emphasis border">Awaiting approval</span>
+                            )}
+                          </td>
+                          <td className="small text-muted">{new Date(pendingUser.createdAt).toLocaleDateString()}</td>
+                          <td className="text-end">
+                            {!pendingUser.approved && userHasPermission(user, "users.edit") && (
+                              <button type="button" className="btn btn-sm btn-outline-success me-1" onClick={() => void handleApprovePendingUser(pendingUser)} title="Approve access">
+                                <i className="bi bi-check-lg me-1"></i>Approve
+                              </button>
+                            )}
+                            {userHasPermission(user, "users.delete") && (
+                              <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => void handleDeletePendingUser(pendingUser)} title="Remove pending user">
+                                <i className="bi bi-trash-fill"></i>
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                      {pendingUsers.length === 0 && (
+                        <tr><td colSpan={6} className="text-center py-4 text-muted">No pending users</td></tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           )}
 
@@ -387,11 +475,11 @@ function DashboardContent() {
             <p className="text-muted mb-4">
               {blockTarget.isBlocked ? (
                 <>
-                  Are you sure you want to restore access for <strong>@{blockTarget.username}</strong> ({blockTarget.email})? They will be able to log in and use the application again.
+                  Are you sure you want to restore access for <strong>{blockTarget.name}</strong> ({blockTarget.email})? They will be able to log in and use the application again.
                 </>
               ) : (
                 <>
-                  Are you sure you want to block/ban <strong>@{blockTarget.username}</strong> ({blockTarget.email})? They will be prevented from logging in and their active sessions will be terminated.
+                  Are you sure you want to block/ban <strong>{blockTarget.name}</strong> ({blockTarget.email})? They will be prevented from logging in and their active sessions will be terminated.
                 </>
               )}
             </p>
@@ -453,7 +541,7 @@ function DashboardContent() {
             </div>
 
             <p className="text-muted mb-4">
-              Are you sure you want to permanently remove user <strong>@{deleteTarget.username}</strong> ({deleteTarget.email})? They will no longer be able to log in or access the application.
+              Are you sure you want to permanently remove user <strong>{deleteTarget.name}</strong> ({deleteTarget.email})? They will no longer be able to log in or access the application.
             </p>
 
             <div className="d-flex justify-content-end gap-2">

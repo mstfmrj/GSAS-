@@ -1,6 +1,6 @@
 import type { UserRole } from "@/lib/types";
 
-export function prioritizeAdmins<T extends { role: UserRole; name?: string; username: string }>(
+export function prioritizeAdmins<T extends { role: UserRole; name: string }>(
   users: T[]
 ): T[] {
   const priority = (role: UserRole) =>
@@ -8,8 +8,7 @@ export function prioritizeAdmins<T extends { role: UserRole; name?: string; user
 
   return [...users].sort((a, b) =>
     priority(a.role) - priority(b.role) ||
-    (a.name || a.username).localeCompare(b.name || b.username) ||
-    a.username.localeCompare(b.username)
+    a.name.localeCompare(b.name)
   );
 }
 
@@ -44,7 +43,7 @@ export function formatDate(iso?: string | null): string {
   });
 }
 
-export function filterUsers<T extends { username: string; name?: string; email: string }>(
+export function filterUsers<T extends { name: string; email: string }>(
   users: T[],
   query: string
 ): T[] {
@@ -52,15 +51,14 @@ export function filterUsers<T extends { username: string; name?: string; email: 
   const q = query.trim().toLowerCase();
   return users.filter(
     (u) =>
-      u.username.toLowerCase().includes(q) ||
-      (u.name && u.name.toLowerCase().includes(q)) ||
+      u.name.toLowerCase().includes(q) ||
       u.email.toLowerCase().includes(q)
   );
 }
 
-export function getUserInitial(nameOrUsername?: string): string {
-  if (!nameOrUsername || !nameOrUsername.trim()) return "?";
-  return nameOrUsername.trim().charAt(0).toUpperCase();
+export function getUserInitial(name?: string): string {
+  if (!name || !name.trim()) return "?";
+  return name.trim().charAt(0).toUpperCase();
 }
 
 export function getRoleBadgeClass(role?: string): string {

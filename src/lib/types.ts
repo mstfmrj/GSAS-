@@ -379,6 +379,17 @@ export interface UserActivity {
   isBlocked?: boolean;
 }
 
+export interface PendingUser {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  roleName?: string;
+  permissions?: PermissionKey[];
+  createdAt: string;
+  approved: boolean;
+}
+
 export const ROLE_RANK: Record<BuiltinRole, number> = {
   super_admin: 4,
   admin: 3,

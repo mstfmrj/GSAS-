@@ -1,4 +1,30 @@
 const fs = require("fs");
+const path = require("path");
+
+const [opCsvPath, iprintCsvPath, medalmadeCsvPath] = process.argv.slice(2);
+const projectRoot = path.resolve(__dirname, "..");
+
+if (!opCsvPath || !iprintCsvPath || !medalmadeCsvPath) {
+  console.error(
+    "Usage: node scripts/generate-seeds.js <operations.csv> <iprint.csv> <medalmade.csv>"
+  );
+  process.exit(1);
+}
+
+function readCsv(filePath, label) {
+  const resolvedPath = path.resolve(process.cwd(), filePath);
+  try {
+    return fs.readFileSync(resolvedPath, "utf8");
+  } catch (error) {
+    throw new Error(`Could not read ${label} CSV at "${resolvedPath}"`, { cause: error });
+  }
+}
+
+function writeSeed(fileName, data) {
+  const outputPath = path.join(projectRoot, "src", "lib", "seeds", fileName);
+  fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
+  console.log(`Wrote ${path.relative(projectRoot, outputPath)}`);
+}
 
 function parseCSV(text) {
   const lines = text.split("\n");
@@ -27,7 +53,7 @@ function parseCSV(text) {
 }
 
 
-const opCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791886001673.csv", "utf8");
+const opCsv = readCsv(opCsvPath, "Operations projects");
 const opRows = parseCSV(opCsv);
 
 const opProjects = [];
@@ -74,10 +100,10 @@ for (let i = 2; i < opRows.length; i++) {
 }
 
 console.log("Parsed OP projects:", opProjects.length);
-fs.writeFileSync("./src/lib/seeds/op_projects.json", JSON.stringify(opProjects, null, 2));
+writeSeed("op_projects.json", opProjects);
 
 
-const iprintCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791885995614.csv", "utf8");
+const iprintCsv = readCsv(iprintCsvPath, "iPrint inventory");
 const iprintLines = iprintCsv.split("\n");
 let currentSeries = "Series 1 (2025 - 100 pcs)";
 const iprintItems = [];
@@ -124,10 +150,10 @@ for (let i = 0; i < iprintLines.length; i++) {
 }
 
 console.log("Parsed Iprint items:", iprintItems.length);
-fs.writeFileSync("./src/lib/seeds/iprint_inventory.json", JSON.stringify(iprintItems, null, 2));
+writeSeed("iprint_inventory.json", iprintItems);
 
 
-const medalmadeCsv = fs.readFileSync("/Users/mustafa/.gemini/antigravity/brain/a3bbe517-c583-49b6-80af-079b889198cc/.user_uploaded/media_1791886010277.csv", "utf8");
+const medalmadeCsv = readCsv(medalmadeCsvPath, "MedalMade inventory");
 const medalmadeRows = parseCSV(medalmadeCsv);
 
 
@@ -205,6 +231,6 @@ const medalmadeItems = plaqueTypes.map((pt, idx) => {
 });
 
 console.log("Parsed Medalmade items:", medalmadeItems.length);
-fs.writeFileSync("./src/lib/seeds/medalmade_inventory.json", JSON.stringify(medalmadeItems, null, 2));
+writeSeed("medalmade_inventory.json", medalmadeItems);
 
 console.log("All seeds successfully created!");

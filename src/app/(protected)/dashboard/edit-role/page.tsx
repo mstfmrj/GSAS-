@@ -114,8 +114,7 @@ function EditRoleContent() {
           <section className="apex-card mb-4">
             <h5 className="fw-bold mb-3">User Details</h5>
             <dl className="row mb-0">
-              <dt className="col-sm-3">Name</dt><dd className="col-sm-9">{targetUser.name || "—"}</dd>
-              <dt className="col-sm-3">Username</dt><dd className="col-sm-9">@{targetUser.username}</dd>
+              <dt className="col-sm-3">Full Name</dt><dd className="col-sm-9">{targetUser.name || "—"}</dd>
               <dt className="col-sm-3">Email</dt><dd className="col-sm-9">{targetUser.email}</dd>
               <dt className="col-sm-3">Current role</dt>
               <dd className="col-sm-9"><span className="badge bg-light text-secondary border">{roleName}</span></dd>

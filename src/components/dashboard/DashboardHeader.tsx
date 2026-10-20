@@ -26,7 +26,7 @@ export default function DashboardHeader() {
   const role = user.role as UserRole;
   const roleLabel = getUserRoleLabel(role, user.roleName);
   const roleIcon = ROLE_ICON[role] ?? "bi-person";
-  const displayName = user.name || user.username;
+  const displayName = user.name || user.email || "User";
   const initial = displayName.trim().charAt(0).toUpperCase();
 
   return (
@@ -87,7 +87,7 @@ export default function DashboardHeader() {
         <ul className="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="topbarUserDropdown">
           <li className="px-3 py-2 border-bottom">
             <div className="fw-bold small">{displayName}</div>
-            <div className="text-muted" style={{ fontSize: "12px" }}>@{user.username} &bull; {user.email}</div>
+            <div className="text-muted" style={{ fontSize: "12px" }}>{user.email}</div>
             <div className="mt-1">
               <span className="badge bg-dark text-white px-2 py-1" style={{ fontSize: "10px" }}>
                 {roleLabel}

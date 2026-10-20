@@ -127,7 +127,7 @@ export default function Navbar() {
                   aria-expanded="false"
                 >
                   <i className="bi bi-person-circle fs-5" style={{ color: theme.primaryColor }}></i>
-                  <span className="fw-semibold">{user.name || user.username}</span>
+                  <span className="fw-semibold">{user.name || user.email || "User"}</span>
                   <span className="badge bg-dark text-white text-uppercase px-2">
                     <i className="bi bi-shield-check me-1" style={{ color: theme.primaryColor }}></i>
                     {user.role}
@@ -135,7 +135,7 @@ export default function Navbar() {
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
                   <li>
-                    <h6 className="dropdown-header">Signed in as @{user.username}</h6>
+                    <h6 className="dropdown-header">Signed in as {user.name || user.email || "User"}</h6>
                   </li>
 
 {(user.role === "admin" || user.role === "super_admin") && (

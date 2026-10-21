@@ -82,14 +82,6 @@ export default function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                href="/"
-                className={`nav-link ${pathname === "/" ? "active fw-semibold" : ""}`}
-              >
-                <i className="bi bi-house me-1"></i> Home
-              </Link>
-            </li>
             {user?.role === "admin" && (
   <li className="nav-item">
     <Link

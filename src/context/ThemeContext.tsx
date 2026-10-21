@@ -20,7 +20,7 @@ const DEFAULT_SETTINGS: ThemeSettings = {
   primaryColor: "#0d6efd",
   primaryHover: "#0b5ed7",
   fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-  fontSize: "16px",
+  fontSize: "14px",
   borderRadius: "0.75rem",
   navbarStyle: "dark",
   cardShadow: "sm",
@@ -58,7 +58,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem(THEME_STORAGE_KEY);
       if (saved) {
-        setTheme({ ...DEFAULT_SETTINGS, ...JSON.parse(saved) });
+        const savedSettings = JSON.parse(saved) as Partial<ThemeSettings>;
+        // Migrate the old normal-size default so returning users also start smaller.
+        if (savedSettings.fontSize === "16px") {
+          savedSettings.fontSize = DEFAULT_SETTINGS.fontSize;
+        }
+        setTheme({ ...DEFAULT_SETTINGS, ...savedSettings });
       }
     } catch (e) {
       console.error("Failed to load theme settings:", e);
